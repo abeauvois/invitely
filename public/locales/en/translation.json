@@ -1,0 +1,598 @@
+{
+  "transportCompany": {
+    "list": {
+      "add": "New Transport Company",
+      "title": "All Transport Companies"
+    },
+    "new": {
+      "toast": {
+        "success": "Transport Company Created"
+      }
+    },
+    "details": {
+      "data": {
+        "email": "Email",
+        "siret": "Siret",
+        "phone": "Phone",
+        "name": "Name"
+      },
+      "title": "Transport Company"
+    },
+    "update": {
+      "toast": {
+        "success": "Transport Company Updated"
+      }
+    },
+    "edit": {
+      "title": "Edit Transport Company"
+    }
+  },
+  "orders": {
+    "new": {
+      "data": {
+        "externalVehicleID": "External Vehicle ID",
+        "contactPhone": "Contact Phone",
+        "estimatedPrice": "Estimated Price",
+        "payloadDesc": "Payload Description",
+        "weight": "Weight",
+        "day": "Day",
+        "contactName": "Contact Name",
+        "externalClientID": "External Client ID",
+        "itemCount": "Item Count",
+        "volume": "Volume",
+        "externalClientEmail": "External Client Email",
+        "externalClientName": "External Client Name",
+        "externalClientPhone": "External Client Phone",
+        "adminName": "Admin Name",
+        "externalID": "External ID"
+      },
+      "errors": {
+        "startDate": "must not be in the past"
+      },
+      "toast": {
+        "success": "Order Created"
+      }
+    },
+    "details": {
+      "delete": {
+        "toast": {
+          "error": "An error occured",
+          "success": "Order Deleted"
+        },
+        "description": "Do you want to delete the order",
+        "title": "Delete order",
+        "confirmationText": "Delete"
+      },
+      "data": {
+        "deliveryTask": "Delivery Task",
+        "quote": "Quote",
+        "name": "Product Name",
+        "publicId": "Public ID",
+        "price": "User Price HT",
+        "routable": "Routable",
+        "pickupTask": "Pickup Task",
+        "externalId": "External ID",
+        "externalClient": "External Client"
+      },
+      "title": "Order"
+    },
+    "filters": {
+      "exportDateRange": "Export dates range"
+    },
+    "list": {
+      "title": "All orders",
+      "flaggedTitle": "All flagged orders",
+      "add": "New Order",
+      "export": "Orders Export"
+    },
+    "export": {
+      "toast": {
+        "success": "Orders Exported",
+        "error": {
+          "missingProductId": "Missing product id",
+          "loadingOrdersExport": "Error loading orders export"
+        }
+      }
+    }
+  },
+  "contracts": {
+    "details": {
+      "data": {
+        "serviceVehicle": "Service Vehicle",
+        "contactEmail": "Contact Email",
+        "contractType": "Product",
+        "dayStart": "Day Starts At",
+        "transportCompany": "Transport Company",
+        "dayStartsAt": "Day Starts At",
+        "vehicleId": "Vehicle ID",
+        "hasServiceVehicle": "Has Service Vehicle",
+        "planner": {
+          "initials": {
+            "saturday": "S",
+            "thursday": "T",
+            "friday": "F",
+            "tuesday": "T",
+            "wednesday": "W",
+            "monday": "M",
+            "sunday": "S",
+            "holiday": "H"
+          },
+          "wednesday": "Wednesday",
+          "monday": "Monday",
+          "tuesday": "Tuesday",
+          "sunday": "Sunday",
+          "thursday": "Thursday",
+          "holiday": "Holiday",
+          "friday": "Friday",
+          "saturday": "Saturday"
+        },
+        "endsAt": "Ends At",
+        "startOfDay": "start of day",
+        "onfleetDriverId": "Onfleet Driver ID",
+        "contractEnd": "Contract Ends",
+        "dayDuration": "Day Duration Hours",
+        "endOfDay": "end of day",
+        "active": "Active",
+        "contractStart": "Contract Starts",
+        "name": "Name",
+        "startsAt": "Starts At",
+        "warningSelectTransportCompany": "Please select a carrier",
+        "warningSelectContract": "Please select a contract type",
+        "warningNoVehicleType": "No vehicle for this type of contract"
+      },
+      "title": "Contract"
+    },
+    "list": {
+      "title": "All Contracts",
+      "add": "New Contract"
+    },
+    "update": {
+      "toast": {
+        "success": "Contract Updated"
+      }
+    },
+    "edit": {
+      "title": "Edit Contract"
+    },
+    "new": {
+      "toast": {
+        "success": "Contract Created"
+      }
+    }
+  },
+  "transport-tasks": {
+    "details": {
+      "data": {
+        "photoRequired": "Photo Required",
+        "estimatedDeparture": "Estimated Departure At",
+        "volume": "Total Volume",
+        "description": "Description",
+        "itemCount": "Total Item Count",
+        "estimatedDuration": "Estimated Duration (min)",
+        "estimatedDistanceInMeter": "Estimated Distance (m)",
+        "progressStatus": {
+          "created": "CREATED",
+          "completed": "COMPLETED",
+          "transit": "TRANSIT",
+          "truckload": "TRUCKLOAD",
+          "created_ikea": "CREATED BY IKEA",
+          "updated_ikea": "UPDATED BY IKEA",
+          "canceled_ikea": "CANCELED BY IKEA",
+          "unknown_ikea": "UNKNOWN (IKEA)",
+          "created_onfleet": "CREATED ON ONFLEET",
+          "started_onfleet": "STARTED",
+          "loaded_onfleet": "LOADED",
+          "delivered_onfleet": "DELIVERED",
+          "deleted_onfleet": "DELETED",
+          "failed_unavailable": "FAILED (CLIENT UNAVAILABLE)",
+          "failed_unable_to_locate": "FAILED (UNABLE TO LOCATE)",
+          "failed_destination_incorrect": "FAILED (DESTINATION INCORRECT)",
+          "failed_delivery_incident": "FAILED (DELIVERY INCIDENT)",
+          "failed_other": "FAILED (OTHER REASON)",
+          "failed_item_damaged": "FAILED (ITEM_DAMAGED)",
+          "failed_item_incorrect": "FAILED (ITEM_INCORRECT)",
+          "failed_none": "FAILED (REASON NOT SPECIFIED)"
+        },
+        "weight": "Total Weight",
+        "departureAdress": "Departure Address",
+        "destinationAdress": "Destination Address",
+        "signatureRequired": "Signature Required",
+        "slot": "Slot",
+        "estimatedArrival": "Estimated Arrival At"
+      },
+      "title": "Task",
+      "planning":"Planning"
+    },
+    "filters": {
+      "deliveryDate": "Delivery Date"
+    },
+    "list": {
+      "title": "All Transport Tasks"
+    }
+  },
+  "address": {
+    "details": {
+      "data": {
+        "country": "Country",
+        "zipCode": "Zip Code",
+        "coordinates": "Coordinates",
+        "city": "City",
+        "line1": "Line 1",
+        "line2": "Line 2"
+      }
+    }
+  },
+  "common": {
+    "details": {
+      "title": {
+        "address": "Address",
+        "destination": "Destination",
+        "planner": "Planner",
+        "payload": "Payload",
+        "lastPosition": "Last Position",
+        "availabilities": "Availabilities",
+        "informations": "General Informations",
+        "parkingAddress": "Parking Address",
+        "adresses": "Addresses",
+        "contract": "Contract",
+        "driverVehicle": "Driver & Vehicle",
+        "departure": "Departure",
+        "metadata": "Metadata",
+        "timeslot": "Time Slot",
+        "maps": "Maps",
+        "area": "Area",
+        "totalFreight": "Freight Total",
+        "metadataOnfleet": "OnFleet Metadata",
+        "externalInformations": "External Informations",
+        "identifiers": "Identifiers",
+        "relations": "Relations",
+        "transportCompany": "Transport Company"
+      },
+      "data": {
+        "createdAt": "Created At",
+        "driver": "Driver",
+        "updatedAt": "Updated At",
+        "id": "ID",
+        "transportCompanyId": "Transport Company Id",
+        "deletedAt": "Deleted At",
+        "status": "Progress status"
+      }
+    },
+    "yes": "Yes",
+    "cancel": "Cancel",
+    "no": "No",
+    "filter": "Filter",
+    "requiredField": "Required field",
+    "confirm": {
+      "cancel": "Cancel",
+      "title": "Are you sure?"
+    },
+    "save": "Save",
+    "tags": {
+      "completed": "COMPLETED"
+    },
+    "add": "Add",
+    "labels": {
+      "details": "Details"
+    }
+  },
+  "deliveryZone": {
+    "details": {
+      "data": {
+        "name": "Name",
+        "product": "Product",
+        "zone": "Zone",
+        "pricePrescision": "in centimes",
+        "loadFile": "Load File",
+        "active": "Active",
+        "loadNewArea": "To load a new area, use",
+        "price": "Price",
+        "exportArea": "Export the area in KML format"
+      },
+      "title": "Delivery Zone"
+    },
+    "new": {
+      "toast": {
+        "success": "Delivery Zone Created"
+      }
+    },
+    "list": {
+      "title": "All Delivery Zones",
+      "add": "New Delivery Zone"
+    },
+    "edit": {
+      "toast": {
+        "success": "Delivery Zone Updated"
+      },
+      "title": "Edit Delivery Zone"
+    }
+  },
+  "routes": {
+    "vehicles": "Vehicles",
+    "transport-tasks": "Transport Tasks",
+    "transport-companies": "Transport Companies",
+    "delivery-zones": "Delivery Zones",
+    "orders": "Orders",
+    "order-all": "All",
+    "order-today": "Today",
+    "order-flagged": "Flagged",
+    "dashboard": "Dashboard",
+    "contracts": "Contracts",
+    "invoice": "Invoice",
+    "drivers-planning": "Drivers plannings"
+  },
+  "vehicles": {
+    "update": {
+      "toast": {
+        "success": "Vehicle Updated"
+      }
+    },
+    "edit": {
+      "title": "Edit Vehicle"
+    },
+    "details": {
+      "data": {
+        "registratedAt": "Registrated At",
+        "departureAddress": "Departure Address",
+        "plateNumber": "Plate Number",
+        "vehicleType": "Vehicle Type",
+        "transportCompany": "Transport Company",
+        "vehiclesTypes": {
+          "BIO": "Bioethanol",
+          "DIESEL": "Diesel",
+          "ELECTRIC": "Electric",
+          "HYDROGEN": "Hydrogen",
+          "PETROL": "Petrol"
+        }
+      },
+      "title": "Vehicle"
+    },
+    "list": {
+      "add": "New Vehicle",
+      "title": "All Vehicles"
+    },
+    "new": {
+      "toast": {
+        "success": "Vehicle Created"
+      }
+    }
+  },
+  "dashboard": {
+    "months-orders": {
+      "deltaLabel": "Since last month",
+      "label": "MONTH'S ORDERS"
+    },
+    "days-orders": {
+      "label": "DAY'S ORDERS",
+      "deltaLabel": "Since yesterday"
+    },
+    "years-orders": {
+      "label": "YEAR'S ORDERS"
+    },
+    "order-flagged": {
+      "label": "FLAGGED ORDERS"
+    }
+  },
+  "parkingAddress": {
+    "details": {
+      "data": {
+        "longitude": "Longitude",
+        "latitude": "Latitude"
+      },
+      "title": "Parking Address"
+    }
+  },
+  "loader": {
+    "loading": "LOADING"
+  },
+  "unavailabilities": {
+    "details": {
+      "title": "Unavailabilities",
+      "endAt": "End At",
+      "reason": "Reason",
+      "startAt": "Start At"
+    }
+  },
+  "products": {
+    "title": "Product",
+    "DELIVERY-TOUR-IKEA": "IKEA",
+    "PLV2": "PLV2"
+  },
+  "filters": {
+    "start": "Start",
+    "end": "End",
+    "all": "-- All --",
+    "reset": "Reset",
+    "apply": "Apply",
+    "clean": "Clean"
+  },
+  "regularization": {
+    "title": "Regularizations",
+    "customRegularization": "Custom Regularization",
+    "reasonForRegularization": "Reason for regularization",
+    "quantity": "Quantity",
+    "type": "Type",
+    "initialPrice": "Initial Price",
+    "unitPrice": "Unit Price",
+    "totalPrice": "Total Price",
+    "amoutOfRegularization": "Amount of regularization",
+    "priceAfterRegularization": "Price after regularization",
+    "validate": "Validate",
+    "cancel": "Cancel",
+    "return": "Return",
+    "commercialGesture": "Commercial gesture",
+    "other": "Other",
+    "reason": "Reason",
+    "next": "Next",
+    "requiredField": "Required field",
+    "requiredFields": "Required fields",
+    "noLengthMessage": "There isnt' any regularizations associated to the order yet",
+    "add": {
+      "toast": { "success": "New regularization added successfully" }
+    },
+    "delete": {
+      "toast": {
+        "error": "An error occured",
+        "success": "Regularization deleted"
+      },
+      "description": "Do you want to delete the regularization",
+      "title": "Delete regularization",
+      "confirmationText": "Delete"
+    }
+  },
+  "audit": {
+    "title": "History",
+    "noLengthMessage": "There isn't any history associated to the order yet",
+    "actions": {
+      "delete-order": "Order deleted",
+      "add-regularization": "Regularization added",
+      "delete-regularization": "Regularization deleted",
+      "add-flag": "Flag added",
+      "delete-flag": "Flag deleted"
+    }
+  },
+  "orderFlag": {
+    "title": "Flag",
+    "addOrderFlag": "Add flag on this order",
+    "deleteOrderFlag": "Delete flag on this order",
+    "comment": "Comment",
+    "commentLabel": "Order's flag comment",
+    "add": {
+      "toast": {
+        "success": "Order flag added",
+        "error": "An error occured"
+      }
+    },
+    "delete": {
+      "toast": {
+        "success": "Flag deleted",
+        "error": "An error occured"
+      },
+      "title": "Do you want to delete the flag :",
+      "confirmationText": "Delete"
+    }
+  },
+  "orderAssignment": {
+    "addOrderAssignment": "Assign a driver",
+    "driverNotAssignable": "You can't assign another driver to this course.",
+    "isCourseIkea": "This is an IKEA course.",
+    "startDateBeforeToday": "You can't assign a driver to a course that starts before today.",
+    "add": {
+      "toast": {
+        "success": "Driver assigned",
+        "error": "An error occured"
+      }
+    }
+  },
+  "orderInvoicing": {
+    "invoicingOrder": "Invoice the order",
+    "recipient": "Recipient",
+    "name": "Name",
+    "identifier": "Identifier",
+    "email": "Email",
+    "city": "City",
+    "address": "Address",
+    "zipCode": "Postal Code",
+    "companyId": "Company ID",
+    "service": "Service",
+    "description": "Description",
+    "dateHour": "Date and time",
+    "orderId": "Order ID",
+    "clientOrderId": "Client Order ID",
+    "waybill": "Waybill",
+    "details": "Product details",
+    "pennylaneProduct": "Pennylane Product",
+    "quantity": "Quantity",
+    "unitPrice": "Unit price excl. VAT",
+    "paymentStatus": "Payment status",
+    "unpaid": "Unpaid",
+    "transport_plv2": "Transport PLV2",
+    "regul_geste_commercial": "Commercial gesture regularization",
+    "regul_uncategorized": "Other regularization",
+    "invoicing": "Invoice",
+    "cancel": "Cancel",
+    "return": "Return",
+    "error": "An error occured",
+    "errorInvoicing": "An error occured during the invoicing",
+    "loading": "Loading",
+    "noData": "No data available",
+    "invoiceState": "Invoice state",
+    "invoiced": "Invoiced",
+    "notInvoiced": "Not invoiced"
+  },
+  "actions": {
+    "title": "Actions",
+    "return": "Return",
+    "next": "Next",
+    "confirm": "Valider",
+    "cancel": "Cancel",
+    "requiredField": "Required field"
+  },
+  "invoices": {
+    "title": "Monthly billing",
+    "download": "Download",
+    "sendEmails": "Send emails",
+    "billedStatus": "Billed",
+    "nonBilledStatus": "Pending billing",
+    "sentStatusError": "Sending error",
+    "tableHeaderCompany": "Company",
+    "tableHeaderNumberOrders": "Nb. of orders",
+    "tableHeaderPrice": "Invoice amount (incl. taxes)",
+    "tableHeaderBillingStatus": "Billing status",
+    "tableHeaderEmailStatus": "Email status",
+    "sendEmailsModalDescription": "Email will be sent to {{countPro}} professionals for {{date}}. Are you sure ?",
+    "tableHeaderRecipientEmail": "Recipient Email",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "month1": "January",
+    "month2": "February",
+    "month3": "March",
+    "month4": "April",
+    "month5": "May",
+    "month6": "June",
+    "month7": "July",
+    "month8": "August",
+    "month9": "September",
+    "month10": "October",
+    "month11": "November",
+    "month12": "December"
+  },
+  "driverPlanning": {
+    "drivers":"Drivers",
+    "product":"Product",
+    "productNameLabel": "name",
+    "crew":"Crew",
+    "crewDriverLabel": "driver",
+    "crewWorkersLabel": "workers",
+    "vehicle":"Vehicle",
+    "vehicleName":"name",
+    "vehiclePlateNumber":"plateNumber",
+    "vehicleParkingAddress":"parking",
+    "vehicleEnergy":"energy",
+    "vehicleLoadCapacityKg":"loadCapacityKg",
+    "contract":"Contract",
+    "contractAvailabilities": "availabilities",
+    "calendar":"Calendar",
+    "missions":"Missions",
+    "missionId":"id",
+    "missionTitle":"title",
+    "missionDepartureCity":"depart",
+    "missionDestinationCity":"dest.",
+    "missionTasks":"tasks",
+    "taskName":"name",
+    "taskType":"type",
+    "taskFrom":"from",
+    "taskTo":"to",
+    "planning":"Planning",
+    "contractName":"name",
+    "contractIsActive":"isActive",
+    "contractLink":"link to",
+    "contractStart":"start",
+    "contractEnd":"end",
+    "contractUnavailabilities":"unavailabilities",
+    "contractWorkingRange":"working range",
+    "contractUnavailabilityBegin":"begin",
+    "contractUnavailabilityEnd":"end",
+    "errorEmptyThisDay":"Not found for this day"
+  }
+}

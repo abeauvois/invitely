@@ -1,0 +1,604 @@
+{
+  "transportCompany": {
+    "list": {
+      "add": "Nouvelle société de transport",
+      "title": "Toutes les sociétés"
+    },
+    "new": {
+      "toast": {
+        "success": "Société de transport créée"
+      }
+    },
+    "details": {
+      "data": {
+        "email": "Email",
+        "siret": "Siret",
+        "phone": "Téléphone",
+        "name": "Nom"
+      },
+      "title": "Société de transport"
+    },
+    "update": {
+      "toast": {
+        "success": "Société de transport mise à jour"
+      }
+    },
+    "edit": {
+      "title": "Éditer la société de transport"
+    }
+  },
+  "orders": {
+    "new": {
+      "data": {
+        "externalVehicleID": "ID externe du vehicule",
+        "contactPhone": "Numéro de téléphone du contact",
+        "estimatedPrice": "Prix estimé",
+        "payloadDesc": "Description de la marchandise",
+        "weight": "Poids",
+        "day": "Jour",
+        "contactName": "Nom du contact",
+        "externalClientID": "ID externe du client",
+        "itemCount": "Nombre total d'articles",
+        "volume": "Volume",
+        "externalClientEmail": "Email externe du client",
+        "externalClientName": "Nom externe du client",
+        "externalClientPhone": "Numéro de téléphone du client",
+        "adminName": "Nom de l'administrateur",
+        "externalID": "ID externe"
+      },
+      "errors": {
+        "startDate": "Ne doit pas être passé"
+      },
+      "toast": {
+        "success": "Commande créée"
+      }
+    },
+    "details": {
+      "delete": {
+        "toast": {
+          "error": "Une erreur est survenue",
+          "success": "Commande supprimée"
+        },
+        "description": "Voulez vous supprimer cette commande",
+        "title": "Supprimer la commande",
+        "confirmationText": "Supprimer"
+      },
+      "data": {
+        "deliveryTask": "Étape de livraison",
+        "quote": "Devis",
+        "name": "Nom du produit",
+        "publicId": "ID publique",
+        "price": "Prix utilisateur HT",
+        "routable": "Routable",
+        "pickupTask": "Étape de chargement",
+        "externalId": "ID externe",
+        "externalClient": "Client externe"
+      },
+      "title": "Commande"
+    },
+    "filters": {
+      "exportDateRange": "Dates de début et fin de l'export"
+    },
+    "list": {
+      "title": "Toutes les commandes",
+      "flaggedTitle": "Commandes signalées",
+      "add": "Nouvelle commande",
+      "export": "Téléchargement de commandes"
+    },
+    "export": {
+      "toast": {
+        "success": "Commandes Exportées",
+        "error": {
+          "missingProductId": "Missing product id",
+          "loadingOrdersExport": "Erreur à la préparation de l'export"
+        }
+      }
+    }
+  },
+  "contracts": {
+    "details": {
+      "data": {
+        "serviceVehicle": "Véhicule de service",
+        "contactEmail": "Email de contact",
+        "contractType": "Produit",
+        "dayStart": "Heure de départ",
+        "transportCompany": "Société de transport",
+        "dayStartsAt": "Heure de départ",
+        "vehicleId": "ID du véhicule",
+        "hasServiceVehicle": "Possède un véhicule de service",
+        "planner": {
+          "initials": {
+            "saturday": "S",
+            "thursday": "J",
+            "friday": "V",
+            "tuesday": "M",
+            "wednesday": "M",
+            "monday": "L",
+            "sunday": "D",
+            "holiday": "F"
+          },
+          "wednesday": "Mercredi",
+          "monday": "Lundi",
+          "tuesday": "Mardi",
+          "sunday": "Dimanche",
+          "thursday": "Jeudi",
+          "holiday": "Férié",
+          "friday": "Vendredi",
+          "saturday": "Samedi"
+        },
+        "endsAt": "Termine à",
+        "startOfDay": "début de journée",
+        "onfleetDriverId": "ID Onfleet du chauffeur",
+        "contractEnd": "Fin du contrat",
+        "dayDuration": "Duration en heure",
+        "endOfDay": "fin de journée",
+        "active": "Actif",
+        "contractStart": "Début du contrat",
+        "name": "Nom",
+        "startsAt": "Commence à",
+        "warningSelectTransportCompany": "Veuillez selectionner un transporteur",
+        "warningSelectContract": "Veuillez selectionner un type de contrat",
+        "warningNoVehicleType": "Aucun véhicule pour ce type de contrat"
+      },
+      "title": "Contrat"
+    },
+    "list": {
+      "title": "Tous les contrats",
+      "add": "Nouveau contrat"
+    },
+    "update": {
+      "toast": {
+        "success": "Contrat mis à jour"
+      }
+    },
+    "edit": {
+      "title": "Éditer le contrat"
+    },
+    "new": {
+      "toast": {
+        "success": "Contrat créé"
+      }
+    }
+  },
+  "transport-tasks": {
+    "details": {
+      "data": {
+        "photoRequired": "Photo requise",
+        "estimatedDeparture": "Départ estimé à",
+        "volume": "Volume total",
+        "description": "Description",
+        "itemCount": "Nombre total d'articles",
+        "estimatedDuration": "Durée estimée (min)",
+        "estimatedDistanceInMeter": "Distance estimée (m)",
+        "progressStatus": {
+          "created": "CRÉÉE",
+          "completed": "COMPLÉTÉE",
+          "transit": "TRANSIT",
+          "truckload": "EN COURS DE CHARGEMENT",
+          "created_ikea": "CRÉÉE PAR IKEA",
+          "updated_ikea": "MISE À JOUR PAR IKEA",
+          "canceled_ikea": "ANNULÉ PAR IKEA",
+          "unknown_ikea": "INCONNUE (IKEA)",
+          "created_onfleet": "CRÉÉE SUR ONFLEET",
+          "started_onfleet": "EN COURS DE LIVRAISON",
+          "loaded_onfleet": "CHARGEMENT EFFECTUÉ",
+          "delivered_onfleet": "LIVRÉE",
+          "deleted_onfleet": "SUPPRIMÉE",
+          "failed_unavailable": "ECHEC (DESTINATAIRE INDISPONIBLE)",
+          "failed_unable_to_locate": "ECHEC (LIEU IMPOSSIBLE À TROUVER)",
+          "failed_destination_incorrect": "ECHEC (DESTINATION INACCESSIBLE)",
+          "failed_delivery_incident": "ECHEC (INCIDENT DU CHAUFFEUR)",
+          "failed_other": "ECHEC (AUTRE RAISON)",
+          "failed_item_damaged": "ECHEC (REFUS - ARTICLES ENDOMMAGÉS)",
+          "failed_item_incorrect": "ECHEC (REFUS - ARTICLES INCORRECTS)",
+          "failed_none": "ECHEC (RAISON NON SPÉCIFIÉE)"
+        },
+        "weight": "Poids total",
+        "departureAdress": "Adresse de départ",
+        "destinationAdress": "Adresse d'arrivée",
+        "signatureRequired": "Signature requise",
+        "slot": "Créneau",
+        "estimatedArrival": "Arrivée estimée à"
+      },
+      "title": "Tâche de transport"
+    },
+    "filters": {
+      "deliveryDate": "Date de livraison"
+    },
+    "list": {
+      "title": "Toutes les tâches de transports"
+    }
+  },
+  "address": {
+    "details": {
+      "data": {
+        "country": "Pays",
+        "zipCode": "Code postal",
+        "coordinates": "Coordonnées",
+        "city": "Ville",
+        "line1": "Ligne 1",
+        "line2": "Ligne 2"
+      }
+    }
+  },
+  "common": {
+    "details": {
+      "title": {
+        "address": "Adresse",
+        "destination": "Arrivée",
+        "planner": "Plannificateur",
+        "payload": "Marchandises",
+        "lastPosition": "Dernière position",
+        "availabilities": "Disponibilités",
+        "informations": "Informations générales",
+        "parkingAddress": "Adresse de parking",
+        "adresses": "Adresses",
+        "contract": "Contrat",
+        "driverVehicle": "Chauffeur & Véhicule",
+        "departure": "Départ",
+        "metadata": "Metadata",
+        "timeslot": "Créneau de livraison",
+        "maps": "Cartes",
+        "area": "Région",
+        "totalFreight": "Chargement total",
+        "metadataOnfleet": "OnFleet Metadata",
+        "externalInformations": "Informations externes",
+        "identifiers": "Identifiants",
+        "relations": "Relations",
+        "transportCompany": "Société de transport"
+      },
+      "data": {
+        "createdAt": "Créé le",
+        "driver": "Chauffeur",
+        "updatedAt": "Mis à jour le",
+        "id": "ID",
+        "transportCompanyId": "ID de la société de transport",
+        "deletedAt": "Supprimé le",
+        "status": "État d'avancement"
+      }
+    },
+    "yes": "Oui",
+    "cancel": "Annuler",
+    "no": "Non",
+    "filter": "Filtre",
+    "requiredField": "Champs requis",
+    "confirm": {
+      "cancel": "Annuler",
+      "title": "Êtes-vous sûr ?"
+    },
+    "save": "Sauvegarder",
+    "tags": {
+      "completed": "COMPLET"
+    },
+    "add": "Ajouter",
+    "labels": {
+      "details": "Détails"
+    }
+  },
+  "deliveryZone": {
+    "details": {
+      "data": {
+        "name": "Nom",
+        "product": "Produit",
+        "zone": "Zone",
+        "pricePrescision": "en centimes",
+        "loadFile": "Charger le fichier",
+        "active": "Actif",
+        "loadNewArea": "Pour charger une nouvelle région, utilisez",
+        "price": "Prix",
+        "exportArea": "Exporter la zone au format KML"
+      },
+      "title": "Zone de livraison"
+    },
+    "new": {
+      "toast": {
+        "success": "Zone de livraison créée"
+      }
+    },
+    "list": {
+      "title": "Zones de livraisons",
+      "add": "Nouvelle zone de livraison"
+    },
+    "edit": {
+      "toast": {
+        "success": "Zone de livraison mise à jour"
+      },
+      "title": "Éditer la zone de livraison"
+    }
+  },
+  "routes": {
+    "vehicles": "Véhicules",
+    "transport-tasks": "Tâches de transport",
+    "transport-companies": "Sociétés de transport",
+    "delivery-zones": "Zones de livraison",
+    "orders": "Commandes",
+    "order-all": "Toutes",
+    "order-flagged": "À vérifier",
+    "dashboard": "Dashboard",
+    "contracts": "Contrats",
+    "invoice": "Factures",
+    "drivers-planning": "Plannings des Chauffeurs"
+  },
+  "vehicles": {
+    "update": {
+      "toast": {
+        "success": "Véhicule mis à jour"
+      }
+    },
+    "edit": {
+      "title": "Éditer le véhicule"
+    },
+    "details": {
+      "data": {
+        "registratedAt": "Enregistré le",
+        "departureAddress": "Adresse de départ",
+        "plateNumber": "Numéro de plaque",
+        "vehicleType": "Type de véhicule",
+        "transportCompany": "Société de transport",
+        "vehiclesTypes": {
+          "BIO": "Bioéthanol",
+          "DIESEL": "Diesel",
+          "ELECTRIC": "Électrique",
+          "HYDROGEN": "Hydrogène",
+          "PETROL": "Essence"
+        }
+      },
+      "title": "Véhicule"
+    },
+    "list": {
+      "add": "Nouveau véhicule",
+      "title": "Tout les véhicules"
+    },
+    "new": {
+      "toast": {
+        "success": "Véhicule créé"
+      }
+    }
+  },
+  "dashboard": {
+    "months-orders": {
+      "deltaLabel": "Depuis le mois dernier",
+      "label": "COMMANDES DU MOIS"
+    },
+    "days-orders": {
+      "label": "COMMANDES DU JOUR",
+      "deltaLabel": "Depuis hier"
+    },
+    "years-orders": {
+      "label": "COMMANDES DE L'ANNÉE"
+    },
+    "order-flagged": {
+      "label": "COMMANDES À VÉRIFIER"
+    }
+  },
+  "parkingAddress": {
+    "details": {
+      "data": {
+        "longitude": "Longitude",
+        "latitude": "Latitude"
+      },
+      "title": "Adresse de parking"
+    }
+  },
+  "loader": {
+    "loading": "CHARGEMENT"
+  },
+  "unavailabilities": {
+    "details": {
+      "title": "Indisponibilités",
+      "endAt": "Fini le",
+      "reason": "Motif",
+      "startAt": "Commence le"
+    }
+  },
+  "products": {
+    "title": "Produit",
+    "DELIVERY-TOUR-IKEA": "IKEA",
+    "PLV2": "PLV2"
+  },
+  "filters": {
+    "start": "Début",
+    "end": "Fin",
+    "all": "-- Tous --",
+    "reset": "Réinitialiser",
+    "apply": "Appliquer",
+    "clean": "Supprimer"
+  },
+  "regularization": {
+    "title": "Régularisations",
+    "customRegularization": "Régularisation personnalisée",
+    "reasonForRegularization": "Motif de la régularisation",
+    "quantity": "Quantité",
+    "type": "Type",
+    "initialPrice": "Prix initial TTC",
+    "unitPrice": "Prix unitaire TTC",
+    "totalPrice": "Prix total TTC",
+    "amoutOfRegularization": "Montant de la régularisation TTC",
+    "priceAfterRegularization": "Prix après régularisation TTC",
+    "validate": "Valider",
+    "cancel": "Annuler",
+    "return": "Retour",
+    "commercialGesture": "Geste commercial",
+    "other": "Autre",
+    "reason": "Motif",
+    "next": "Suivant",
+    "requiredField": "Ce champ est obligatoire",
+    "requiredFields": "Ces champs sont obligatoires",
+    "noLengthMessage": "Il n'y a pas encore de régularisations assignées",
+    "add": {
+      "toast": { "success": "Régularisation ajoutée avec succès" }
+    },
+    "delete": {
+      "toast": {
+        "error": "Une erreur est survenue",
+        "success": "Régularisation supprimée"
+      },
+      "description": "Voulez vous supprimer cette régularisation",
+      "title": "Supprimer la régularisation",
+      "confirmationText": "Supprimer"
+    }
+  },
+  "audit": {
+    "title": "Historique",
+    "noLengthMessage": "Il n'y a pas encore d'actions historisées",
+    "actions": {
+      "delete-order": "Commande supprimée",
+      "add-regularization": "Régularisation ajoutée",
+      "delete-regularization": "Régularisation supprimée",
+      "add-flag": "Signalement ajouté",
+      "delete-flag": "Signalement supprimé"
+    }
+  },
+  "orderFlag": {
+    "title": "Signalement",
+    "addOrderFlag": "Signaler la commande",
+    "deleteOrderFlag": "Supprimer le signalement",
+    "comment": "Commentaire",
+    "commentLabel": "Commentaire du signalement",
+    "add": {
+      "toast": {
+        "success": "Signalement ajouté avec succès",
+        "error": "Une erreur est survenue"
+      }
+    },
+    "delete": {
+      "toast": {
+        "success": "Signalement supprimé avec succès",
+        "error": "Une erreur est survenue"
+      },
+      "title": "Voulez vous supprimer le signalement :",
+      "confirmationText": "Supprimer"
+    }
+  },
+  "orderAssignment": {
+    "addOrderAssignment": "Assigner un chauffeur",
+    "driverNotAssignable": "Vous ne pouvez pas assigner cette course à un autre chauffeur.",
+    "isCourseIkea": "Cette course est une course IKEA.",
+    "startDateBeforeToday": "La date de début de la course est antérieure à la date du jour.",
+    "add": {
+      "toast": {
+        "success": "Chauffeur assigné avec succès",
+        "error": "Une erreur est survenue"
+      }
+    }
+  },
+  "orderInvoicing": {
+    "invoicingOrder": "Facturer la commande",
+    "recipient": "Destinataire",
+    "name": "Nom",
+    "identifier": "Identifiant",
+    "email": "Email",
+    "city": "Ville",
+    "address": "Adresse",
+    "zipCode": "Code postal",
+    "companyId": "Identifiant société",
+    "service": "Service",
+    "description": "Description",
+    "dateHour": "Date et heure",
+    "orderId": "Identifiant commande",
+    "clientOrderId": "Identifiant commande client",
+    "waybill": "Lettre de voiture",
+    "details": "Détails produit",
+    "pennylaneProduct": "Produit Pennylane",
+    "quantity": "Quantité",
+    "unitPrice": "Prix unitaire HT",
+    "paymentStatus": "Statut de paiement",
+    "unpaid": "Non payé",
+    "transport_plv2": "Transport PLV2",
+    "regul_geste_commercial": "Régularisation geste commercial",
+    "regul_uncategorized": "Régularisation autre",
+    "invoicing": "Facturer",
+    "cancel": "Annuler",
+    "return": "Retour",
+    "error": "Une erreur est survenue",
+    "errorInvoicing": "Une erreur est survenue lors de la facturation",
+    "loading": "Chargement",
+    "noData": "Aucune donnée a afficher",
+    "invoiceState": "Etat de facturation",
+    "invoiced": "Facture",
+    "notInvoiced": "Non facturé"
+  },
+  "actions": {
+    "title": "Actions",
+    "return": "Retour",
+    "next": "Suivant",
+    "confirm": "Valider",
+    "cancel": "Annuler",
+    "requiredField": "Ce champ est obligatoire"
+  },
+  "invoices": {
+    "title": "Facturation mensuelle",
+    "download": "Télécharger",
+    "sendEmails": "Lancer l'envoi d'emails",
+    "billedStatus": "Facturé",
+    "nonBilledStatus": "En attente de factu.",
+    "sentStatusError": "Erreur d'envoi",
+    "tableHeaderCompany": "Entreprise",
+    "tableHeaderNumberOrders": "Nb. courses",
+    "tableHeaderPrice": "Montant à facturer (TTC)",
+    "tableHeaderBillingStatus": "Facturation",
+    "tableHeaderEmailStatus": "Envoi email",
+    "sendEmailsModalDescription": "L'email va être envoyé à {{countPro}} professionnels pour le mois de {{date}}. Êtes-vous sûr ?",
+    "tableHeaderRecipientEmail": "Email du destinataire",
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "month1": "Janvier",
+    "month2": "Février",
+    "month3": "Mars",
+    "month4": "Avril",
+    "month5": "Mai",
+    "month6": "Juin",
+    "month7": "Juillet",
+    "month8": "Août",
+    "month9": "Septembre",
+    "month10": "Octobre",
+    "month11": "Novembre",
+    "month12": "Décembre"
+  },
+  "search": {
+    "order": "Commande",
+    "provisioningContract": "Contrat",
+    "transportTask": "Tache de transport",
+    "transportCompagny": "Société de transport",
+    "vehicle": "Véhicule"
+  },
+  "driverPlanning": {
+    "drivers":"Chauffeurs",
+    "product":"Produit",
+    "productNameLabel": "nom",
+    "crew":"Equipage",
+    "crewDriverLabel": "chauffeur",
+    "crewWorkersLabel": "Manut.",
+    "vehicle":"Vehicule",
+    "vehicleName":"nom",
+    "vehiclePlateNumber":"plaque",
+    "vehicleParkingAddress":"parking",
+    "vehicleEnergy":"energie",
+    "vehicleLoadCapacityKg":"Capacité Kg",
+    "contract":"Contrat",
+    "contractAvailabilities": "disponilités",
+    "calendar":"Calendrier",
+    "missions":"Missions",
+    "missionId":"id",
+    "missionTitle":"titre",
+    "missionDepartureCity":"départ",
+    "missionDestinationCity":"destin.",
+    "missionTasks":"taches",
+    "taskName":"nom",
+    "taskType":"type",
+    "taskFrom":"du ",
+    "taskTo":"au ",
+    "planning":"Planning",
+    "contractName":"nom",
+    "contractIsActive":"est actif",
+    "contractLink":"lien",
+    "contractStart":"début",
+    "contractEnd":"fin",
+    "contractUnavailabilities":"indisponibilités",
+    "contractWorkingRange":"horaires",
+    "contractUnavailabilityBegin":"début",
+    "contractUnavailabilityEnd":"fin",
+    "errorEmptyThisDay":"Rien trouvé pour cette journée"
+  }
+
+}
