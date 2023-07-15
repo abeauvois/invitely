@@ -58,12 +58,12 @@
   [multiple],
   textarea,
   select {
-    @apply block mt-1 w-full md:max-w-sm text-gray-800 bg-gray-100 focus:bg-white rounded-md border-transparent focus:border-supervan focus:ring-0;
+    @apply block mt-1 w-full md:max-w-sm text-gray-800 bg-gray-100 focus:bg-white rounded-md border-transparent focus:border-invitely focus:ring-0;
   }
 
   [type="checkbox"],
   [type="radio"] {
-    @apply rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-supervan text-supervan focus:ring-1 focus:ring-offset-1 focus:ring-supervan;
+    @apply rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-invitely text-invitely focus:ring-1 focus:ring-offset-1 focus:ring-invitely;
   }
 
   input[disabled],
@@ -72,32 +72,28 @@
 
     background-image: none;
   }
+
+  input[type="text"]::placeholder{
+    @apply font-thin text-invitely italic 
+  }
 }
 
 /* @layer utilities {} */
 @layer components {
-  .spv-link {
-    @apply w-full underline hover:text-supervan;
-  }
-
-  .spv-link-accent {
-    @apply w-full no-underline hover:underline hover:text-supervan;
-  }
-
   .btn-icon-primary {
-    @apply mx-1 py-1 px-1 text-gray-600 hover:text-supervan bg-white disabled:opacity-50;
+    @apply mx-1 py-1 px-1 text-gray-600 hover:text-invitely bg-white disabled:opacity-50;
   }
 
   .btn-icon-accent {
-    @apply mx-1 py-1 px-1 text-white bg-gray-800 hover:bg-supervan disabled:opacity-50;
+    @apply mx-1 py-1 px-1 text-white bg-gray-800 hover:bg-invitely disabled:opacity-50;
   }
 
   .btn-primary {
-    @apply py-1 px-4 text-gray-700 hover:text-supervan bg-white rounded-md shadow active:hover:shadow-md text-sm font-medium disabled:opacity-50;
+    @apply py-1 px-4 text-gray-700 hover:text-invitely bg-white rounded-md shadow active:hover:shadow-md text-sm font-medium disabled:opacity-50;
   }
 
   .btn-accent {
-    @apply py-1 px-4 text-white bg-gray-800 hover:bg-supervan-dark bg-supervan rounded-md shadow active:hover:shadow-md text-sm font-medium disabled:opacity-50;
+    @apply py-1 px-4 text-white bg-gray-800 hover:bg-invitely-dark bg-invitely rounded-md shadow active:hover:shadow-md text-sm font-medium disabled:opacity-50;
   }
 
   .badge {

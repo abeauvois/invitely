@@ -97,7 +97,7 @@ export function LoginForm(): React.ReactElement {
                 Pas encore de compte ?{" "}
                 <a
                   href="/"
-                  className="text-primary-600 dark:text-primary-500 font-medium hover:text-supervan hover:underline"
+                  className="text-primary-600 dark:text-primary-500 font-medium hover:text-invitely hover:underline"
                 >
                   Creer un compte
                 </a>
@@ -108,7 +108,7 @@ export function LoginForm(): React.ReactElement {
       </div>
       <div className="fixed bottom-0 px-6 py-2 text-gray-400">
         <span className="text-sm lowercase">
-          {process.env.SUPERVAN_ENVIRONMENT_NAME || ""}
+          {process.env.INVITELY_ENVIRONMENT_NAME || ""}
         </span>
       </div>
     </div>

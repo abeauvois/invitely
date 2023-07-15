@@ -1,4 +1,4 @@
-import { ReactComponent as Logo } from "../../assets/supervan_logo.svg";
+import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 
 export const AppBar = () => {
   return (
@@ -7,13 +7,8 @@ export const AppBar = () => {
         className="flex w-full items-center justify-center p-2 lg:px-4"
         aria-label="Global"
       >
-        <Logo className="m-4 h-12 w-12" />
+        <Logo className="m-4 h-56 w-56" />
 
-        <div className="hidden self-center lg:flex lg:gap-x-12">
-          <span className="bg-white/95 font-airstrike text-3xl text-supervan md:-bottom-3 ">
-            SUPERVAN OPTIMIZ
-          </span>
-        </div>
       </nav>
     </header>
   );

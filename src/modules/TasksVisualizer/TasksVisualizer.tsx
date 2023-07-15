@@ -311,7 +311,7 @@ export const TasksVisualizer = () => {
     <div>
       <div className="flex flex-col items-center justify-center">
         <div className="mb-10 w-full bg-white py-4 text-center shadow-sm lg:px-8">
-          <h3 className="text-1xl font-bold tracking-tight text-supervan sm:text-4xl">
+          <h3 className="text-1xl font-bold tracking-tight text-invitely sm:text-4xl">
             Votre commande
           </h3>
         </div>
@@ -350,7 +350,7 @@ export const TasksVisualizer = () => {
 
             <div className="my-10 flex w-5/6 flex-row justify-around rounded-md bg-white p-4">
               <div>
-                <h2 className="mb-4 text-xl tracking-tight text-supervan sm:text-2xl">
+                <h2 className="mb-4 text-xl tracking-tight text-invitely sm:text-2xl">
                   Choisissez le véhicule qui vous convient
                 </h2>
                 <div className="flex flex-row justify-around rounded-sm bg-slate-50 p-3">
@@ -362,7 +362,7 @@ export const TasksVisualizer = () => {
                       <div
                         className={`contraint-option flex flex-col justify-between p-2 ${
                           activeConstraints.truckType === truckType.key
-                            ? "bg-supervan"
+                            ? "bg-invitely"
                             : "bg-white hover:shadow-md"
                         }`}
                       >
@@ -370,7 +370,7 @@ export const TasksVisualizer = () => {
                           className={`font-extrabold ${
                             activeConstraints.truckType === truckType.key
                               ? "text-white"
-                              : "text-supervan"
+                              : "text-invitely"
                           }`}
                         >
                           {truckType.shortTitle}
@@ -410,7 +410,7 @@ export const TasksVisualizer = () => {
                 </p>
               </div>
               <div>
-                <h2 className="mb-4 text-xl tracking-tight text-supervan sm:text-2xl">
+                <h2 className="mb-4 text-xl tracking-tight text-invitely sm:text-2xl">
                   Choissisez une prestation de manutention
                 </h2>
                 <div className="flex flex-row justify-around rounded-sm bg-slate-50 p-3">
@@ -425,7 +425,7 @@ export const TasksVisualizer = () => {
                         className={`contraint-option flex flex-col justify-between p-2 ${
                           activeConstraints.handlerServiceType ===
                           handlerServiceType.key
-                            ? "bg-supervan"
+                            ? "bg-invitely"
                             : "bg-white hover:shadow-md"
                         }`}
                       >
@@ -434,7 +434,7 @@ export const TasksVisualizer = () => {
                             activeConstraints.handlerServiceType ===
                             handlerServiceType.key
                               ? "text-white"
-                              : "text-supervan"
+                              : "text-invitely"
                           }`}
                         >
                           {handlerServiceType.title}
@@ -465,7 +465,7 @@ export const TasksVisualizer = () => {
 
             {/* <div className="my-10 flex w-5/6 flex-row justify-around rounded-md bg-white p-4">
               <div className="w-4/6">
-                <h2 className="mb-4 text-center text-xl tracking-tight text-supervan sm:text-2xl">
+                <h2 className="mb-4 text-center text-xl tracking-tight text-invitely sm:text-2xl">
                   Choissisez l&apos;amplitude horaire
                 </h2>
                 <div className="flex flex-row justify-around rounded-sm bg-slate-50 p-2">
@@ -477,7 +477,7 @@ export const TasksVisualizer = () => {
                       <div
                         className={`contraint-option flex flex-col  p-2 ${
                           activeConstraints.amplitudeType === amplitudeType.key
-                            ? "bg-supervan-light"
+                            ? "bg-invitely-light"
                             : "bg-white hover:shadow-md"
                         }`}
                       >
@@ -486,7 +486,7 @@ export const TasksVisualizer = () => {
                             activeConstraints.amplitudeType ===
                             amplitudeType.key
                               ? "text-white"
-                              : "text-supervan"
+                              : "text-invitely"
                           }`}
                         >
                           {amplitudeType.duration}
@@ -522,7 +522,7 @@ export const TasksVisualizer = () => {
                   {...form.register("requiredDeliveryDate", {})}
                 />
               </FormGroup>
-              <div className="w-full rounded-md bg-supervan p-4 text-center text-white">
+              <div className="w-full rounded-md bg-invitely p-4 text-center text-white">
                 <p className="text-3xl font-bold">PRIX</p>
                 <br />
                 <p className="text-3xl font-extrabold">
@@ -537,14 +537,14 @@ export const TasksVisualizer = () => {
               </div>
               <button
                 type="submit"
-                className="w-full rounded-md bg-supervan px-3 py-2 font-extrabold text-white hover:bg-supervan-dark"
+                className="w-full rounded-md bg-invitely px-3 py-2 font-extrabold text-white hover:bg-invitely-dark"
                 onClick={form.handleSubmit(onValidate)}
               >
                 Envoyer la commande
               </button>
               <button
                 type="button"
-                className="w-full rounded-md border-2 border-gray-900 px-3 py-2 font-semibold text-gray-900 hover:bg-supervan-light"
+                className="w-full rounded-md border-2 border-gray-900 px-3 py-2 font-semibold text-gray-900 hover:bg-invitely-light"
                 onClick={() => setIsGoBackOpen(true)}
               >
                 Retour en arrière

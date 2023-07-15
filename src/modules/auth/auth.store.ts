@@ -17,7 +17,7 @@ export interface AuthState {
 const store: StateCreator<AuthState> | StoreApi<AuthState> = (set) => ({
   user: null,
   isConnected: document.cookie.includes(
-    process.env.SUPERVAN_SESSION_COOKIE_NAME as string,
+    process.env.INVITELY_SESSION_COOKIE_NAME as string,
   ),
   login: async (email: string, password: string) => {
     try {

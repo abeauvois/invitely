@@ -56,7 +56,7 @@ export const TaskVisualizerCard = React.memo(
           <ListCard.Header>
             <span
               title={props.companyName}
-              className="max-w-[80vb] truncate text-supervan"
+              className="max-w-[80vb] truncate text-invitely"
             >
               {props.details}
             </span>

@@ -9,7 +9,7 @@ export const Success = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1 className="text-1xl font-bold tracking-tight text-supervan sm:text-4xl">
+      <h1 className="text-1xl font-bold tracking-tight text-invitely sm:text-4xl">
         Félicitations !
       </h1>
       <br />
@@ -20,14 +20,14 @@ export const Success = () => {
       <br />
       <button
         type="button"
-        className="my-8 rounded-md bg-supervan px-8 py-4 font-extrabold text-white hover:bg-supervan-dark"
+        className="my-8 rounded-md bg-invitely px-8 py-4 font-extrabold text-white hover:bg-invitely-dark"
         onClick={onValidate}
       >
         Passer une nouvelle commande
       </button>
       <button
         type="button"
-        className="my-8 rounded-md bg-supervan px-8 py-4 font-extrabold text-white hover:bg-supervan-dark"
+        className="my-8 rounded-md bg-invitely px-8 py-4 font-extrabold text-white hover:bg-invitely-dark"
         onClick={onValidate}
       >
         Quitter

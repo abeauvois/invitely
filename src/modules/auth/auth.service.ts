@@ -16,7 +16,7 @@ type Response<T> = {
 };
 
 const legacyApi = axios.create({
-  baseURL: process.env.SUPERVAN_API_LEGACY,
+  baseURL: process.env.INVITELY_API_LEGACY,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",

@@ -15,7 +15,7 @@ export default defineConfig({
     tsconfigPaths(),
     svgrPlugin(),
     visualizer(),
-    env({ prefix: "SUPERVAN" }),
+    env({ prefix: "INVITELY" }),
   ],
   css: {
     modules: {

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "serve dist -p 9002",
-    "dev": "vite --port 9002 --clearScreen false",
+    "dev": "vite --port 9000 --host 0.0.0.0 --clearScreen false",
     "build": "tsc -p tsconfig.build.json && vite build",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.ts?(x)\"",

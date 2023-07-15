@@ -37,7 +37,7 @@ function ListCardHeader({
       {...htmlProps}
     >
       {text ? (
-        <span className="text-sm font-medium text-supervan">{text}</span>
+        <span className="text-sm font-medium text-invitely">{text}</span>
       ) : null}
       {children}
     </div>
@@ -126,7 +126,7 @@ function ListCardBadge({
 } & React.HTMLAttributes<HTMLSpanElement>): React.ReactElement {
   return (
     <span
-      className={clsx(["badge", className || "bg-supervan uppercase"])}
+      className={clsx(["badge", className || "bg-invitely uppercase"])}
       {...htmlProps}
     >
       {text}

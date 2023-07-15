@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        supervan: "var(--color-supervan)",
-        "supervan-light": "var(--color-supervan-light)",
-        "supervan-dark": "var(--color-supervan-dark)",
+        invitely: "var(--color-invitely)",
+        "invitely-light": "var(--color-invitely-light)",
+        "invitely-dark": "var(--color-invitely-dark)",
       },
       fontFamily: {
         airstrike: "Airstrike, sans-serif",

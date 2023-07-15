@@ -1,7 +1,5 @@
-const config = require.resolve("@spv/scripts/eslint");
 
 module.exports = {
-  extends: config,
   rules: {
     "tailwindcss/no-custom-classname": "off",
     "react/destructuring-assignment": "off",

@@ -1,12 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "scope": "supervan-tech",
+  "scope": "invitely",
   "github": {
     "enabled": false
   },
-  "buildCommand": "cd apps/optimiz; pnpm run openapi; pnpm run build",
-  "outputDirectory": "./apps/optimiz/dist",
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "./dist",
   "redirects": [],
   "rewrites": [
     {
