@@ -1,3 +1,36 @@
 .vercel
-
+.env
 node_modules
+
+# turbo
+.turbo
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDEs and editors
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# misc
+.DS_Store
+*.pem
+*.local
+*.tsbuildinfo
+.eslintcache
+.stylelintcache
+.history
+.deploy
+*.pem
+osrm
+*.todo
+apps/admin/stats.html

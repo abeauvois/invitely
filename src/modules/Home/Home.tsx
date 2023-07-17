@@ -1,4 +1,5 @@
 import { PencilIcon, CheckIcon, XMarkIcon, BellIcon } from "@heroicons/react/24/outline";
+import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 
 export const Home = () => {
 return (
@@ -41,7 +42,13 @@ return (
   </div>
 
 </div>
-
+<footer>
+  <div className="flex items-center gap-8 p-6 text-invitely">
+    <div><Logo className="m-4 h-20 w-20" /></div>
+    <div>Qui sommes-nous ?</div>
+    <div>Contactez-nous</div>
+  </div>
+</footer>
 </>
 )
 }
