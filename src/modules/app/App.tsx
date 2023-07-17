@@ -39,6 +39,7 @@ export const App = (): React.ReactElement | null => {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/success" element={<Success />} />
+        <Route path="/*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
