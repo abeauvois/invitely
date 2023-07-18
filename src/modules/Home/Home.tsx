@@ -1,6 +1,8 @@
 import { PencilIcon, CheckIcon, XMarkIcon, BellIcon, DocumentCheckIcon } from "@heroicons/react/24/outline";
 import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 
+import {ProfileForm} from "../../shared/components/Form/TextInput"
+
 export const Home = () => {
 return (
 <>
@@ -19,6 +21,7 @@ return (
           <input id="email-address" name="email" type="email" required className="min-w-0 flex-auto rounded-md border-0 bg-white/2 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder-invitely focus:ring-2 focus:ring-inset focus:ring-invitely sm:text-sm sm:leading-6" placeholder="Saisissez votre email"/>
           <button type="submit" className="flex-none rounded-md bg-invitely-dark px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-500 ease-in-out hover:bg-invitely-dark/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-invitely">Je m'inscris</button>
         </div>
+      <ProfileForm username="toto"/>
       </div>
       <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
         <div className="flex flex-col items-start">

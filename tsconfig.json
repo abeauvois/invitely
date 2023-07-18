@@ -4,6 +4,9 @@
     "jsx": "preserve",
     "outDir": "dist",
     "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "types": [
       "node",
       "jest",
