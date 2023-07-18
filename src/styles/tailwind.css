@@ -1,78 +1,144 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* purgecss start ignore */
+
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+ @import "tailwindcss/base";
+ /* @import "./button.css"; */
  
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+ /**
+  * This injects Tailwind's component classes and any component classes
+  * registered by plugins.
+  */
+ @import "tailwindcss/components";
  
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+ /* purgecss end ignore */
  
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+ /**
+  * This injects Tailwind's utility classes and any utility classes registered
+  * by plugins.
+  */
+ @import "tailwindcss/utilities";
  
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+ /**
+  * Use this directive to control where Tailwind injects the responsive
+  * variations of each utility.
+  *
+  * If omitted, Tailwind will append these classes to the very end of
+  * your stylesheet by default.
+  */
+ @import "tailwindcss/variants";
  
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+ @layer base {
+   @font-face {
+     font-family: Airstrike;
+     font-style: normal;
+     font-weight: 400;
+     font-display: auto;
+     src: url("/fonts/airstrike.ttf") format("truetype");
+   }
  
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+   body {
+     @apply antialiased bg-gray-200 text-gray-900 font-sans;
+   }
  
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+   [type="text"],
+   [type="email"],
+   [type="url"],
+   [type="password"],
+   [type="number"],
+   [type="date"],
+   [type="datetime-local"],
+   [type="month"],
+   [type="search"],
+   [type="tel"],
+   [type="time"],
+   [type="week"],
+   [multiple],
+   textarea,
+   select {
+     @apply block mt-1 w-full md:max-w-sm text-gray-800 bg-gray-100 focus:bg-white rounded-md border-transparent focus:border-invitely focus:ring-0;
+   }
  
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+   [type="checkbox"],
+   [type="radio"] {
+     @apply rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-invitely text-invitely focus:ring-1 focus:ring-offset-1 focus:ring-invitely;
+   }
  
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+   input[disabled],
+   select[disabled] {
+     @apply bg-white opacity-100;
  
-    --ring: 215 20.2% 65.1%;
+     background-image: none;
+   }
  
-    --radius: 0.5rem;
-  }
+   input[type="text"]::placeholder{
+     @apply font-thin text-invitely italic 
+   }
+ }
  
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+ /* @layer utilities {} */
+ @layer components {
+   .btn-icon-primary {
+     @apply mx-1 py-1 px-1 text-gray-600 hover:text-invitely bg-white disabled:opacity-50;
+   }
  
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+   .btn-icon-accent {
+     @apply mx-1 py-1 px-1 text-white bg-gray-800 hover:bg-invitely disabled:opacity-50;
+   }
  
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+   .btn-primary {
+     @apply py-1 px-4 text-gray-700 hover:text-invitely bg-white rounded-md shadow active:hover:shadow-md text-sm font-medium disabled:opacity-50;
+   }
  
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+   .btn-accent {
+     @apply py-1 px-4 text-white bg-gray-800 hover:bg-invitely-dark bg-invitely rounded-md shadow active:hover:shadow-md text-sm font-medium disabled:opacity-50;
+   }
  
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+   .badge {
+     @apply py-1 px-2 text-xs font-medium leading-tight text-white rounded-full;
+   }
  
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+   .page {
+     @apply w-full;
+   }
  
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+   .page-virtual {
+     @apply w-full h-full;
+   }
  
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+   .page-actions {
+     @apply gap-24 sm:gap-4 justify-end items-center p-4 -mt-4 flex;
+   }
  
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
+   .page-actions > button {
+     @apply flex-1 sm:flex-none md:min-w-[8rem];
+   }
  
-    --ring: 217.2 32.6% 17.5%;
-  }
-}
+   .divider-v {
+     @apply py-1;
+   }
  
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+   .card {
+     @apply flex flex-col my-4 mx-4 bg-white rounded;
+   }
+ 
+   .row {
+     @apply w-full flex flex-col md:flex-row flex-wrap;
+   }
+ 
+   .col {
+     @apply flex-1 p-4;
+   }
+ 
+   .placeholder-logo-white {
+     @apply bg-contain bg-center bg-no-repeat bg-blend-screen;
+ 
+     background-image: var(--logo-white);
+   }
+ 
+   .contraint-option {
+     @apply rounded-sm border-2 shadow-sm p-2 text-center flex h-48 w-48 flex-col items-center justify-center cursor-pointer;
+   }
+ }

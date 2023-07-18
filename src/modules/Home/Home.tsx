@@ -1,7 +1,7 @@
 import { PencilIcon, CheckIcon, XMarkIcon, BellIcon, DocumentCheckIcon } from "@heroicons/react/24/outline";
 import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 
-import {ProfileForm} from "../../shared/components/Form/TextInput"
+import {ProfileForm} from "../../shared/components/Form/ProfileForm"
 
 export const Home = () => {
 return (
