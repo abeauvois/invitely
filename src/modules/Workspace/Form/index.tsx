@@ -2,6 +2,8 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+import { getFormQuestions, updateFormQuestions } from "./forms";
+
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -10,10 +12,12 @@ import { Switch } from "@/components/ui/switch";
 export default () => {
 
     const { formId } = useParams();
-    const [dates, setDates] = useState(new Set());
+    const [dates, setDates] = useState(new Set(getFormQuestions({formId})));
 
-    const addDate = (date) =>
+    const addDate = (date) => {
         setDates(prevDates => new Set(prevDates).add(date?.toDateString()));
+        updateFormQuestions({formId, questions: Array.from(dates)});
+    }
 
     return (
 

@@ -5,7 +5,6 @@ import { getLC, setLC } from "@/lib/utils";
 export const getForms = () => getLC().forms;
 export const getFormIds = () => Object.keys(getForms());
 export const getForm = ({ formId }) => getForms()[formId];
-export const getFormQuestions = ({ formId }) => { }
 
 export function create() {
 
@@ -27,9 +26,17 @@ export function create() {
     return formId;
 }
 
-export const updateFormQuestions = ({ formId, questions }) => {
-    const forms = getForms();
-    for (let i = 0; i < forms.length; i++) {
+export const getFormQuestions = ({ formId }) => getForm({formId}).questions;
 
-    }
+export const updateFormQuestions = ({ formId, questions }) => {
+    const form = getForm({formId});
+    setLC({
+        forms:  {
+            ...getForms(),
+            [formId] : {
+                ...form,
+                questions: questions,
+            }
+        }
+    });
 }
