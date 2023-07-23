@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { PencilIcon, CheckIcon, XMarkIcon, BellIcon, DocumentCheckIcon } from "@heroicons/react/24/outline";
 import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 
@@ -5,11 +6,12 @@ import { ProfileForm } from "../../shared/components/Form/ProfileForm"
 import { Button } from "@/components/ui/button";
 
 export const Home = () => {
+  const navigate = useNavigate();
   return (
     <>
       <section className="page-actions">
-        <Button className="btn-primary">
-          <a href="/workspace">Workspace</a>
+        <Button onClick={() => navigate("/workspace")} className="btn-primary">
+          Workspace
         </Button>
       </section>
 

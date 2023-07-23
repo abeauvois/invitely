@@ -4,6 +4,10 @@ import { twMerge } from "tailwind-merge"
 // @Todo use .env value
 const { VITE_LOCAL_STORAGE_KEY } = import.meta.env;
 
+export function initLC() {
+  if(getLC() === null) setLC({forms:{}});
+}
+
 export function getLC() {
   try {
     return JSON.parse(localStorage.getItem(VITE_LOCAL_STORAGE_KEY));

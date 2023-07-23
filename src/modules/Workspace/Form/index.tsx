@@ -1,3 +1,5 @@
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -7,24 +9,32 @@ import { Switch } from "@/components/ui/switch";
 
 export default () => {
 
+    const { formId } = useParams();
     const [dates, setDates] = useState(new Set());
-    const [calMode, setCalMode] = useState("single");
 
     const addDate = (date) =>
         setDates(prevDates => new Set(prevDates).add(date?.toDateString()));
+
     return (
+
         <div className="page">
             <section className="page-actions">
+                <h2 className="font-semibold text-slate-900">
+                    <Link to={"/workspace"}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                        </svg></Link>
+                </h2>
                 <Popover>
                     <PopoverTrigger asChild>
-                        <Button className="btn-primary" onClick={() => setCalMode('single')}>
-                            New Date
+                        <Button className="btn-primary">
+                            + Date
                         </Button>
                     </PopoverTrigger>
-                    <PopoverContent>
+                    <PopoverContent className="top-4">
                         <Calendar
                             initialFocus
-                            mode={calMode}
+                            mode="single"
                             // defaultMonth={date?.from}
                             // selected={date}
                             onSelect={addDate}
@@ -35,24 +45,28 @@ export default () => {
 
                 <Popover>
                     <PopoverTrigger asChild>
-                        <Button className="btn-primary" onClick={() => setCalMode('range')}>
-                            New Date Range
+                        <Button className="btn-primary">
+                            + Plage de dates
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent>
                         <Calendar
                             initialFocus
-                            mode={calMode}
-                            // defaultMonth={date?.from}
-                            // selected={date}
-                            // onSelect={addDate}
+                            mode="range"
+                        // defaultMonth={date?.from}
+                        // selected={date}
+                        // onSelect={addDate}
                         // numberOfMonths={2}
                         />
                     </PopoverContent>
-                </Popover>                
-
+                </Popover>
+                <Button>
+                    <a>Envoyer</a>
+                </Button>
             </section>
-
+            <section>
+                Title: {formId}
+            </section>
             <section className="mx-auto max-w-xs flex flex-col auto-rows-min p-5">
                 <ul>
                     {Array.from(dates)
