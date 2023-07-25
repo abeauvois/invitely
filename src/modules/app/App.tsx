@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Success } from "../Success/Success";
 import { Home } from "../Home/Home";
+import { Workspace } from "../Workspace";
+import WorkspaceForm from "../Workspace/Form";
 
 import { useAuthStore } from "../auth/auth.store";
 import { useKeepAliveCookie } from "../auth/useKeepAliveCookie";
@@ -38,6 +40,8 @@ export const App = (): React.ReactElement | null => {
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home />} />
+        <Route path="/workspace" element={<Workspace />} />
+        <Route path="/workspace/form/:formId/" element={<WorkspaceForm />} />
         <Route path="/success" element={<Success />} />
         <Route path="/*" element={<Home />} />
       </Routes>

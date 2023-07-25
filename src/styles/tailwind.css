@@ -101,7 +101,7 @@
    }
  
    .page {
-     @apply w-full;
+     @apply w-full p-4;
    }
  
    .page-virtual {
@@ -109,7 +109,7 @@
    }
  
    .page-actions {
-     @apply gap-24 sm:gap-4 justify-end items-center p-4 -mt-4 flex;
+     @apply gap-4 sm:gap-24 justify-center items-center p-4 -mt-4 flex;
    }
  
    .page-actions > button {
