@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { getFormQuestions, updateFormQuestions } from "./forms";
 
@@ -12,23 +12,28 @@ import { Switch } from "@/components/ui/switch";
 export default () => {
 
     const { formId } = useParams();
-    const [dates, setDates] = useState(new Set(getFormQuestions({formId})));
+    const [dates, setDates] = useState(new Set(getFormQuestions({ formId })));
 
     const addDate = (date) => {
         setDates(prevDates => new Set(prevDates).add(date?.toDateString()));
-        updateFormQuestions({formId, questions: Array.from(dates)});
     }
+
+    useEffect(()=> {
+        updateFormQuestions({ formId, questions: Array.from(dates) });
+    },[dates]);
 
     return (
 
         <div className="page">
-            <section className="page-actions">
-                <h2 className="font-semibold text-slate-900">
-                    <Link to={"/workspace"}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-                        </svg></Link>
-                </h2>
+
+            <h2 className="font-semibold text-slate-900">
+                <Link to={"/workspace"}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+                    </svg></Link>
+            </h2>
+            <section className="page-actions mt-0">
+
                 <Popover>
                     <PopoverTrigger asChild>
                         <Button className="btn-primary">
@@ -64,8 +69,8 @@ export default () => {
                         />
                     </PopoverContent>
                 </Popover>
-                <Button>
-                    <a>Envoyer</a>
+                <Button className="btn-primary">
+                    Envoyer
                 </Button>
             </section>
             <section>

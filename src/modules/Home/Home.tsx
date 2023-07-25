@@ -9,7 +9,7 @@ export const Home = () => {
   const navigate = useNavigate();
   return (
     <>
-      <section className="page-actions">
+      <section className="page-actions mt-0">
         <Button onClick={() => navigate("/workspace")} className="btn-primary">
           Workspace
         </Button>
