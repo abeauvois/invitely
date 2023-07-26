@@ -18,21 +18,10 @@ import { queryClient } from "./config/queryClient";
 import { useAppReady } from "./useAppReady";
 
 
-declare global {
-  interface Window {
-    logout: () => void;
-    fetchMe: () => void;
-  }
-}
-
 export const App = (): React.ReactElement | null => {
   const { isReady } = useAppStore();
 
   const { isConnected, logout, fetchMe } = useAuthStore();
-
-  window.logout = logout;
-  window.fetchMe = fetchMe;
-
 
   useAppReady();
 

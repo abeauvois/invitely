@@ -10,7 +10,7 @@ export const Home = () => {
   return (
     <>
       <section className="page-actions mt-0">
-        <Button onClick={() => navigate("/workspace")} className="btn-primary">
+        <Button onClick={() => navigate("/workspace")} variant="outline">
           Workspace
         </Button>
       </section>

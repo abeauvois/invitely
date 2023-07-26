@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "start": "serve dist -p 9002",
-    "dev": "vite --port 9000 --host 0.0.0.0 --clearScreen false",
-    "build": "tsc -p tsconfig.build.json && vite build",
+    "dev": "vite --port 5000 --host 0.0.0.0 --clearScreen false",
+    "build:styles": "postcss ./src/styles/index.css -o dist/styles.css",
+    "build": "tsc -p tsconfig.build.json && vite build && npm run build:styles",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.ts?(x)\"",
     "test": "jest --silent --passWithNoTests"
@@ -82,6 +83,7 @@
     "jest": "29.5.0",
     "openapi-typescript-codegen": "0.24.0",
     "postcss": "8.4.24",
+    "postcss-cli": "^10.1.0",
     "postcss-import": "15.1.0",
     "prettier": "2.8.8",
     "rimraf": "5.0.1",
@@ -93,8 +95,5 @@
     "vite-plugin-env-compatible": "1.1.1",
     "vite-plugin-svgr": "3.2.0",
     "vite-tsconfig-paths": "4.2.0"
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }
