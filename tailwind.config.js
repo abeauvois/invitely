@@ -60,6 +60,9 @@ module.exports = {
         },
 
       },
+      fill: theme => ({
+        'primary': theme('colors.primary'),
+      }),
       borderRadius: {
         lg: `var(--radius)`,
         md: `calc(var(--radius) - 2px)`,
