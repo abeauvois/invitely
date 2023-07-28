@@ -8,7 +8,7 @@ export const AppBar = () => {
         aria-label="Global"
 
       >
-        <Logo className="m-4 h-56 w-56" />
+        <Logo className="m-4 h-36 w-36" />
 
       </nav>
     </header>

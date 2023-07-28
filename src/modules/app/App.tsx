@@ -1,6 +1,6 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 
 import { Success } from "../Success/Success";
 import { Home } from "../Home/Home";
@@ -8,46 +8,51 @@ import { Workspace } from "../Workspace";
 import WorkspaceForm from "../Workspace/Form";
 
 import { useAuthStore } from "../auth/auth.store";
-import { useKeepAliveCookie } from "../auth/useKeepAliveCookie";
 
 import { Layout } from "./AppLayout";
 import { AppLoader } from "./AppLoader";
-import { LoginForm } from "./LoginForm";
-import { useAppStore } from "./app.store";
+import { LoginForm } from "../auth/LoginForm";
 import { queryClient } from "./config/queryClient";
-import { useAppReady } from "./useAppReady";
+import { User } from "@/types/User";
 
+
+interface ProtectedRouteProps {
+  user: User | null;
+  redirectPath?: string;
+}
+const ProtectedRoute = ({
+  user,
+  redirectPath = "/auth",
+}: ProtectedRouteProps) => {
+  if (!user) {
+    return <Navigate to={redirectPath} replace />;
+  }
+
+  return <Outlet />;
+};
 
 export const App = (): React.ReactElement | null => {
-  const { isReady } = useAppStore();
-
-  const { isConnected, logout, fetchMe } = useAuthStore();
-
-  useAppReady();
-
-  let content = (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/workspace" element={<Workspace />} />
-        <Route path="/workspace/form/:formId/" element={<WorkspaceForm />} />
-        <Route path="/success" element={<Success />} />
-        <Route path="/*" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
-  );
-
-  // if (!isReady) {
-  //   content = <AppLoader />;
-  // }
-
-  // if (!isConnected) {
-  //   content = <LoginForm />;
-  // }
+  const { user } = useAuthStore();
 
   return (
     <QueryClientProvider client={queryClient}>
-        <Layout>{content}</Layout>
+      <Layout>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="auth" element={<LoginForm />} />
+            <Route element={<ProtectedRoute user={user} />}>
+              <Route path="/workspace" element={<Workspace />} />
+              <Route path="/workspace/form/:formId/" element={<WorkspaceForm />} />
+            </Route>
+            <Route
+              path="*"
+              element={<p>Désolé cette page est inconnue: 404!</p>}
+            />
+          </Routes>
+        </BrowserRouter>
+      </Layout>
     </QueryClientProvider>
   );
 };

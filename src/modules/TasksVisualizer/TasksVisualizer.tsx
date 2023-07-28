@@ -11,7 +11,7 @@ import {
   GeocodedAddressesResponseDto,
 } from "../../generated/openapi";
 import { DragAndDrop, Drop } from "../../shared/components/DragAndDrop";
-import { FormGroup } from "../../shared/components/Forms";
+import { FormGroup } from "../../shared/components/FormGroup";
 import Modal from "../../shared/components/Modal";
 import { User } from "../../types/User";
 import { reorder } from "../../utils/reorder";

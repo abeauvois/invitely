@@ -7,7 +7,6 @@ import { login, logout, me } from "./auth.service";
 
 export interface AuthState {
   user: User | null;
-  isConnected: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   fetchMe: () => Promise<void>;
@@ -16,40 +15,32 @@ export interface AuthState {
 
 const store: StateCreator<AuthState> | StoreApi<AuthState> = (set) => ({
   user: null,
-  isConnected: document.cookie.includes(
-    process.env.INVITELY_SESSION_COOKIE_NAME as string,
-  ),
+
   login: async (email: string, password: string) => {
     try {
       const user = await login(email, password);
-      set({ user, isConnected: true, errors: [] });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      set({ user, errors: [] });
     } catch (e: any) {
-      // eslint-disable-next-line no-console
       console.error(e);
-      set({ errors: [e?.message], isConnected: false, user: null });
+      set({ errors: [e?.message], user: null });
     }
   },
   logout: async () => {
     try {
       await logout();
-      set({ user: null, isConnected: false, errors: [] });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      set({ user: null, errors: [] });
     } catch (e: any) {
-      // eslint-disable-next-line no-console
       console.error(e);
-      set({ errors: [e?.message], isConnected: false, user: null });
+      set({ errors: [e?.message], user: null });
     }
   },
   fetchMe: async () => {
     try {
       const user = await me();
-      set({ user, isConnected: true, errors: [] });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      set({ user, errors: [] });
     } catch (e: any) {
-      // eslint-disable-next-line no-console
       console.error(e);
-      set({ errors: [e?.message], isConnected: false, user: null });
+      set({ errors: [e?.message], user: null });
     }
   },
   errors: [],

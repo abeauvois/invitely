@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-import { useAuthStore } from "../auth/auth.store";
+import { useAuthStore } from "./auth.store";
 
 type LoginInput = {
   email: string;

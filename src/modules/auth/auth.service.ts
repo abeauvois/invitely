@@ -1,12 +1,5 @@
+import { User } from "@/types/User";
 import axios, { AxiosError } from "axios";
-
-type UserResponse = {
-  id: string;
-  lastname: string;
-  firstname: string;
-  phone: string;
-  email: string;
-};
 
 type Response<T> = {
   success: true;
@@ -43,7 +36,7 @@ export async function login(email: string, password: string) {
   }
 
   try {
-    const data = await legacyApi.post<Response<{ user: UserResponse }>>(
+    const data = await legacyApi.post<Response<{ user: User }>>(
       "/proboard/ajax_login",
       {
         email,

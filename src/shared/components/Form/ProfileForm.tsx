@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { TextInput } from './Input';
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -21,7 +22,7 @@ const formSchema = z.object({
   }),
 });
 
-function ProfileForm({username}) {
+function ProfileForm({ username }) {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,25 +37,10 @@ function ProfileForm({username}) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <TextInput fieldName='username' control={form.control} />
         <Button type="submit">Submit</Button>
       </form>
     </Form>
   );
 }
-export {ProfileForm}
+export { ProfileForm }
