@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { PencilIcon, CheckIcon, XMarkIcon, BellIcon, DocumentCheckIcon } from "@heroicons/react/24/outline";
+import { DocumentCheckIcon } from "@heroicons/react/24/outline";
 import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 
 import { ProfileForm } from "../../shared/components/Form/ProfileForm"
@@ -34,8 +34,8 @@ export const Home = () => {
             <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
               <div className="flex flex-col items-start">
                 <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
-                  <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                  <svg className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
                   </svg>
                 </div>
                 <dt className="mt-4 font-semibold text-lg text-white">Mobilisez vos bénévoles</dt>
@@ -55,7 +55,7 @@ export const Home = () => {
       </div>
       <footer>
         <div className="flex items-center gap-8 p-6 text-invitely">
-          <div><Logo className="m-4 h-20 w-20" /></div>
+          <div className="fill-primary"><Logo className="m-4 h-20 w-20" /></div>
           <div>Qui sommes-nous ?</div>
           <div>Contactez-nous</div>
         </div>
