@@ -24,12 +24,8 @@ export const Home = () => {
               <br />
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Rejoignez-nous gratuitement</h2>
               <p className="mt-4 text-lg leading-8 text-invitely-light">Sans publicité ni marchandisation de vos données, cet outil est réalisé par des bénévoles et mis à disponition des associations françaises uniquement.</p>
-              <div className="mt-6 flex max-w-md gap-x-4">
-                <label htmlFor="email-address" className="sr-only">Adresse email</label>
-                <input id="email-address" name="email" type="email" required className="min-w-0 flex-auto rounded-md border-0 bg-white/2 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder-invitely focus:ring-2 focus:ring-inset focus:ring-invitely sm:text-sm sm:leading-6" placeholder="Saisissez votre email" />
-                <button type="submit" className="flex-none rounded-md bg-invitely-dark px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-500 ease-in-out hover:bg-invitely-dark/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-invitely">Je m'inscris</button>
-              </div>
-              <ProfileForm username="toto" />
+
+              <ProfileForm username="nickname" email="a@b.c" />
             </div>
             <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
               <div className="flex flex-col items-start">

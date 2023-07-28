@@ -16,11 +16,12 @@ const formSchema = z.object({
   }),
 });
 
-function ProfileForm({ username }) {
+function ProfileForm({ username, email }) {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username,
+      email
     },
   });
 
@@ -32,7 +33,8 @@ function ProfileForm({ username }) {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <TextInput fieldName='username' control={form.control} />
-        <Button type="submit">Submit</Button>
+        <TextInput fieldName='email' control={form.control} />
+        <Button type="submit" variant='secondary'>Submit</Button>
       </form>
     </Form>
   );

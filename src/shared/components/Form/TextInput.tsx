@@ -15,9 +15,10 @@ interface TextInputProps {
   control: UseFormReturn<any>['control'];
   fieldName: string;
   fieldValue?: string;
+  description?: string;
 }
 
-export function TextInput({ control, fieldName }: TextInputProps) {
+export function TextInput({ control, fieldName, description }: TextInputProps) {
 
   return (
     <FormField
@@ -29,9 +30,7 @@ export function TextInput({ control, fieldName }: TextInputProps) {
           <FormControl>
             <Input {...field} />
           </FormControl>
-          <FormDescription>
-            This is your public display name.
-          </FormDescription>
+          <FormDescription>{description}</FormDescription>
           <FormMessage />
         </FormItem>
       )}
