@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom
 import { Success } from "../Success/Success";
 import { Home } from "../Home/Home";
 import { Workspace } from "../Workspace";
-import WorkspaceForm from "../Workspace/Form";
+import { WorkspaceForm } from "../Workspace/WorkspaceForm";
 
 import { useAuthStore } from "../auth/auth.store";
 

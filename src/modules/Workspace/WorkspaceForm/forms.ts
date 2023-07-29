@@ -11,9 +11,9 @@ export function create() {
     const formId = uuid();
 
     setLC({
-        forms:  {
+        forms: {
             ...getForms(),
-            [formId] : {
+            [formId]: {
                 creationDate: new Date().toLocaleDateString(),
                 title: `title for ${formId}`,
                 description: "",
@@ -26,17 +26,15 @@ export function create() {
     return formId;
 }
 
-export const getFormQuestions = ({ formId }) => getForm({formId}).questions;
-
-export const updateFormQuestions = ({ formId, questions }) => {
-    const form = getForm({formId});
+export const updateFormField = ({ formId, field: { name, val } }) => {
+    const form = getForm({ formId });
     setLC({
-        forms:  {
+        forms: {
             ...getForms(),
-            [formId] : {
+            [formId]: {
                 ...form,
-                questions: questions,
+                [name]: val,
             }
         }
-    });
+    })
 }
