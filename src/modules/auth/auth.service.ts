@@ -1,6 +1,24 @@
 import { User } from "@/types/User";
 import axios, { AxiosError } from "axios";
 
+// use Clerk as auth service
+// docs: https://clerk.com/docs/quickstarts/get-started-with-create-react-app
+
+
+
+type UserResponse = {
+  id: string;
+  lastname: string;
+  firstname: string;
+  phone: string;
+  email: string;
+};
+
+// Add the login function here
+
+
+
+
 type Response<T> = {
   success: true;
   title: "success";

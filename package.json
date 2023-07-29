@@ -12,6 +12,7 @@
     "test": "jest --silent --passWithNoTests"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^4.23.1",
     "@headlessui/react": "1.7.14",
     "@heroicons/react": "2.0.18",
     "@hookform/devtools": "4.3.1",

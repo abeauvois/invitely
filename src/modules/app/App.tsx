@@ -2,7 +2,6 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 
-import { Success } from "../Success/Success";
 import { Home } from "../Home/Home";
 import { Workspace } from "../Workspace";
 import { WorkspaceForm } from "../Workspace/WorkspaceForm";
@@ -10,11 +9,9 @@ import { WorkspaceForm } from "../Workspace/WorkspaceForm";
 import { useAuthStore } from "../auth/auth.store";
 
 import { Layout } from "./AppLayout";
-import { AppLoader } from "./AppLoader";
 import { LoginForm } from "../auth/LoginForm";
 import { queryClient } from "./config/queryClient";
 import { User } from "@/types/User";
-
 
 interface ProtectedRouteProps {
   user: User | null;

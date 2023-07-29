@@ -1,5 +1,9 @@
 .vercel
 .env
+.env.local
+.env.dev
+.env.test
+.env.prod
 node_modules
 
 # turbo

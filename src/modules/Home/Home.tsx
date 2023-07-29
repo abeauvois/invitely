@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router";
 import { DocumentCheckIcon } from "@heroicons/react/24/outline";
-import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 
 import { ProfileForm } from "../../shared/components/Form/ProfileForm"
 import { Button } from "@/components/ui/button";
@@ -15,8 +14,8 @@ export const Home = () => {
         </Button>
       </section>
 
-      <div className="relative isolate overflow-hidden bg-invitely py-16 sm:py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="relative isolate overflow-hidden bg-invitely py-8">
+        <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
             <div className="max-w-xl lg:max-w-lg">
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Bienvenue</h2>
@@ -48,14 +47,7 @@ export const Home = () => {
           </div>
         </div>
 
-      </div>
-      <footer>
-        <div className="flex items-center gap-8 p-6 text-invitely">
-          <div className="fill-primary"><Logo className="m-4 h-20 w-20" /></div>
-          <div>Qui sommes-nous ?</div>
-          <div>Contactez-nous</div>
-        </div>
-      </footer>
+      </section>
     </>
   )
 }
