@@ -1,14 +1,7 @@
-import { QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
-import { BrowserRouter, Routes, Route, Red, useNavigate, Outlet } from "react-router-dom";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
-import { Landing } from "../Landing/Landing";
-import { Workspace } from "../Workspace";
-import { WorkspaceForm } from "../Workspace/WorkspaceForm";
-import { Layout } from "./AppLayout";
-
-import { queryClient } from "./config/queryClient";
-import { User } from "@/types/User";
 import {
   ClerkProvider,
   ClerkLoaded,
@@ -17,9 +10,16 @@ import {
   RedirectToSignIn,
   SignIn,
   SignUp,
-  UserButton,
-  useUser
 } from "@clerk/clerk-react";
+
+import { Landing } from "../Landing/Landing";
+import { Workspace } from "../Workspace";
+import { WorkspaceForm } from "../Workspace/WorkspaceForm";
+import { AppLayout } from "../layouts/AppLayout";
+
+import { queryClient } from "./config/queryClient";
+
+import { PageLayout } from "../layouts/PageLayout";
 
 const env = process.env;
 
@@ -28,33 +28,6 @@ if (!env.VITE_CLERK_PUBLISHABLE_KEY) {
 }
 
 const clerkPubKey = env.VITE_CLERK_PUBLISHABLE_KEY;
-
-
-interface ProtectedRouteProps {
-  user: User | null;
-  redirectPath?: string;
-}
-
-const LayoutOne = () => (
-  <div>
-    <h1>Layout One</h1>
-    <Outlet />
-  </div>
-);
-
-// A wrapper for <Route> that redirects to the login
-// screen if you're not yet authenticated.
-function PrivateRoute({ path, children }) {
-  let user = useUser();
-  let navigate = useNavigate();
-
-  if (!user) {
-    navigate("/sign-in");
-    return null;
-  }
-
-  return <Route element={children} path={path} />;
-}
 
 function ClerkProviderWithRoutes() {
   const navigate = useNavigate();
@@ -66,7 +39,9 @@ function ClerkProviderWithRoutes() {
     >
       <ClerkLoaded>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Landing />} />
+          </Route>
           <Route
             path="/sign-in/*"
             element={<SignIn routing="path" path="/sign-in" />}
@@ -75,14 +50,26 @@ function ClerkProviderWithRoutes() {
             path="/sign-up/*"
             element={<SignUp routing="path" path="/sign-up" />}
           />
-          <Route path="protected" element={<LayoutOne />}>
-
+          <Route element={<PageLayout />}>
             <Route path="workspace" element={
+              <>
+                <SignedIn>
+                  <Workspace />
+                </SignedIn>
+                <SignedOut>
+                  {/* 
+                          Route matches, but no user is signed in. 
+                          Redirect to the sign in page.
+                        */}
+                  <RedirectToSignIn />
+                </SignedOut>
+              </>
+            } />
+            <Route path="workspace/form/:formId/" element={
               <SignedIn>
-                <Workspace />
+                <WorkspaceForm />
               </SignedIn>
             } />
-            <Route path="workspace/form/:formId/" element={<WorkspaceForm />} />
           </Route>
         </Routes>
       </ClerkLoaded>

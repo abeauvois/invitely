@@ -1,18 +1,19 @@
 import React, { PropsWithChildren } from "react";
+import { Outlet } from "react-router";
 
 import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 
-import { AppBar } from "./AppBar";
+import { AppBar } from "../app/AppBar";
 
-export const Layout: React.FunctionComponent<PropsWithChildren> = ({
+export const AppLayout: React.FunctionComponent<PropsWithChildren> = ({
   children,
 }) => {
   return (
     <div className="grid h-screen grid-rows-[auto_1fr]">
       <AppBar />
-      <main className="grid overflow-hidden">
-        <div id="scroll-content" className="overflow-auto bg-gray-100">
-          {children}
+      <main >
+        <div id="scroll-content" className="bg-gray-50">
+          <Outlet />
         </div>
       </main>
       <footer>
