@@ -4,12 +4,12 @@ import { DocumentCheckIcon } from "@heroicons/react/24/outline";
 import { ProfileForm } from "../../shared/components/Form/ProfileForm"
 import { Button } from "@/components/ui/button";
 
-export const Home = () => {
+export const Landing = () => {
   const navigate = useNavigate();
   return (
     <>
       <section className="page-actions mt-0">
-        <Button onClick={() => navigate("/workspace")} variant="outline" className="bg-primary">
+        <Button onClick={() => navigate("/protected")} variant="outline" className="bg-primary">
           Workspace
         </Button>
       </section>

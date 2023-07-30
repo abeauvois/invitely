@@ -1,4 +1,10 @@
-![Alt text](/public/logo-no-background.svg?raw=true "Invitely")
+[![name](src/assets/logo-no-background.svg)]("invitely)
+
+## env vars
+
+This project uses the `vite-plugin-env-compatible` plugin to inject env vars into the app.
+
+So that you can use the standard `process.env` instead of `import.meta.env` object to access them.
 
 ## dev with codespaces
 
