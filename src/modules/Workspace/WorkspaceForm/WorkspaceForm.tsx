@@ -1,32 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useParams } from "react-router";
-import { useForm } from "react-hook-form";
-
-import { Switch } from "@/components/ui/switch";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-import { updateFormField } from "./forms";
-import Toolbar from "./Toolbar";
+import { useForm } from "react-hook-form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+
+
+import { updateFormField } from "../forms";
 import { useFormData } from "./useFormData";
+import { Header } from "./Header";
+import { Questions } from "./Questions";
+
 
 export const WorkspaceForm = () => {
 
     const { formId } = useParams();
     const formData = useFormData({ formId });
-    const [dates, setDates] = useState(new Set(formData.questions));
-
-    const addDate = (date) => {
-        setDates(prevDates => new Set(prevDates).add(date?.toDateString()));
-    }
-
-    useEffect(() => {
-        updateFormField({ formId, field: { name: "questions", val: Array.from(dates) } });
-    }, [dates]);
 
     const form = useForm({
         defaultValues: {
@@ -45,16 +38,16 @@ export const WorkspaceForm = () => {
 
     return (
         <div className="page">
-            <Toolbar onSelectDate={addDate} />
+            <Header onSelectDate={() => { }} />
 
             <Form {...form}>
-                <form>
+                <form className="flex flex-col gap-5">
                     <FormField
                         control={form.control}
                         name="title"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Title</FormLabel>
+                                <FormLabel>Nom du Formulaire</FormLabel>
                                 <FormControl>
                                     <Input {...field}></Input>
                                 </FormControl>
@@ -66,28 +59,21 @@ export const WorkspaceForm = () => {
                         name="description"
                         render={({ field }) => (
                             <FormItem>
+                                <FormLabel>Description</FormLabel>
                                 <FormControl>
                                     <ReactQuill {...field}></ReactQuill>
                                 </FormControl>
                             </FormItem>
                         )}
                     />
+                    <FormItem>
+                        <FormLabel>Dates de disponibilités</FormLabel>
+                        <FormControl>
+                            <Questions formId={formId} questions={formData.questions} />
+                        </FormControl>
+                    </FormItem>
                 </form>
             </Form >
-            <section className="mx-auto max-w-lg flex flex-col auto-rows-min p-5">
-                <ul>
-                    {Array.from(dates)
-                        .sort((a, b) => new Date(a) - new Date(b))
-                        .map((date, i) => (
-                            <li key={i} className="flex justify-between">
-                                {new Date(date).toLocaleDateString()}
-                                <span className="flex items-center space-x-2">
-                                    <Switch />
-                                </span>
-                            </li>
-                        ))}
-                </ul>
-            </section>
         </div >
     )
 }

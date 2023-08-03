@@ -1,6 +1,6 @@
 import uuid from "react-uuid";
 
-import { getLC, setLC } from "@/lib/utils";
+import { getLC, removeKey, setLC } from "@/lib/utils";
 
 export const getForms = () => getLC().forms;
 export const getFormIds = () => Object.keys(getForms());
@@ -24,6 +24,11 @@ export function create() {
     });
 
     return formId;
+}
+
+export const deleteForm = ({ formId }) => {
+    const forms = getForms();
+    setLC({ forms: removeKey(formId, forms) });
 }
 
 export const updateFormField = ({ formId, field: { name, val } }) => {
