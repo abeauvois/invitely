@@ -18,9 +18,6 @@ export const Questions = ({ formId, questions }) => {
     const { fields, prepend, append, update, remove, swap } = useFieldArray({
         control,
         name: fieldArrayName,
-        defaultValues: {
-            [fieldArrayName]: []
-        }
     });
 
     const onPrependDate = () => {
@@ -65,8 +62,8 @@ export const Questions = ({ formId, questions }) => {
                                     <PopoverContent>
                                         <Calendar
                                             mode="single"
-                                            defaultMonth={field.date ? new Date(field.date) : new Date()}
-                                            selected={new Date(field.date)}
+                                            defaultMonth={field["date"] ? new Date(field["date"]) : new Date()}
+                                            selected={new Date(field["date"])}
                                             onSelect={(date) => onDateUpdate(index, date)}
                                         />
                                     </PopoverContent>
