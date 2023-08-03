@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 
 import { updateFormField } from "./forms";
 import { useFormData } from "./useFormData";
-import Toolbar from "./Toolbar";
+import { Header } from "./Header";
 import { Questions } from "./Questions";
 
 
@@ -38,7 +38,7 @@ export const WorkspaceForm = () => {
 
     return (
         <div className="page">
-            <Toolbar onSelectDate={() => { }} />
+            <Header onSelectDate={() => { }} />
 
             <Form {...form}>
                 <form className="flex flex-col gap-5">

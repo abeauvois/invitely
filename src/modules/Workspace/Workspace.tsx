@@ -2,7 +2,7 @@ import { initLC } from "@/lib/utils";
 
 import { create as newId, getForms, getFormIds } from "./WorkspaceForm/forms";
 
-import Header from "./Header";
+import { Header } from "./Header";
 import FormCard from "./FormCard";
 import AddCard from "./AddCard";
 import { useNavigate } from "react-router";

@@ -8,7 +8,7 @@ export const Landing = () => {
   const navigate = useNavigate();
   return (
     <>
-      <section className="page-actions mt-0">
+      <section className="page-actions">
         <Button onClick={() => navigate("/workspace")} variant="outline" className="bg-primary">
           Workspace
         </Button>
