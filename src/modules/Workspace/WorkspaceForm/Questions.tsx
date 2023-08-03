@@ -5,7 +5,7 @@ import { updateFormField } from "./forms";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { AddButton } from "./AddButton";
 
 const toLocaleDateString = (date) => new Date(date).toLocaleDateString()
 
@@ -15,13 +15,21 @@ export const Questions = ({ formId, questions }) => {
 
     const { control, register } = useForm();
 
-    const { fields, append, prepend, update, remove, swap, move, insert } = useFieldArray({
+    const { fields, prepend, append, update, remove, swap } = useFieldArray({
         control,
         name: fieldArrayName,
         defaultValues: {
             [fieldArrayName]: []
         }
     });
+
+    const onPrependDate = () => {
+        prepend({ date: toLocaleDateString(new Date()) })
+    }
+
+    const onAppendDate = () => {
+        append({ date: toLocaleDateString(new Date()) })
+    }
 
     const onDateUpdate = (index, date) => {
         update(index, { date: toLocaleDateString(date) })
@@ -40,6 +48,7 @@ export const Questions = ({ formId, questions }) => {
 
     return (
         <section className="mx-auto flex flex-col">
+            <AddButton onClick={onPrependDate} />
             <ul>
                 {fields
                     .map((field, index) => {
@@ -94,18 +103,7 @@ export const Questions = ({ formId, questions }) => {
                         )
                     })}
             </ul>
-            <Button
-                type="button"
-                className="btn-primary flex justify-center gap-5"
-                onClick={() => {
-                    append({ date: toLocaleDateString(new Date()) })
-                }}
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Nouvelle date
-            </Button>
+            <AddButton onClick={onAppendDate} />
         </section>
     )
 }
