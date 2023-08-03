@@ -39,3 +39,5 @@ node_modules
 osrm
 *.todo
 apps/admin/stats.html
+# Local Netlify folder
+.netlify
