@@ -1,8 +1,9 @@
+import { env } from "@/modules/app";
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 // @Todo use .env value
-const { VITE_LOCAL_STORAGE_KEY } = process.env;
+const VITE_LOCAL_STORAGE_KEY = env.VITE_LOCAL_STORAGE_KEY;
 
 export function initLC() {
   if (getLC() === null) setLC({ forms: {} });

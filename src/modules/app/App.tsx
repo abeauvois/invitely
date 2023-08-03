@@ -21,7 +21,7 @@ import { queryClient } from "./config/queryClient";
 
 import { PageLayout } from "../layouts/PageLayout";
 
-const env = process.env;
+export const env = process.env;
 
 if (!env.VITE_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")
