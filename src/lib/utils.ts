@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge"
 const { VITE_LOCAL_STORAGE_KEY } = import.meta.env;
 
 export function initLC() {
-  if(getLC() === null) setLC({forms:{}});
+  if (getLC() === null) setLC({ forms: {} });
 }
 
 export function getLC() {
@@ -27,3 +27,5 @@ export function setLC(toStore) {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export const removeKey = (key, { [key]: _, ...rest }) => rest;
