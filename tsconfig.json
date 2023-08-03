@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "verbatimModuleSyntax": true,
     "jsx": "preserve",
     "outDir": "dist",
     "baseUrl": "./",
