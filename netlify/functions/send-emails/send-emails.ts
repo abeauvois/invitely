@@ -1,4 +1,4 @@
-import type { BackgroundHandler, HandlerEvent } from "@netlify/functions";
+import type { HandlerEvent } from "@netlify/functions";
 
 type Context = {
   content: string;
@@ -18,7 +18,7 @@ apiInstance.setApiKey(SibApiV3Sdk.ContactsApiApiKeys.apiKey, sendinblueApiKey!)
 const limit = 10 // Number | Number of documents per page
 const offset = 0 // Number | Index of the first document of the page
 
-const handler: BackgroundHandler = async (event: HandlerEvent) => {
+const handler = async (event: HandlerEvent) => {
   if (!event.body) {
     return;
   }
