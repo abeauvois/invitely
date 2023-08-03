@@ -1,23 +1,17 @@
-import { initLC } from "@/lib/utils";
+import { useNavigate } from "react-router";
 
-import { create as newId, getForms, getFormIds } from "./WorkspaceForm/forms";
+import { create as newId } from "./forms";
+import { useWorkspace } from "./useWorkspace";
 
 import { Header } from "./Header";
 import FormCard from "./FormCard";
 import AddCard from "./AddCard";
-import { useNavigate } from "react-router";
 
 export const Workspace = () => {
 
-    initLC();
-
-    const formIds = getFormIds();
-    const forms = getForms();
-
+    const { formIds, forms } = useWorkspace();
     const navigate = useNavigate();
-    const toURL = "/workspace/form/";
-
-    const handleNewForm = () => navigate(toURL + newId());
+    const handleNewForm = () => navigate("/workspace/form/" + newId());
 
     return (
         <section className="page">
