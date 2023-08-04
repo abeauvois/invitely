@@ -32,7 +32,7 @@ export function SendDialog() {
         </DialogHeader>
         {/* <div className="grid gap-4 py-4"> */}
         <div className="text-center ">
-          <MessageBox title="En construction" message="Ici se trouvera un ecran permettant d'envoyer à une liste de destinataire, une demande de saisir le formulaire"/>
+          <MessageBox title="En construction" message="Ici se trouvera un ecran permettant d'envoyer à une liste de destinataires, une demande de saisir le formulaire"/>
           {/* <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Name
@@ -47,7 +47,7 @@ export function SendDialog() {
           </div> */}
         </div>
         <DialogFooter>
-          <Button type="submit">Save changes</Button>
+          <Button variant="primary">Save changes</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

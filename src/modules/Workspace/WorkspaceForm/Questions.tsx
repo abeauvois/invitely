@@ -7,7 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Input } from "@/components/ui/input";
 import { AddButton } from "./AddButton";
 import { DeleteButton } from "@/shared/components/Buttons/DeleteButton";
-import { ArrowUpIcon, ArrowDownIcon } from "@radix-ui/react-icons";
+import { ArrowUpIcon, ArrowDownIcon, CalendarIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 
 export const Questions = ({ formId, questions }) => {
@@ -72,7 +72,8 @@ export const Questions = ({ formId, questions }) => {
                                 </span>
 
                                 <Popover>
-                                    <PopoverTrigger className="w-24">
+                                    <PopoverTrigger className="w-34 flex items-center">
+                                        <CalendarIcon className="w-10 h-10"/>
                                         <Input
                                             placeholder="saisir une date"
                                             {...register(`${fieldArrayName}[${index}].date`)}

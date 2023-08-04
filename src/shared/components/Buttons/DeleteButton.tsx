@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { BinIcon } from "../Icons/BinIcon";
+import { TrashIcon } from "@radix-ui/react-icons";
 
 export const DeleteButton = ({ onDelete }) => (
     <Button
         variant="destructive"
         onClick={onDelete}>
-        <BinIcon />
+        <TrashIcon className="w-6 h-6"/>
     </Button>
 )
