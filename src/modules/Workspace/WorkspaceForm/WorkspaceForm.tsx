@@ -15,15 +15,6 @@ import { useFormData } from "./useFormData";
 import { Header } from "./Header";
 import { Questions } from "./Questions";
 
-import { RocketIcon } from "@radix-ui/react-icons"
-
-import {
-    Alert,
-    AlertDescription,
-    AlertTitle,
-} from "@/components/ui/alert"
-
-
 export const WorkspaceForm = () => {
 
     const { formId } = useParams();
@@ -68,15 +59,7 @@ export const WorkspaceForm = () => {
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>
-                                    <IconTooltip icon="info" label="Description">
-                                        <Alert>
-                                            <RocketIcon className="h-4 w-4" />
-                                            <AlertTitle>Bon à savoir!</AlertTitle>
-                                            <AlertDescription>
-                                                Ce texte sera inclus dans le courriel<br />envoyé aux destinataires de ce formulaire.
-                                            </AlertDescription>
-                                        </Alert>
-                                    </IconTooltip>
+                                    <IconTooltip icon="info" label="Description" title="Bon à savoir!" message="Ce texte sera inclus dans le courriel envoyé aux destinataires de ce formulaire." />
                                 </FormLabel>
                                 <FormControl>
                                     <ReactQuill {...field}></ReactQuill>
