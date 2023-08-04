@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { initLC } from "@/lib/utils";
-import { deleteForm, getFormIds, getForms } from "./forms";
+import { getFormIds, getForms } from "./forms";
 
 export function useWorkspace() {
     initLC();

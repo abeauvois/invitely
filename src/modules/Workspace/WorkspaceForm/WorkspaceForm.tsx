@@ -8,12 +8,20 @@ import 'react-quill/dist/quill.snow.css';
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
+import { IconTooltip } from "@/shared/components/IconTooltip";
 
 import { updateFormField } from "../forms";
 import { useFormData } from "./useFormData";
 import { Header } from "./Header";
 import { Questions } from "./Questions";
+
+import { RocketIcon } from "@radix-ui/react-icons"
+
+import {
+    Alert,
+    AlertDescription,
+    AlertTitle,
+} from "@/components/ui/alert"
 
 
 export const WorkspaceForm = () => {
@@ -59,14 +67,24 @@ export const WorkspaceForm = () => {
                         name="description"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Description</FormLabel>
+                                <FormLabel>
+                                    <IconTooltip icon="info" label="Description">
+                                        <Alert>
+                                            <RocketIcon className="h-4 w-4" />
+                                            <AlertTitle>Bon à savoir!</AlertTitle>
+                                            <AlertDescription>
+                                                Ce texte sera inclus dans le courriel<br />envoyé aux destinataires de ce formulaire.
+                                            </AlertDescription>
+                                        </Alert>
+                                    </IconTooltip>
+                                </FormLabel>
                                 <FormControl>
                                     <ReactQuill {...field}></ReactQuill>
                                 </FormControl>
                             </FormItem>
                         )}
                     />
-                    <FormItem>
+                    <FormItem className="text-center">
                         <FormLabel>Dates de disponibilités</FormLabel>
                         <FormControl>
                             <Questions formId={formId} questions={formData.questions} />
