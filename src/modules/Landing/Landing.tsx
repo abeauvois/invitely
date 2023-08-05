@@ -9,7 +9,7 @@ export const Landing = () => {
   return (
     <>
       <section className="page-actions">
-        <Button onClick={() => navigate("/workspace")} variant="outline" className="bg-primary">
+        <Button variant="primary" onClick={() => navigate("/workspace")}>
           Workspace
         </Button>
       </section>

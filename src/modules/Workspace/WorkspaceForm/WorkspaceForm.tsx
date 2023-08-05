@@ -8,13 +8,12 @@ import 'react-quill/dist/quill.snow.css';
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
+import { IconTooltip } from "@/shared/components/IconTooltip";
 
 import { updateFormField } from "../forms";
 import { useFormData } from "./useFormData";
 import { Header } from "./Header";
 import { Questions } from "./Questions";
-
 
 export const WorkspaceForm = () => {
 
@@ -59,14 +58,16 @@ export const WorkspaceForm = () => {
                         name="description"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Description</FormLabel>
+                                <FormLabel>
+                                    <IconTooltip icon="info" label="Description" title="Bon à savoir!" message="Ce texte sera inclus dans le courriel envoyé aux destinataires de ce formulaire." />
+                                </FormLabel>
                                 <FormControl>
                                     <ReactQuill {...field}></ReactQuill>
                                 </FormControl>
                             </FormItem>
                         )}
                     />
-                    <FormItem>
+                    <FormItem className="text-center">
                         <FormLabel>Dates de disponibilités</FormLabel>
                         <FormControl>
                             <Questions formId={formId} questions={formData.questions} />

@@ -4,7 +4,7 @@ import { PageActions } from "@/shared/components/PageActions";
 export const Header = ({ onNewForm }) => (
   <>
     <PageActions backTo={{ url: "/", label: "Home" }} pageTitle={"Workspace"}>
-      <Button onClick={onNewForm} className="btn-primary">
+      <Button onClick={onNewForm} variant="primary">
         <svg width="20" height="20" fill="currentColor" className="mr-2" aria-hidden="true">
           <path d="M10 5a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H6a1 1 0 1 1 0-2h3V6a1 1 0 0 1 1-1Z" />
         </svg>

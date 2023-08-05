@@ -22,9 +22,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        invitely: "var(--color-invitely)",
-        "invitely-light": "var(--color-invitely-light)",
-        "invitely-dark": "var(--color-invitely-dark)",
+        invitely: "hsl(var(--color-invitely))",
+        "invitely-light": "hsl(var(--color-invitely-light))",
+        "invitely-dark": "hsl(var(--color-invitely-dark))",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

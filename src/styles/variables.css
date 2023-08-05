@@ -1,4 +1,5 @@
 :root {
+
   --primary: 1, 46%, 75%;
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
@@ -20,11 +21,13 @@
   --radius: 0.5rem;
 
   --color-black: #000;
-  --color-invitely: hsl(var(--primary));
+  --color-invitely: var(--primary);
   --color-invitely-extralight: #dca1a033;
   --color-invitely-mediumlight: #dca1a070;
   --color-invitely-light: #fbe8e8;
   --color-invitely-dark: #b37675;
+
+
 
 
 }
