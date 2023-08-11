@@ -2,18 +2,26 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { PageActions } from "@/shared/components/PageActions";
 import { CrossCircledIcon, MagnifyingGlassIcon, PlusIcon } from "@radix-ui/react-icons";
-import { cn, preventSubmit } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
-const ClearFormButton = ({ displayCondition, onClear }) => (
-  <Button
-    type="reset"
-    onClick={onClear}
-    variant="secondary"
-    className={cn(displayCondition ? "visible" : "invisible", "relative -left-12 top-0.5")}
-  >
-    <CrossCircledIcon />
-  </Button >
-)
+const ClearFormButton = ({ displayCondition, setValue, onClear }) => {
+
+  const clear = (e) => {
+    setValue("searchTerm", "");
+    onClear(e);
+  };
+
+  return (
+    <Button
+      type="reset"
+      onClick={clear}
+      variant="secondary"
+      className={cn(displayCondition ? "visible" : "invisible", "relative -left-12 top-0.5")}
+    >
+      <CrossCircledIcon />
+    </Button >
+  )
+}
 
 export const Header = ({ onNewForm, onSearch }) => {
 
@@ -27,11 +35,8 @@ export const Header = ({ onNewForm, onSearch }) => {
     onChange(e);
     onSearch(e?.target.value || "");
   };
-  const handleClear = (e) => {
-    setValue("searchTerm", "");
-    handleChange(e);
-  }
   const searchTerm = watch("searchTerm");
+  const onSubmit = data => false;
 
   return (
     <>
@@ -43,7 +48,7 @@ export const Header = ({ onNewForm, onSearch }) => {
       </PageActions>
       <div className="flex justify-center">
         <form
-          onSubmit={handleSubmit(preventSubmit)}
+          onSubmit={handleSubmit(onSubmit)}
           className="group relative">
           <div className="flex items-center">
             <MagnifyingGlassIcon width="20" height="20" fill="currentColor" className="absolute left-3 top-1/2 -mt-2.5 text-slate-400 pointer-events-none group-focus-within:text-blue-500" />
@@ -53,7 +58,8 @@ export const Header = ({ onNewForm, onSearch }) => {
               className="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 pr-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter forms" placeholder="Chercher un formulaire..." />
             <ClearFormButton
               displayCondition={searchTerm.length ? true : false}
-              onClear={handleClear} />
+              setValue={setValue}
+              onClear={handleChange} />
           </div>
         </form>
       </div >
