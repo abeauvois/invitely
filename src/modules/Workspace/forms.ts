@@ -2,7 +2,7 @@ import uuid from "react-uuid";
 
 import { getLC, removeKey, setLC } from "@/lib/utils";
 
-export const toLocaleDateString = (date) => new Date(date).toLocaleDateString()
+export const dateToString = (date) => new Date(date).toISOString()
 
 export const getForms = () => getLC().forms;
 export const getFormIds = () => Object.keys(getForms());
@@ -11,13 +11,13 @@ export const getForm = ({ formId }) => getForms()[formId];
 export function create() {
 
     const formId = uuid();
-    const now = { date: toLocaleDateString(new Date()) };
+    const now = { date: dateToString(new Date()) };
 
     setLC({
         forms: {
             ...getForms(),
             [formId]: {
-                creationDate: new Date().toLocaleDateString(),
+                creationDate: dateToString(new Date()),
                 title: `title for ${formId}`,
                 description: "",
                 questions: [now, now, now],
