@@ -4,24 +4,16 @@ import { PageActions } from "@/shared/components/PageActions";
 import { CrossCircledIcon, MagnifyingGlassIcon, PlusIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils";
 
-const ClearFormButton = ({ displayCondition, setValue, onClear }) => {
-
-  const clear = (e) => {
-    setValue("searchTerm", "");
-    onClear(e);
-  };
-
-  return (
-    <Button
-      type="reset"
-      onClick={clear}
-      variant="secondary"
-      className={cn(displayCondition ? "visible" : "invisible", "relative -left-12 top-0.5")}
-    >
-      <CrossCircledIcon />
-    </Button >
-  )
-}
+const ClearFormButton = ({ displayCondition, onClear }) => (
+  <Button
+    type="reset"
+    onClick={onClear}
+    variant="secondary"
+    className={cn(displayCondition ? "visible" : "invisible", "relative -left-12 top-0.5")}
+  >
+    <CrossCircledIcon />
+  </Button >
+)
 
 export const Header = ({ onNewForm, onSearch }) => {
 
@@ -35,6 +27,10 @@ export const Header = ({ onNewForm, onSearch }) => {
     onChange(e);
     onSearch(e?.target.value || "");
   };
+  const handleClear = (e) => {
+    setValue("searchTerm", "");
+    handleChange(e);
+  }
   const searchTerm = watch("searchTerm");
   const onSubmit = data => false;
 
@@ -58,8 +54,7 @@ export const Header = ({ onNewForm, onSearch }) => {
               className="focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-10 pr-10 ring-1 ring-slate-200 shadow-sm" type="text" aria-label="Filter forms" placeholder="Chercher un formulaire..." />
             <ClearFormButton
               displayCondition={searchTerm.length ? true : false}
-              setValue={setValue}
-              onClear={handleChange} />
+              onClear={handleClear} />
           </div>
         </form>
       </div >
