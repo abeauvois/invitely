@@ -17,13 +17,23 @@ export const Workspace = () => {
         return getFormIds();
     });
 
-    const handleSearch = (searchTerm) => {
-        setFormIds(
-            getFormIds().filter(
-                formId => forms[formId].title?.toLowerCase()
-                    .includes(searchTerm?.toLowerCase())
-            )
-        );
+    const { forms, create, remove } = useFormsStore();
+
+    const handleNewForm = () => {
+        const id = uuid();
+        create(id);
+        navigate("/workspace/form/" + id)
+    };
+
+    const handleDeleteForm = (id: string) => {
+        remove(id);
+    }
+
+    const formFilter = form => forms[form.id].title?.toLowerCase().includes(searchTerm?.toLowerCase())
+
+    const handleSearch = (search) => {
+        console.log("🚀 ~ file: Workspace.tsx:32 ~ handleSearch ~ search:", search)
+        setSearchTerm(search)
     };
 
     return (
