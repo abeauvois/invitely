@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { PageActions } from "@/shared/components/PageActions";
 import { CrossCircledIcon, MagnifyingGlassIcon, PlusIcon } from "@radix-ui/react-icons";
-import { cn } from "@/lib/utils";
+import { cn, preventSubmit } from "@/lib/utils";
 
 const ClearFormButton = ({ displayCondition, onClear }) => (
   <Button
@@ -32,7 +32,6 @@ export const Header = ({ onNewForm, onSearch }) => {
     handleChange(e);
   }
   const searchTerm = watch("searchTerm");
-  const onSubmit = data => false;
 
   return (
     <>
@@ -44,7 +43,7 @@ export const Header = ({ onNewForm, onSearch }) => {
       </PageActions>
       <div className="flex justify-center">
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(preventSubmit)}
           className="group relative">
           <div className="flex items-center">
             <MagnifyingGlassIcon width="20" height="20" fill="currentColor" className="absolute left-3 top-1/2 -mt-2.5 text-slate-400 pointer-events-none group-focus-within:text-blue-500" />

@@ -28,3 +28,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const removeKey = (key, { [key]: _, ...rest }) => rest;
+
+export const preventSubmit = () => false;
+

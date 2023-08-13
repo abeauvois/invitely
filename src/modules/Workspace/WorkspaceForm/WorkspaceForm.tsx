@@ -14,6 +14,7 @@ import { updateFormField } from "../forms";
 import { useFormData } from "./useFormData";
 import { Header } from "./Header";
 import { Questions } from "./Questions";
+import { preventSubmit } from "@/lib/utils";
 
 export const WorkspaceForm = () => {
 
@@ -40,7 +41,9 @@ export const WorkspaceForm = () => {
             <Header onSelectDate={() => { }} />
 
             <Form {...form}>
-                <form className="flex flex-col gap-5">
+                <form
+                    className="flex flex-col gap-5"
+                    onSubmit={form.handleSubmit(preventSubmit)}>
                     <FormField
                         control={form.control}
                         name="title"
