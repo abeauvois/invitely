@@ -5,15 +5,32 @@ import { dateToString, updateFormField } from "../forms";
 import { Input } from "@/components/ui/input";
 import { AddButton } from "./AddButton";
 import { DeleteButton } from "@/shared/components/Buttons/DeleteButton";
-import { ArrowUpIcon, ArrowDownIcon, CalendarIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
+import { BarsArrowDownIcon, BarsArrowUpIcon } from "@heroicons/react/24/outline";
+
+const SwapButton = ({ displayCondition, up = false, down = false, onSwap }) => {
+    const props = { className: "w-5 h-5" };
+    return (
+        <>
+            {displayCondition ? (
+                <Button
+                    type="button"
+                    onClick={onSwap}>
+                    {up
+                        ? <BarsArrowUpIcon {...props} />
+                        : <BarsArrowDownIcon {...props} />
+                    }
+                </Button>
+            ) : (<div ></div>)}
+
+        </>
+    )
+}
 
 export const Questions = ({ formId, questions }) => {
 
     const fieldArrayName = "dates";
-
     const { control, register } = useForm();
-
     const { fields, prepend, append, update, remove, swap } = useFieldArray({
         control,
         name: fieldArrayName,
@@ -51,22 +68,16 @@ export const Questions = ({ formId, questions }) => {
                             <li key={field.id} className="p-2 flex items-center">
                                 <span className="flex w-60">
                                     {/* MOVE UP */}
-                                    {index > 0 && index <= fields.length - 1 ? (
-                                        <Button
-                                            type="button"
-                                            onClick={() => swap(index, index - 1)}>
-                                            <ArrowUpIcon />
-                                        </Button>
-                                    ) : (<div ></div>)}
+                                    <SwapButton
+                                        up
+                                        displayCondition={index > 0 && index <= fields.length - 1}
+                                        onSwap={() => swap(index, index - 1)} />
 
                                     {/* MOVE DOWN */}
-                                    {index >= 0 && index < fields.length - 1 ? (
-                                        <Button
-                                            type="button"
-                                            onClick={() => swap(index, index + 1)}>
-                                            <ArrowDownIcon />
-                                        </Button>
-                                    ) : (<div></div>)}
+                                    <SwapButton
+                                        down
+                                        displayCondition={index >= 0 && index < fields.length - 1}
+                                        onSwap={() => swap(index, index + 1)} />
                                 </span>
                                 <Input
                                     className="flex"
