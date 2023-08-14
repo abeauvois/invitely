@@ -66,7 +66,7 @@ function ClerkProviderWithRoutes() {
                 </SignedOut>
               </>
             } />
-            <Route path="workspace/form/:formId/:recipientEmailAddress?/" element={
+            <Route path="workspace/form/:formId/:recipientId?/" element={
               <>
                 <SignedIn>
                   <WorkspaceForm />

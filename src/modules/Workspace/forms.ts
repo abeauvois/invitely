@@ -48,3 +48,17 @@ export const updateFormField = ({ formId, field: { name, val } }) => {
         }
     })
 }
+
+export const getQuestion = ({ questions, questionId }) => {
+    return questions.find(({ id, date }) => id === questionId);
+}
+
+export const getRecipientAnswers = ({ formId, recipientId }) => {
+    const { questions, answers } = getForm({ formId });
+    return answers[recipientId].questions.map((item, i) => {
+        const [questionId] = Object.keys(item);
+        const { date } = getQuestion({ questions, questionId })
+        return { date, answer: item[questionId] };
+    });
+}
+
