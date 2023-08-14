@@ -14,6 +14,7 @@ export function create() {
     const now = { date: dateToString() };
 
     setLC({
+        ...getLC(),
         forms: {
             ...getForms(),
             [formId]: {
@@ -37,6 +38,7 @@ export const deleteForm = ({ formId }) => {
 export const updateFormField = ({ formId, field: { name, val } }) => {
     const form = getForm({ formId });
     setLC({
+        ...getLC(),
         forms: {
             ...getForms(),
             [formId]: {
