@@ -15,6 +15,7 @@ import {
 import { Landing } from "../Landing/Landing";
 import { Workspace } from "../Workspace";
 import { WorkspaceForm } from "../Workspace/WorkspaceForm";
+import { WorkspaceFormReply } from "../Workspace/WorkspaceForm/WorkspaceFormReply";
 import { AppLayout } from "../layouts/AppLayout";
 
 import { queryClient } from "./config/queryClient";
@@ -65,10 +66,15 @@ function ClerkProviderWithRoutes() {
                 </SignedOut>
               </>
             } />
-            <Route path="workspace/form/:formId/" element={
-              <SignedIn>
-                <WorkspaceForm />
-              </SignedIn>
+            <Route path="workspace/form/:formId/:recipientEmailAddress?/" element={
+              <>
+                <SignedIn>
+                  <WorkspaceForm />
+                </SignedIn>
+                <SignedOut>
+                  <WorkspaceFormReply />
+                </SignedOut>
+              </>
             } />
           </Route>
         </Routes>
