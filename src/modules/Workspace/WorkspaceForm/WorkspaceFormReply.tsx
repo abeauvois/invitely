@@ -1,17 +1,21 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { useForm } from "react-hook-form";
+
 import { useFormData } from "./useFormData";
 import { PageActions } from "@/shared/components/PageActions";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { useForm } from "react-hook-form";
 import { useRecipientData } from "../useRecipientData";
 import { getRecipientAnswers } from "../forms";
 
-const Header = ({ title }) => (
-    <PageActions pageTitle={title} className="fixed top-0 left-0 z-50 bg-white pt-4 pr-4 pb-0 pl-0 w-full items-center" >
-        <Button variant="primary">Envoyer</Button>
-    </PageActions >
-)
+const Header = ({ title }) => {
+    return (
+
+        <PageActions pageTitle={title} className="fixed top-0 left-0 z-50 bg-white pt-4 pr-4 pb-0 pl-0 w-full items-center" >
+            <Button variant="primary" >Envoyer</Button>
+        </PageActions >
+    )
+}
 
 const Section = ({ className = "", children = null, dangerouslySetInnerHTML = null }) => {
     const _className = "m-4 p-4 max-w-xs m-auto italic";

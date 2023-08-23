@@ -11,6 +11,9 @@ import {
 
 import { TextInput } from './TextInput';
 import { SelectInput, SelectOption } from './SelectInput';
+import { RichTextInput } from '@/modules/Workspace/WorkspaceForm/RichTextInput';
+import { useNavigate } from 'react-router';
+import { PageActions } from '../PageActions';
 
 
 const defaultRecipients: SelectOption[] = [
@@ -39,6 +42,17 @@ const emailingSchema = z.object({
   }),
 });
 
+const Header = () => {
+  const navigate = useNavigate();
+  return (
+    <PageActions backTo={{ url: "/workspace", label: "Workspace" }} pageTitle="Destinataires" >
+      <Button variant="primary" onClick={() => navigate("/workspace/send")}>
+        Envoyer
+      </Button>
+    </PageActions >
+  )
+}
+
 type SendFormProps = { recipients?: SelectOption[] }
 
 function SendForm({ recipients = defaultRecipients }: SendFormProps) {
@@ -58,13 +72,14 @@ function SendForm({ recipients = defaultRecipients }: SendFormProps) {
   };
 
   return (
-    <section className="relative isolate overflow-hidden bg-invitely py-8">
+    <section className="page">
+      <Header />
       <div className="mx-auto max-w-7xl px-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <SelectInput fieldName='recipients' control={form.control} defaultOptions={recipientsOptions} />
             <TextInput fieldName='subject' control={form.control} />
-            <TextInput fieldName='message' control={form.control} />
+            <RichTextInput fieldName='message' control={form.control} />
             <Button type="submit" variant='secondary'>Envoyer</Button>
           </form>
         </Form>

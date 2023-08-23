@@ -1,4 +1,5 @@
 import React from 'react';
+import { UseFormReturn } from 'react-hook-form';
 
 import {
   FormControl,
@@ -9,7 +10,6 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { UseFormReturn } from 'react-hook-form';
 
 interface TextInputProps {
   control: UseFormReturn<any>['control'];
@@ -28,7 +28,7 @@ export function TextInput({ control, fieldName, description }: TextInputProps) {
         <FormItem>
           <FormLabel>{fieldName}</FormLabel>
           <FormControl>
-            <Input {...field} />
+            <Input {...field} type='text' />
           </FormControl>
           <FormDescription>{description}</FormDescription>
           <FormMessage />

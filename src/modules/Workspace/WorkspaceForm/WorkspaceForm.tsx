@@ -1,27 +1,29 @@
 import { useEffect } from "react";
-
-import { useParams } from "react-router";
-
-import ReactQuill from 'react-quill';
+import { useNavigate, useParams } from "react-router";
+import { useForm } from "react-hook-form";
 import 'react-quill/dist/quill.snow.css';
 
-import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { IconTooltip } from "@/shared/components/IconTooltip";
 import { PageActions } from "@/shared/components/PageActions";
+import { Button } from "@/components/ui/button";
 import { preventSubmit } from "@/lib/utils";
 
 import { updateFormField } from "../forms";
 import { useFormData } from "./useFormData";
 import { Questions } from "./Questions";
-import { SendDialog } from "./SendDialog";
+import { RichTextInput } from "./RichTextInput";
 
-const Header = () => (
-    <PageActions backTo={{ url: "/workspace", label: "Workspace" }} pageTitle="Formulaire" >
-        <SendDialog />
-    </PageActions >
-)
+const Header = () => {
+    const navigate = useNavigate();
+    return (
+        <PageActions backTo={{ url: "/workspace", label: "Workspace" }} pageTitle="Formulaire" >
+            <Button variant="primary" onClick={() => navigate("/workspace/send")}>
+                Envoyer
+            </Button>
+        </PageActions >
+    )
+}
 
 const TitleSection = ({ control }) => (
     <FormField
@@ -32,23 +34,6 @@ const TitleSection = ({ control }) => (
                 <FormLabel>Nom du Formulaire</FormLabel>
                 <FormControl>
                     <Input {...field}></Input>
-                </FormControl>
-            </FormItem>
-        )}
-    />
-)
-
-const DescriptionSection = ({ control }) => (
-    <FormField
-        control={control}
-        name="description"
-        render={({ field }) => (
-            <FormItem>
-                <FormLabel>
-                    <IconTooltip icon="info" label="Description" title="Bon à savoir!" message="Ce texte sera inclus dans le courriel envoyé aux destinataires de ce formulaire." />
-                </FormLabel>
-                <FormControl>
-                    <ReactQuill {...field}></ReactQuill>
                 </FormControl>
             </FormItem>
         )}
@@ -93,7 +78,7 @@ export const WorkspaceForm = () => {
                     className="flex flex-col gap-5"
                     onSubmit={form.handleSubmit(preventSubmit)}>
                     <TitleSection control={form.control} />
-                    <DescriptionSection control={form.control} />
+                    <RichTextInput fieldName="description" control={form.control} />
                     <QuestionsSection formId={formId} questions={formData.questions} />
                 </form>
             </Form >
