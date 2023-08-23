@@ -21,6 +21,7 @@ import { AppLayout } from "../layouts/AppLayout";
 import { queryClient } from "./config/queryClient";
 
 import { PageLayout } from "../layouts/PageLayout";
+import { SendForm } from "@/shared/components/Form/SendForm";
 
 export const env = process.env;
 
@@ -74,6 +75,11 @@ function ClerkProviderWithRoutes() {
                 <SignedOut>
                   <WorkspaceFormReply />
                 </SignedOut>
+              </>
+            } />
+            <Route path="workspace/send" element={
+              <>
+                <SendForm username="nickname" email="a@b.c" />
               </>
             } />
           </Route>
