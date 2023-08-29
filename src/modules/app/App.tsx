@@ -5,9 +5,6 @@ import { RouterProvider, useNavigate, createBrowserRouter, Outlet } from "react-
 import {
   ClerkProvider,
   ClerkLoaded,
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
   SignIn,
   SignUp,
 } from "@clerk/clerk-react";
@@ -72,44 +69,17 @@ const router = createBrowserRouter([
           {
             path: "workspace",
             loader: workspaceLoader,
-            Component: () => (
-              <>
-                <SignedIn>
-                  <Workspace />
-                </SignedIn>
-                <SignedOut>
-                  <RedirectToSignIn />
-                </SignedOut>
-              </>
-            )
+            Component: Workspace
           },
           {
             path: "workspace/form/:formId/",
             loader: workspaceFormLoader,
-            Component: () => (
-              <>
-                <SignedIn>
-                  <WorkspaceForm />
-                </SignedIn>
-                <SignedOut>
-                  <RedirectToSignIn />
-                </SignedOut>
-              </>
-            )
+            Component: WorkspaceForm
           },
           {
             path: "workspace/form/:formId/:recipientId/",
             loader: workspaceFormReplyLoader,
-            Component: () => (
-              <>
-                <SignedIn>
-                  <WorkspaceFormReply />
-                </SignedIn>
-                <SignedOut>
-                  <RedirectToSignIn />
-                </SignedOut>
-              </>
-            )
+            Component: WorkspaceFormReply
           },
           {
             path: "workspace/send",

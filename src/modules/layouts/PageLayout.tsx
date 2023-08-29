@@ -1,6 +1,11 @@
 import React, { PropsWithChildren } from "react";
 import { Outlet } from "react-router";
-import { UserButton } from "@clerk/clerk-react";
+import {
+  UserButton,
+  SignedIn,
+  SignedOut,
+  RedirectToSignIn,
+} from "@clerk/clerk-react";
 
 import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 import { Link } from "react-router-dom";
@@ -29,7 +34,12 @@ export const PageLayout: React.FunctionComponent<PropsWithChildren> = () => {
         </nav>
       </header>
       <main >
-        <Outlet />
+        <SignedIn>
+          <Outlet />
+        </SignedIn>
+        <SignedOut>
+          <RedirectToSignIn />
+        </SignedOut>
       </main>
       <footer>
         <div className="flex items-center gap-8 p-6 text-invitely">
