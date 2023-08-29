@@ -7,7 +7,7 @@ import {
   RedirectToSignIn,
 } from "@clerk/clerk-react";
 
-import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
+import { ReactComponent as Logo } from "@/assets/logo-no-background.svg";
 import { Link } from "react-router-dom";
 
 export const PageLayout: React.FunctionComponent<PropsWithChildren> = () => {

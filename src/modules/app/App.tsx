@@ -8,15 +8,12 @@ import {
   SignUp,
 } from "@clerk/clerk-react";
 
-import { Landing } from "../Landing/Landing";
-import { Workspace, loader as workspaceLoader } from "../Workspace/Workspace";
-import { WorkspaceForm, loader as workspaceFormLoader } from "../Workspace/WorkspaceForm/WorkspaceForm";
-import { WorkspaceFormReply, loader as workspaceFormReplyLoader } from "../Workspace/WorkspaceForm/WorkspaceFormReply";
-import { AppLayout } from "../layouts/AppLayout";
-
-import { queryClient } from "./config/queryClient";
-
-import { PageLayout } from "../layouts/PageLayout";
+import { Landing } from "@/modules/Landing/Landing";
+import { Workspace, loader as workspaceLoader } from "@/modules/Workspace/Workspace";
+import { WorkspaceForm, loader as workspaceFormLoader } from "@/modules/Workspace/WorkspaceForm/WorkspaceForm";
+import { WorkspaceFormReply, loader as workspaceFormReplyLoader } from "@/modules/Workspace/WorkspaceForm/WorkspaceFormReply";
+import { AppLayout } from "@/modules/layouts/AppLayout";
+import { PageLayout } from "@/modules/layouts/PageLayout";
 import { SendForm } from "@/shared/components/Form/SendForm";
 
 const env = process.env;

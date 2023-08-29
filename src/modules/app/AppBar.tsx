@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
+import { ReactComponent as Logo } from "@/assets/logo-no-background.svg";
 
 export const AppBar = () => {
   return (

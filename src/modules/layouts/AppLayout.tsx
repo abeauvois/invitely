@@ -1,9 +1,9 @@
 import React, { PropsWithChildren } from "react";
 import { Outlet } from "react-router";
 
-import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
+import { ReactComponent as Logo } from "@/assets/logo-no-background.svg";
 
-import { AppBar } from "../app/AppBar";
+import { AppBar } from "@/modules/app/AppBar";
 
 export const AppLayout: React.FunctionComponent<PropsWithChildren> = ({
   children,
