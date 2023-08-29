@@ -1,6 +1,6 @@
 import React from "react";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { RouterProvider, Routes, Route, useNavigate, createBrowserRouter } from "react-router-dom";
 
 import {
   ClerkProvider,
@@ -13,9 +13,9 @@ import {
 } from "@clerk/clerk-react";
 
 import { Landing } from "../Landing/Landing";
-import { Workspace } from "../Workspace";
-import { WorkspaceForm } from "../Workspace/WorkspaceForm";
-import { WorkspaceFormReply } from "../Workspace/WorkspaceForm/WorkspaceFormReply";
+import { Workspace, loader as workspaceLoader } from "../Workspace/Workspace";
+import { WorkspaceForm, loader as workspaceFormLoader } from "../Workspace/WorkspaceForm/WorkspaceForm";
+import { WorkspaceFormReply, loader as workspaceFormReplyLoader } from "../Workspace/WorkspaceForm/WorkspaceFormReply";
 import { AppLayout } from "../layouts/AppLayout";
 
 import { queryClient } from "./config/queryClient";
@@ -53,30 +53,6 @@ function ClerkProviderWithRoutes() {
             element={<SignUp routing="path" path="/sign-up" />}
           />
           <Route element={<PageLayout />}>
-            <Route path="workspace" element={
-              <>
-                <SignedIn>
-                  <Workspace />
-                </SignedIn>
-                <SignedOut>
-                  {/* 
-                          Route matches, but no user is signed in. 
-                          Redirect to the sign in page.
-                        */}
-                  <RedirectToSignIn />
-                </SignedOut>
-              </>
-            } />
-            <Route path="workspace/form/:formId/:recipientId?/" element={
-              <>
-                <SignedIn>
-                  <WorkspaceForm />
-                </SignedIn>
-                <SignedOut>
-                  <WorkspaceFormReply />
-                </SignedOut>
-              </>
-            } />
             <Route path="workspace/send" element={
               <>
                 <SendForm username="nickname" email="a@b.c" />
@@ -89,15 +65,77 @@ function ClerkProviderWithRoutes() {
   );
 }
 
-export const App = (): React.ReactElement | null => {
+// ***************************
+// MIGRATION from BrowserRouter to RouterProvider.
+// 
+// https://reactrouter.com/en/main/upgrading/v6-data
 
+// 1️⃣ Changed from App to Root
+export const Root = (): React.ReactElement | null => {
+  // 2️⃣ `BrowserRouter` component removed, but the <Routes>/<Route>
+  // component below are unchanged
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <ClerkProviderWithRoutes />
-      </BrowserRouter>
+      <ClerkProviderWithRoutes />
     </QueryClientProvider>
   );
 };
+
+// 3️⃣ Router singleton created
+const router = createBrowserRouter([
+  {
+    Component: PageLayout,
+    children: [
+      {
+        path: "workspace",
+        loader: workspaceLoader,
+        Component: () => (
+          <>
+            <SignedIn>
+              <Workspace />
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </>
+        )
+      },
+      {
+        path: "workspace/form/:formId/",
+        loader: workspaceFormLoader,
+        Component: () => (
+          <>
+            <SignedIn>
+              <WorkspaceForm />
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </>
+        )
+      },
+      {
+        path: "workspace/form/:formId/:recipientId/",
+        loader: workspaceFormReplyLoader,
+        Component: () => (
+          <>
+            <SignedIn>
+              <WorkspaceFormReply />
+            </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+          </>
+        )
+      }
+    ]
+  },
+  { path: "*", Component: Root },
+]);
+
+// 4️⃣ RouterProvider added
+export function App() {
+  return <RouterProvider router={router} />;
+}
 
 export default App;

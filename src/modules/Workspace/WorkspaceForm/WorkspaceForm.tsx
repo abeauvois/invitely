@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useEffect, useState } from "react";
+import { useNavigate, useLoaderData } from "react-router";
 import { useForm } from "react-hook-form";
 import 'react-quill/dist/quill.snow.css';
 
@@ -9,8 +9,7 @@ import { PageActions } from "@/shared/components/PageActions";
 import { Button } from "@/components/ui/button";
 import { preventSubmit } from "@/lib/utils";
 
-import { updateFormField } from "../forms";
-import { useFormData } from "./useFormData";
+import { getForm, updateFormField } from "../forms";
 import { Questions } from "./Questions";
 import { RichTextInput } from "./RichTextInput";
 
@@ -49,10 +48,16 @@ const QuestionsSection = ({ formId, questions }) => (
     </FormItem>
 )
 
+export async function loader({ params }) {
+    const { formId, recipientId } = params;
+    const formDataDefault = await getForm({ formId });
+    return { formId, formDataDefault };
+}
+
 export const WorkspaceForm = () => {
 
-    const { formId } = useParams();
-    const formData = useFormData({ formId });
+    const { formId, formDataDefault } = useLoaderData();
+    const [formData] = useState(formDataDefault);
 
     const form = useForm({
         defaultValues: {

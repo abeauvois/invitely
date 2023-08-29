@@ -1,23 +1,26 @@
+import { getDatabase, ref, set, get } from "firebase/database";
+
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-const { VITE_LOCAL_STORAGE_KEY } = process.env;
+import { app } from "@/services/firebase";
 
-export function initLC() {
-  if (getLC() === null) setLC({ forms: {} });
-}
-
-export function getLC() {
+export async function getLC({ location = "/" }) {
   try {
-    return JSON.parse(localStorage.getItem(VITE_LOCAL_STORAGE_KEY));
+    const db = getDatabase(app);
+    const query = ref(db, location);
+    const snapshot = await get(query);
+    return snapshot.val();
   } catch (error) {
+    console.log("error from getLC:", error);
     return {};
   }
 }
 
-export function setLC(toStore) {
+export function setLC({ location, toStore }) {
   try {
-    localStorage.setItem(VITE_LOCAL_STORAGE_KEY, JSON.stringify(toStore));
+    const db = getDatabase();
+    return set(ref(db, location), toStore);
   } catch (error) {
     return {};
   }

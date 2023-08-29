@@ -1,12 +1,12 @@
-import { useNavigate, useParams } from "react-router";
+import { useLoaderData } from "react-router";
 import { useForm } from "react-hook-form";
 
-import { useFormData } from "./useFormData";
 import { PageActions } from "@/shared/components/PageActions";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { useRecipientData } from "../useRecipientData";
-import { getRecipientAnswers } from "../forms";
+import { getForm, getRecipientAnswers } from "../forms";
+import { getRecipient } from "../recipients";
+import { useState } from "react";
 
 const Header = ({ title }) => {
     return (
@@ -61,25 +61,30 @@ const AnswersSection = ({ questions }) => {
                     <div
                         key={question.id}
                         className="m-auto flex max-w-sm justify-around items-center"
-                    ><span><input type="date" value={question.date} disabled /></span> <Switch /></div >
+                    ><span><input type="date" value={question.date} disabled /></span> <Switch />
+                    </div>
                 ))
             }
         </Section >
     )
 }
 
+export async function loader({ params }) {
+    const { formId, recipientId } = params;
+    const formData = await getForm({ formId });
+    const recipientDataDefaults = await getRecipient({ recipientId });
+    const recipientAnswersDefault = await getRecipientAnswers({ formId, recipientId });
+    return { formData, recipientDataDefaults, recipientAnswersDefault };
+}
+
 export const WorkspaceFormReply = () => {
 
-    const { formId, recipientId } = useParams();
-    const { recipientData: { emailAddress, lastName, firstName }, setRecipientData } = useRecipientData({ recipientId });
-    const formData = useFormData({ formId });
-    const recipientAnswers = getRecipientAnswers({ formId, recipientId });
-
+    const { formData, recipientDataDefaults, recipientAnswersDefault } = useLoaderData();
     const { control, register, handleSubmit } = useForm({
         defaultValues: {
-            lastName,
-            firstName,
-            answers: recipientAnswers
+            lastName: recipientDataDefaults.lastName,
+            firstName: recipientDataDefaults.firstName,
+            answers: recipientAnswersDefault
         }
     });
 
@@ -88,9 +93,9 @@ export const WorkspaceFormReply = () => {
             <form>
                 <Header title={formData.title} />
                 <DescriptionSection content={formData.description} />
-                <EmailAddressSection value={emailAddress} />
+                <EmailAddressSection value={recipientDataDefaults.emailAddress} />
                 <NameSection lastNameProps={register("lastName")} firstNameProps={register("firstName")} />
-                <AnswersSection questions={recipientAnswers} />
+                <AnswersSection questions={recipientAnswersDefault} />
             </form>
         </ div>
     )

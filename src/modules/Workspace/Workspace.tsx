@@ -1,15 +1,29 @@
-import { useNavigate } from "react-router";
+import { useState } from "react";
+import { useLoaderData, useNavigate } from "react-router";
 
-import { deleteForm, getFormIds, create as newId } from "./forms";
-import { useWorkspace } from "./useWorkspace";
+import { deleteForm, getForms, getFormIds, create as newId } from "./forms";
 
 import { Header } from "./Header";
 import FormCard from "./FormCard";
 import AddCard from "./AddCard";
 
+export async function loader() {
+    try {
+        const formIdsDefaults = await getFormIds();
+        const formsDefaults = await getForms();
+        return { formIdsDefaults, formsDefaults };
+    } catch (error: any) {
+        console.log(error);
+    }
+}
+
 export const Workspace = () => {
 
-    const { formIds, forms, setFormIds } = useWorkspace();
+    const { formIdsDefaults, formsDefaults } = useLoaderData();
+
+    const [formIds, setFormIds] = useState(formIdsDefaults);
+    const [forms, setForms] = useState(formsDefaults);
+
     const navigate = useNavigate();
     const handleNewForm = () => navigate("/workspace/form/" + newId());
     const handleDeleteForm = ({ formId }) => setFormIds(() => {
