@@ -1,5 +1,4 @@
 import React from "react";
-import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider, useNavigate, createBrowserRouter, Outlet } from "react-router-dom";
 
 import {
@@ -33,16 +32,14 @@ const router = createBrowserRouter([
     Component: () => {
       const navigate = useNavigate();
       return (
-        <QueryClientProvider client={queryClient}>
-          <ClerkProvider
-            publishableKey={clerkPubKey}
-            navigate={(to) => navigate(to)}
-          >
-            <ClerkLoaded>
-              <Outlet />
-            </ClerkLoaded>
-          </ClerkProvider>
-        </QueryClientProvider>
+        <ClerkProvider
+          publishableKey={clerkPubKey}
+          navigate={(to) => navigate(to)}
+        >
+          <ClerkLoaded>
+            <Outlet />
+          </ClerkLoaded>
+        </ClerkProvider>
       )
     },
     children: [
