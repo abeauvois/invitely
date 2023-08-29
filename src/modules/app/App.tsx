@@ -20,7 +20,7 @@ import { queryClient } from "./config/queryClient";
 import { PageLayout } from "../layouts/PageLayout";
 import { SendForm } from "@/shared/components/Form/SendForm";
 
-export const env = process.env;
+const env = process.env;
 
 if (!env.VITE_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")

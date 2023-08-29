@@ -10,12 +10,6 @@ import {
 import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 import { Link } from "react-router-dom";
 
-export const env = process.env;
-
-if (!env.VITE_CLERK_PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key")
-}
-
 export const PageLayout: React.FunctionComponent<PropsWithChildren> = () => {
 
   return (

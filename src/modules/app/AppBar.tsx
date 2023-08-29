@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { UserButton } from "@clerk/clerk-react";
 import { ReactComponent as Logo } from "../../assets/logo-no-background.svg";
 
 export const AppBar = () => {
@@ -12,9 +11,6 @@ export const AppBar = () => {
         <Link to="/" className="fill-primary">
           <Logo className="m-4 h-24 w-24" />
         </Link>
-        <div className="flex border-4 border-invitely rounded-full mx-6">
-          <UserButton />
-        </div>
       </nav>
     </header>
   );
