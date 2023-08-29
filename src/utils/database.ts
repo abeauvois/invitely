@@ -1,5 +1,5 @@
 import { getDatabase, ref, set, get } from "firebase/database";
-import { app } from "@/modules/app/config/firebase";
+import { app } from "@/config/firebase";
 
 export async function getDbData({ location = "/" }) {
     try {
