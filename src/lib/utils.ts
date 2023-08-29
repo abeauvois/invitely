@@ -3,7 +3,7 @@ import { getDatabase, ref, set, get } from "firebase/database";
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-import { app } from "@/services/firebase";
+import { app } from "@/modules/app/config/firebase";
 
 export async function getLC({ location = "/" }) {
   try {
