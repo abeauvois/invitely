@@ -1,19 +1,19 @@
 import uuid from "react-uuid";
 
-import { getLC, setLC } from "@/utils";
+import { getDbData, setDbData } from "@/utils";
 
 export const dateToString = (date = Date.now()) => new Date(date).toISOString().split('T')[0]
 
-export const getForms = async () => await getLC({ location: "/forms" });
+export const getForms = async () => await getDbData({ location: "/forms" });
 export const getFormIds = async () => Object.keys(await getForms());
-export const getForm = async ({ formId }) => await getLC({ location: `/forms/${formId}` });
+export const getForm = async ({ formId }) => await getDbData({ location: `/forms/${formId}` });
 
 export function create() {
 
     const formId = uuid();
     const now = { date: dateToString() };
 
-    setLC({
+    setDbData({
         location: `/forms${formId}`,
         toStore: {
             creationDate: dateToString(),
@@ -51,8 +51,8 @@ export const getQuestion = ({ questions, questionId }) => {
 }
 
 export const getRecipientAnswers = async ({ formId, recipientId }) => {
-    const questions = await getLC({ location: `/forms/${formId}/questions` })
-    const answers = await getLC({ location: `/forms/${formId}/answers/${recipientId}` })
+    const questions = await getDbData({ location: `/forms/${formId}/questions` })
+    const answers = await getDbData({ location: `/forms/${formId}/answers/${recipientId}` })
 
     return answers.questions.map((item, i) => {
         const [questionId] = Object.keys(item);

@@ -1,7 +1,7 @@
 import { getDatabase, ref, set, get } from "firebase/database";
 import { app } from "@/modules/app/config/firebase";
 
-export async function getLC({ location = "/" }) {
+export async function getDbData({ location = "/" }) {
     try {
         const db = getDatabase(app);
         const query = ref(db, location);
@@ -13,7 +13,7 @@ export async function getLC({ location = "/" }) {
     }
 }
 
-export function setLC({ location, toStore }) {
+export function setDbData({ location, toStore }) {
     try {
         const db = getDatabase();
         return set(ref(db, location), toStore);
