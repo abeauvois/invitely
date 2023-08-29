@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import CreatableSelect from 'react-select/creatable';
 
-export type SelectOption = {
-  readonly label: string;
-  readonly value: string;
-};
-
 import {
   FormControl,
   FormDescription,
@@ -13,9 +8,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
+} from "@/shadcn-components/ui/form"
 
 import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
+
+export type SelectOption = {
+  readonly label: string;
+  readonly value: string;
+};
 
 interface SelectInputProps {
   control: UseFormReturn<any>['control'];

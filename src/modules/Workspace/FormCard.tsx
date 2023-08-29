@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shadcn-components/ui/button";
 import { DeleteButton } from "@/shared/components/Buttons/DeleteButton";
 
 export default ({ to, label, onDelete }) => (

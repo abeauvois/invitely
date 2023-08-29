@@ -1,6 +1,6 @@
 import uuid from "react-uuid";
 
-import { getLC, removeKey, setLC } from "@/lib/utils";
+import { getLC, setLC } from "@/utils";
 
 export const getRecipients = async () => await getLC({ location: "/recipients" });
 export const getRecipient = async ({ recipientId }) => await getLC({ location: `/recipients/${recipientId}` })

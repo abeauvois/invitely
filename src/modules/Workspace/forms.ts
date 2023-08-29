@@ -1,6 +1,6 @@
 import uuid from "react-uuid";
 
-import { getLC, removeKey, setLC } from "@/lib/utils";
+import { getLC, setLC } from "@/utils";
 
 export const dateToString = (date = Date.now()) => new Date(date).toISOString().split('T')[0]
 

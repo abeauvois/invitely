@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/shadcn-components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -7,9 +7,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/shadcn-components/ui/dialog"
+import { Input } from "@/shadcn-components/ui/input"
+import { Label } from "@/shadcn-components/ui/label"
 import { MessageBox } from "@/shared/components/MessageBox"
 
 export function SendDialog() {
@@ -32,7 +32,7 @@ export function SendDialog() {
         </DialogHeader>
         {/* <div className="grid gap-4 py-4"> */}
         <div className="text-center ">
-          <MessageBox title="En construction" message="Ici se trouvera un ecran permettant d'envoyer à une liste de destinataires, une demande de saisir le formulaire"/>
+          <MessageBox title="En construction" message="Ici se trouvera un ecran permettant d'envoyer à une liste de destinataires, une demande de saisir le formulaire" />
           {/* <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="name" className="text-right">
               Name

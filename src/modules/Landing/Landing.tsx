@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { DocumentCheckIcon } from "@heroicons/react/24/outline";
 
 import { ProfileForm } from "@/shared/components/Form/ProfileForm"
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shadcn-components/ui/button";
 
 export const Landing = () => {
   const navigate = useNavigate();

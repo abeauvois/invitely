@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/shadcn-components/ui/button"
 import {
   Form,
-} from "@/components/ui/form"
+} from "@/shadcn-components/ui/form"
 
 import { TextInput } from './TextInput';
 import { SelectInput, SelectOption } from './SelectInput';

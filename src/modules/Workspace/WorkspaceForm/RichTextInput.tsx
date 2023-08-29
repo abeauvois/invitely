@@ -1,5 +1,5 @@
 import ReactQuill from 'react-quill';
-import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel } from "@/shadcn-components/ui/form";
 import { IconTooltip } from "@/shared/components/IconTooltip";
 
 const RichTextInput = ({ fieldName, control }) => (

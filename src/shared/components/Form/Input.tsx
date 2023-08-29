@@ -7,8 +7,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@/shadcn-components/ui/form"
+import { Input } from "@/shadcn-components/ui/input"
 import { UseFormReturn } from 'react-hook-form';
 
 interface TextInputProps {

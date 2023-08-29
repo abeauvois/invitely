@@ -3,11 +3,11 @@ import { useNavigate, useLoaderData } from "react-router";
 import { useForm } from "react-hook-form";
 import 'react-quill/dist/quill.snow.css';
 
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/shadcn-components/ui/form";
+import { Input } from "@/shadcn-components/ui/input";
 import { PageActions } from "@/shared/components/PageActions";
-import { Button } from "@/components/ui/button";
-import { preventSubmit } from "@/lib/utils";
+import { Button } from "@/shadcn-components/ui/button";
+import { preventSubmit } from "@/utils";
 
 import { getForm, updateFormField } from "../forms";
 import { Questions } from "./Questions";

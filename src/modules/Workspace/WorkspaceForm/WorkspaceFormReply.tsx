@@ -2,8 +2,8 @@ import { useLoaderData } from "react-router";
 import { useForm } from "react-hook-form";
 
 import { PageActions } from "@/shared/components/PageActions";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
+import { Button } from "@/shadcn-components/ui/button";
+import { Switch } from "@/shadcn-components/ui/switch";
 import { getForm, getRecipientAnswers } from "../forms";
 import { getRecipient } from "../recipients";
 import { useState } from "react";

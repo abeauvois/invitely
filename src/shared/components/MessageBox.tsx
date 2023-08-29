@@ -4,7 +4,7 @@ import {
     Alert,
     AlertDescription,
     AlertTitle,
-} from "@/components/ui/alert"
+} from "@/shadcn-components/ui/alert"
 
 export const MessageBox = ({ title, message }) => (
     <Alert>

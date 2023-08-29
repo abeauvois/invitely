@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/shadcn-components/ui/button"
 import {
   Tooltip as ShadcnToolTip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/shadcn-components/ui/tooltip"
 import { InfoCircledIcon } from "@radix-ui/react-icons"
 import { MessageBox } from "./MessageBox"
 
