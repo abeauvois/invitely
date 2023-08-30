@@ -15,6 +15,7 @@ import { WorkspaceFormReply, loader as workspaceFormReplyLoader } from "@/module
 import { AppLayout } from "@/modules/layouts/AppLayout";
 import { PageLayout } from "@/modules/layouts/PageLayout";
 import { SendForm } from "@/shared/components/Form/SendForm";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 const env = process.env;
 
@@ -26,6 +27,7 @@ const clerkPubKey = env.VITE_CLERK_PUBLISHABLE_KEY;
 
 const router = createBrowserRouter([
   {
+    errorElement: <ErrorBoundary />,
     Component: () => {
       const navigate = useNavigate();
       return (
@@ -45,7 +47,8 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            Component: Landing
+            Component: Landing,
+            errorElement: <ErrorBoundary />,
           },
         ]
       },
@@ -63,7 +66,8 @@ const router = createBrowserRouter([
           {
             path: "workspace",
             loader: workspaceLoader,
-            Component: Workspace
+            Component: Workspace,
+            errorElement: <ErrorBoundary />,
           },
           {
             path: "workspace/form/:formId/",
