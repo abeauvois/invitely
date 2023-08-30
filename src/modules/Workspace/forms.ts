@@ -8,13 +8,13 @@ export const getForms = async () => await getDbData({ location: "/forms" });
 export const getFormIds = async () => Object.keys(await getForms());
 export const getForm = async ({ formId }) => await getDbData({ location: `/forms/${formId}` });
 
-export function create() {
+export async function create() {
 
     const formId = uuid();
     const now = { date: dateToString() };
 
-    setDbData({
-        location: `/forms${formId}`,
+    await setDbData({
+        location: `/forms/${formId}`,
         toStore: {
             creationDate: dateToString(),
             title: `title for ${formId}`,
@@ -27,9 +27,8 @@ export function create() {
     return formId;
 }
 
-export const deleteForm = ({ formId }) => {
-    const forms = getForms();
-    // setLC({ forms: removeKey(formId, forms) });
+export const deleteForm = async ({ formId }) => {
+    setDbData({ location: `/forms/${formId}`, toStore: null })
 }
 
 export const updateFormField = ({ formId, field: { name, val } }) => {

@@ -1,20 +1,17 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 
-import { deleteForm, getForms, getFormIds, create as newId } from "./forms";
+import { deleteForm, getForms, getFormIds, create } from "./forms";
 
 import { Header } from "./Header";
 import FormCard from "./FormCard";
 import AddCard from "./AddCard";
 
 export async function loader() {
-    try {
-        const formIdsDefaults = await getFormIds();
-        const formsDefaults = await getForms();
-        return { formIdsDefaults, formsDefaults };
-    } catch (error: any) {
-        console.log(error);
-    }
+    const formIdsDefaults = await getFormIds();
+    const formsDefaults = await getForms();
+    return { formIdsDefaults, formsDefaults };
+
 }
 
 export const Workspace = () => {
@@ -25,11 +22,16 @@ export const Workspace = () => {
     const [forms, setForms] = useState(formsDefaults);
 
     const navigate = useNavigate();
-    const handleNewForm = () => navigate("/workspace/form/" + newId());
-    const handleDeleteForm = ({ formId }) => setFormIds(() => {
-        deleteForm({ formId });
-        return getFormIds();
-    });
+
+    const handleNewForm = async () => {
+        const newFormId = await create();
+        navigate("/workspace/form/" + newFormId)
+    };
+
+    const handleDeleteForm = async ({ formId }) => {
+        await deleteForm({ formId });
+        setFormIds(await getFormIds());
+    };
 
     const handleSearch = (searchTerm) => {
         setFormIds(
