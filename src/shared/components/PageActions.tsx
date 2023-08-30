@@ -3,7 +3,7 @@ import { ReactComponent as Logo } from "@/assets/logo-no-background.svg";
 
 export const PageActions = ({ backTo = null, pageTitle, children, className = "" }) => {
     return (
-        <header className={`page-actions text-slate-900 justify-between items-end pb-6 ${className}`}>
+        <header className={`page-actions text-slate-900 justify-between items-start pb-6 ${className}`}>
             {backTo
                 ? <div className="flex items-center">
 
