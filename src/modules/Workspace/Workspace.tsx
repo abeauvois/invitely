@@ -33,9 +33,10 @@ export const Workspace = () => {
         setFormIds(await getFormIds());
     };
 
-    const handleSearch = (searchTerm) => {
+    const handleSearch = async (searchTerm) => {
+        const formIds = await getFormIds();
         setFormIds(
-            getFormIds().filter(
+            formIds.filter(
                 formId => forms[formId].title?.toLowerCase()
                     .includes(searchTerm?.toLowerCase())
             )
