@@ -35,13 +35,20 @@ export const updateFormField = ({ formId, field: { name, val } }) => {
     setDbData({ location: `/forms/${formId}/${name}`, toStore: val });
 }
 
+export const getFormQuestions = async ({ formId }) => {
+    return getDbData({ location: `/forms/${formId}/questions` });
+}
+
 export const getQuestion = ({ questions, questionId }) => {
     return questions.find(({ id, date }) => id === questionId);
 }
 
 export const getRecipientAnswers = async ({ formId, recipientId }) => {
-    const questions = await getDbData({ location: `/forms/${formId}/questions` })
-    const answers = await getDbData({ location: `/forms/${formId}/answers/${recipientId}` })
+    const questions = await getFormQuestions({ formId });
+    let answers = await getDbData({ location: `/forms/${formId}/answers/${recipientId}` });
+    if (!answers) { //handling the case where recipients has not replied yet
+        answers = { questions: questions.map(({ id }) => ({ [id]: false })) };
+    }
 
     return answers.questions.map((item, i) => {
         const [questionId] = Object.keys(item);
@@ -49,4 +56,3 @@ export const getRecipientAnswers = async ({ formId, recipientId }) => {
         return { id: questionId, date, answer: item[questionId] };
     });
 }
-
