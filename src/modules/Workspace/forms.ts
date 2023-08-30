@@ -32,17 +32,7 @@ export const deleteForm = async ({ formId }) => {
 }
 
 export const updateFormField = ({ formId, field: { name, val } }) => {
-    const form = getForm({ formId });
-    // setLC({
-    //     ...getLC(),
-    //     forms: {
-    //         ...getForms(),
-    //         [formId]: {
-    //             ...form,
-    //             [name]: val,
-    //         }
-    //     }
-    // })
+    setDbData({ location: `/forms/${formId}/${name}`, toStore: val });
 }
 
 export const getQuestion = ({ questions, questionId }) => {
