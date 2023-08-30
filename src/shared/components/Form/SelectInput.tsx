@@ -11,6 +11,7 @@ import {
 } from "@/shadcn-components/ui/form"
 
 import { ControllerRenderProps, UseFormReturn } from 'react-hook-form';
+import { Maybe } from '@/types/Maybe';
 
 export type SelectOption = {
   readonly label: string;
@@ -19,6 +20,7 @@ export type SelectOption = {
 
 interface SelectInputProps {
   control: UseFormReturn<any>['control'];
+  fieldLabel: Maybe<string>;
   fieldName: string;
   fieldValue?: string;
   description?: string;
@@ -31,7 +33,7 @@ const createOption = (label: string) => ({
   value: label.toLowerCase().replace(/\W/g, ''),
 });
 
-export function SelectInput({ control, fieldName, description, defaultValue, defaultOptions }: SelectInputProps) {
+export function SelectInput({ control, fieldLabel, fieldName, description, defaultValue, defaultOptions }: SelectInputProps) {
 
   const [options, setOptions] = useState(defaultOptions);
 
@@ -53,7 +55,7 @@ export function SelectInput({ control, fieldName, description, defaultValue, def
       name={fieldName}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{fieldName}</FormLabel>
+          <FormLabel>{fieldLabel || fieldName}</FormLabel>
           <FormControl>
             <CreatableSelect
               defaultValue={defaultValue}

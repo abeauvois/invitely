@@ -10,15 +10,17 @@ import {
   FormMessage,
 } from "@/shadcn-components/ui/form"
 import { Input } from "@/shadcn-components/ui/input"
+import { Maybe } from '@/types/Maybe';
 
 interface TextInputProps {
   control: UseFormReturn<any>['control'];
+  fieldLabel: Maybe<string>;
   fieldName: string;
   fieldValue?: string;
   description?: string;
 }
 
-export function TextInput({ control, fieldName, description }: TextInputProps) {
+export function TextInput({ control, fieldLabel, fieldName, description }: TextInputProps) {
 
   return (
     <FormField
@@ -26,7 +28,7 @@ export function TextInput({ control, fieldName, description }: TextInputProps) {
       name={fieldName}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{fieldName}</FormLabel>
+          <FormLabel>{fieldLabel || fieldName}</FormLabel>
           <FormControl>
             <Input {...field} type='text' />
           </FormControl>
