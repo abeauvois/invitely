@@ -1,23 +1,14 @@
-import uuid from "react-uuid";
-
 import { getDbData, setDbData } from "@/utils";
 
 export const getRecipients = async () => await getDbData({ location: "/recipients" });
 export const getRecipient = async ({ recipientId }) => await getDbData({ location: `/recipients/${recipientId}` })
 
-export const create = ({ recipientId = uuid(), emailAddress }) => {
+export const create = async ({ emailAddress }) => {
 
-    setDbData({
-        ...getDbData(),
-        recipients: {
-            ...getRecipients(),
-            [recipientId]: {
-                emailAddress,
-                lastName: "",
-                firstName: "",
-            }
-        }
+    const recipientId = emailAddress.replace(".", "---dot---"); // `.` the dot char is not valid by firebase rules
+    await setDbData({
+        location: `/recipients/${recipientId}/emailAddress`,
+        toStore: emailAddress
     });
-
     return recipientId;
 }

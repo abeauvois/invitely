@@ -13,11 +13,11 @@ import { getForm, updateFormField } from "../forms";
 import { Questions } from "./Questions";
 import { RichTextInput } from "./RichTextInput";
 
-const Header = () => {
+const Header = ({ toUrl }) => {
     const navigate = useNavigate();
     return (
         <PageActions backTo={{ url: "/workspace", label: "Workspace" }} pageTitle="Formulaire" >
-            <Button variant="primary" onClick={() => navigate("/workspace/send")}>
+            <Button variant="primary" onClick={() => navigate(toUrl)}>
                 Envoyer
             </Button>
         </PageActions >
@@ -76,8 +76,7 @@ export const WorkspaceForm = () => {
 
     return (
         <div className="page">
-            <Header />
-
+            <Header toUrl={`/workspace/form/${formId}/compose`} />
             <Form {...form}>
                 <form
                     className="flex flex-col gap-5"

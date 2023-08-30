@@ -14,7 +14,7 @@ import { WorkspaceForm, loader as workspaceFormLoader } from "@/modules/Workspac
 import { WorkspaceFormReply, loader as workspaceFormReplyLoader } from "@/modules/Workspace/WorkspaceForm/WorkspaceFormReply";
 import { AppLayout } from "@/modules/layouts/AppLayout";
 import { PageLayout } from "@/modules/layouts/PageLayout";
-import { SendForm } from "@/shared/components/Form/SendForm";
+import { MailingComposer, loader as mailingComposerLoader } from "@/modules/Workspace/WorkspaceForm/MailingComposer";
 import { ErrorBoundary } from "./ErrorBoundary";
 
 const env = process.env;
@@ -80,8 +80,9 @@ const router = createBrowserRouter([
             Component: WorkspaceFormReply
           },
           {
-            path: "workspace/send",
-            Component: () => <SendForm username="nickname" email="a@b.c" />
+            path: "workspace/form/:formId/compose",
+            loader: mailingComposerLoader,
+            Component: () => <MailingComposer />
           }
         ]
       },
