@@ -17,7 +17,8 @@ export async function create() {
     await setDbData({
         location: `/forms/${formId}`,
         toStore: {
-            creationDate: dateToString(),
+            createdAt: dateToString(),
+            updatedAt: null,
             title: `title for ${formId}`,
             description: "",
             questions: [now, now, now],
