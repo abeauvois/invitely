@@ -12,3 +12,5 @@ export const create = async ({ emailAddress }) => {
     });
     return recipientId;
 }
+
+export const setRecipient = ({ recipientId, toStore }) => setDbData({ location: `/recipients/${recipientId}/`, toStore });

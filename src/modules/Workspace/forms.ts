@@ -1,6 +1,7 @@
 import uuid from "react-uuid";
 
 import { getDbData, setDbData } from "@/utils";
+import { setRecipient } from "./recipients";
 
 export const dateToString = (date = Date.now()) => new Date(date).toISOString().split('T')[0]
 
@@ -55,4 +56,19 @@ export const getRecipientAnswers = async ({ formId, recipientId }) => {
         const { date } = getQuestion({ questions, questionId })
         return { id: questionId, date, answer: item[questionId] };
     });
+}
+
+export const setRecipientAnswers = async ({
+    formId,
+    recipientId,
+    recipientAnswers }) => {
+    await setDbData({
+        location: `/forms/${formId}/answers/${recipientId}/`,
+        toStore: {
+            answerDate: dateToString(),
+            questions: recipientAnswers.map(({ id, answer }) => {
+                return ({ [id]: answer })
+            })
+        }
+    })
 }
