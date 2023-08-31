@@ -71,15 +71,8 @@ function MailingComposer() {
   });
 
   const onSubmit = async ({ subject, message, recipients }) => {
-    // @TODO
-    //Every recipients captured in the SelectInput must :
     recipients.forEach(async ({ value, label }) => {
-      // 1) be stored in the `recipients`
       const recipientId = await create({ emailAddress: value });
-      // 2) have an entry with its recipientId in the `answers` section of the form?????
-      //      --->   May not be necessary right now
-      // 3) A link must be included in the mail sent to each recipient so they can actually fill out this workspace form:
-      // 
       const hostname = window.location.hostname;
       let baseUrl = `${window.location.protocol}//${hostname}`;
       if (import.meta.env.DEV) {
@@ -93,6 +86,11 @@ function MailingComposer() {
                 `)
 
     });
+    // @TODO
+    // At this point, an email must be sent to each recipient
+    // A link must be included in the mail so they can 
+    // click on it to then actually fill out the workspace form
+    // with their answers:
 
   };
 
