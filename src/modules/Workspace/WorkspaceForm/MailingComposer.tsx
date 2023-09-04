@@ -76,6 +76,7 @@ function MailingComposer() {
       const hostname = window.location.hostname;
       let baseUrl = `${window.location.protocol}//${hostname}`;
       if (process.env.NODE_ENV === "development") {
+        // if (import.meta.env.DEV) {
         baseUrl += `:${window.location.port}`
       }
 

@@ -17,13 +17,11 @@ import { PageLayout } from "@/modules/layouts/PageLayout";
 import { MailingComposer, loader as mailingComposerLoader } from "@/modules/Workspace/WorkspaceForm/MailingComposer";
 import { ErrorBoundary } from "./ErrorBoundary";
 
-const env = process.env;
-
-if (!env.VITE_CLERK_PUBLISHABLE_KEY) {
+if (!process.env.VITE_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")
 }
 
-const clerkPubKey = env.VITE_CLERK_PUBLISHABLE_KEY;
+const clerkPubKey = process.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 const router = createBrowserRouter([
   {
