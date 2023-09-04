@@ -10,11 +10,10 @@ import {
   FormMessage,
 } from "@/shadcn-components/ui/form"
 import { Input } from "@/shadcn-components/ui/input"
-import { Maybe } from '@/types/Maybe';
 
 interface TextInputProps {
   control: UseFormReturn<any>['control'];
-  fieldLabel: Maybe<string>;
+  fieldLabel?: string;
   fieldName: string;
   fieldValue?: string;
   description?: string;

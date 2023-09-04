@@ -1,8 +1,15 @@
 import ReactQuill from 'react-quill';
 import { FormControl, FormField, FormItem, FormLabel } from "@/shadcn-components/ui/form";
 import { IconTooltip } from "@/shared/components/IconTooltip";
+import { UseFormReturn } from 'react-hook-form';
 
-const RichTextInput = ({ fieldLabel, fieldName, control }) => (
+interface RichTextProps {
+    control: UseFormReturn<any>['control'];
+    fieldLabel?: string;
+    fieldName: string;
+}
+
+const RichTextInput = ({ fieldLabel, fieldName, control }: RichTextProps) => (
     <FormField
         control={control}
         name={fieldName}

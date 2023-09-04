@@ -125,6 +125,9 @@ dependencies:
   react-router-dom:
     specifier: 6.11.2
     version: 6.11.2(react-dom@18.2.0)(react@18.2.0)
+  react-router-typesafe:
+    specifier: ^1.1.0
+    version: 1.1.0(react-router-dom@6.11.2)(react@18.2.0)(typescript@5.1.6)
   react-select:
     specifier: ^5.7.4
     version: 5.7.4(@types/react@18.2.14)(react-dom@18.2.0)(react@18.2.0)
@@ -8508,6 +8511,18 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-router: 6.11.2(react@18.2.0)
+    dev: false
+
+  /react-router-typesafe@1.1.0(react-router-dom@6.11.2)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-m1WTQXrLGbzCdbjlql/aYUUwUT9dsTWArIgvKfLIHeDkwLtq9F6bw4gAhRz2WCxHPvUyA+cCthvqZgfb+vhCjA==}
+    peerDependencies:
+      react: '>= 17'
+      react-router-dom: '>= 6.4.0'
+      typescript: '>= 4.9'
+    dependencies:
+      react: 18.2.0
+      react-router-dom: 6.11.2(react-dom@18.2.0)(react@18.2.0)
+      typescript: 5.1.6
     dev: false
 
   /react-router@6.11.2(react@18.2.0):

@@ -52,6 +52,7 @@
     "react-quill": "^2.0.0",
     "react-router": "6.11.2",
     "react-router-dom": "6.11.2",
+    "react-router-typesafe": "^1.1.0",
     "react-select": "^5.7.4",
     "react-spinners": "0.13.8",
     "react-spreadsheet-import": "4.0.1",

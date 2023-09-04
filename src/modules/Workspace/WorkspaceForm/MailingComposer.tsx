@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { LoaderFunction, useLoaderData } from "react-router-typesafe";
 import { useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -51,14 +51,14 @@ const Header = ({ label = "Envoie du formulaire", backToUrl }) => {
   )
 }
 
-export async function loader({ params }) {
+export const loader = (async ({ params }) => {
   const { formId } = params;
   const formDataDefault = await getForm({ formId });
   return { formId, formDataDefault };
-}
+}) satisfies LoaderFunction
 
 function MailingComposer() {
-  const { formId, formDataDefault } = useLoaderData();
+  const { formId, formDataDefault } = useLoaderData<typeof loader>();
   const [recipientsOptions, setRecipientsOptions] = React.useState<SelectOption[]>(defaultRecipients);
 
   const form = useForm({
@@ -75,7 +75,7 @@ function MailingComposer() {
       const recipientId = await create({ emailAddress: value });
       const hostname = window.location.hostname;
       let baseUrl = `${window.location.protocol}//${hostname}`;
-      if (import.meta.env.DEV) {
+      if (process.env.NODE_ENV === "development") {
         baseUrl += `:${window.location.port}`
       }
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useLoaderData, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
+import { LoaderFunction, useLoaderData } from "react-router-typesafe";
 
 import { deleteForm, getForms, getFormIds, create } from "./forms";
 
@@ -7,16 +8,15 @@ import { Header } from "./Header";
 import FormCard from "./FormCard";
 import AddCard from "./AddCard";
 
-export async function loader() {
+export const loader = (async () => {
     const formIdsDefaults = await getFormIds();
     const formsDefaults = await getForms();
     return { formIdsDefaults, formsDefaults };
-
-}
+}) satisfies LoaderFunction
 
 export const Workspace = () => {
 
-    const { formIdsDefaults, formsDefaults } = useLoaderData();
+    const { formIdsDefaults, formsDefaults } = useLoaderData<typeof loader>();
 
     const [formIds, setFormIds] = useState(formIdsDefaults);
     const [forms, setForms] = useState(formsDefaults);

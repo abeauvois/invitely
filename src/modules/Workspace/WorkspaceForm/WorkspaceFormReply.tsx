@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { LoaderFunction, useLoaderData } from "react-router-typesafe";
 import { useFieldArray, useForm } from "react-hook-form";
 
 import { PageActions } from "@/shared/components/PageActions";
@@ -81,13 +81,13 @@ const AnswersSection = ({ questions, onChange }) => {
     )
 }
 
-export async function loader({ params }) {
+export const loader = (async ({ params }) => {
     const { formId, recipientId } = params;
     const workspaceFormData = await getForm({ formId });
     const recipientData = await getRecipient({ recipientId });
     const recipientAnswers = await getRecipientAnswers({ formId, recipientId });
     return { formId, recipientId, workspaceFormData, recipientData, recipientAnswers };
-}
+}) satisfies LoaderFunction
 
 export const WorkspaceFormReply = () => {
 
@@ -97,7 +97,7 @@ export const WorkspaceFormReply = () => {
         workspaceFormData,
         recipientData,
         recipientAnswers
-    } = useLoaderData();
+    } = useLoaderData<typeof loader>();
 
     const { register, getValues } = useForm({
         defaultValues: {

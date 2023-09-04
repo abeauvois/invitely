@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLoaderData } from "react-router";
+import { useNavigate } from "react-router";
+import { LoaderFunction, useLoaderData } from "react-router-typesafe";
 import { useForm } from "react-hook-form";
 import 'react-quill/dist/quill.snow.css';
 
@@ -48,15 +49,15 @@ const QuestionsSection = ({ formId, questions }) => (
     </FormItem>
 )
 
-export async function loader({ params }) {
+export const loader = (async ({ params }) => {
     const { formId, recipientId } = params;
     const formDataDefault = await getForm({ formId });
     return { formId, formDataDefault };
-}
+}) satisfies LoaderFunction
 
 export const WorkspaceForm = () => {
 
-    const { formId, formDataDefault } = useLoaderData();
+    const { formId, formDataDefault } = useLoaderData<typeof loader>();
     const [formData] = useState(formDataDefault);
 
     const form = useForm({
