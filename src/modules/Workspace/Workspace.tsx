@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { LoaderFunction, useLoaderData } from "react-router-typesafe";
 
-import { deleteForm, getForms, getFormIds, create } from "./forms";
+import { deleteForm, getForms, getFormIds, create, duplicateForm } from "./forms";
 
 import { Header } from "./Header";
 import FormCard from "./FormCard";
@@ -17,16 +17,22 @@ export const loader = (async () => {
 export const Workspace = () => {
 
     const { formIdsDefaults, formsDefaults } = useLoaderData<typeof loader>();
-
     const [formIds, setFormIds] = useState(formIdsDefaults);
-    const [forms, setForms] = useState(formsDefaults);
+    const [forms] = useState(formsDefaults);
 
     const navigate = useNavigate();
 
+    const navigateToFormWithId = ({ formId }) => navigate("/workspace/form/" + formId)
+
     const handleNewForm = async () => {
-        const newFormId = await create();
-        navigate("/workspace/form/" + newFormId)
+        const formId = await create();
+        navigateToFormWithId({ formId });
     };
+
+    const handleFormDuplication = async ({ formId }) => {
+        const _formId = await duplicateForm({ formId });
+        navigateToFormWithId({ formId: _formId });
+    }
 
     const handleDeleteForm = async ({ formId }) => {
         await deleteForm({ formId });
@@ -52,6 +58,7 @@ export const Workspace = () => {
                         key={formId}
                         to={`/workspace/form/${formId}/`}
                         label={forms[formId].title}
+                        onDuplicate={() => handleFormDuplication({ formId })}
                         onDelete={() => handleDeleteForm({ formId })} />
                 ))}
                 <AddCard onNewForm={handleNewForm} />
