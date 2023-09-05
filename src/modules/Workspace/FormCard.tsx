@@ -14,7 +14,7 @@ export default ({ to, label, onDuplicate, onDelete }) => (
                     <Link to={to}>{label}</Link>
                 </Button>
                 <div>
-                    <CopyButton onCopy={onDuplicate} />
+                    <CopyButton title="Dupliquer" onCopy={onDuplicate} />
                     <DeleteButton onDelete={onDelete} />
                 </div>
             </dd>
