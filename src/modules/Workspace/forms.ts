@@ -1,61 +1,78 @@
 import uuid from "react-uuid";
-
 import { getDbData, setDbData } from "@/utils";
-import { setRecipient } from "./recipients";
 
 export const dateToString = (date = Date.now()) => new Date(date).toISOString().split('T')[0]
+export const dateTimeToString = (date = Date.now()) => new Date(date).toISOString()
 
 export const getForms = async () => await getDbData({ location: "/forms" });
-export const getFormIds = async () => Object.keys(await getForms());
+
+export const getFormIds = async () => Object.keys(await getForms() || []);
+
 export const getForm = async ({ formId }) => await getDbData({ location: `/forms/${formId}` });
 
-export async function create() {
-
+export async function create(toStore = {
+    createdAt: dateTimeToString(),
+    sentAt: null,
+    title: `un titre`,
+    description: "",
+    dateList: [
+        { id: uuid(), date: dateToString() },
+        { id: uuid(), date: dateToString() },
+        { id: uuid(), date: dateToString() },
+    ],
+    recipientList: [],
+    answers: []
+}) {
     const formId = uuid();
-    const now = { date: dateToString() };
-
     await setDbData({
         location: `/forms/${formId}`,
-        toStore: {
-            createdAt: dateToString(),
-            updatedAt: null,
-            title: `title for ${formId}`,
-            description: "",
-            questions: [now, now, now],
-            answers: []
-        }
+        toStore
     });
 
     return formId;
 }
 
+export const duplicateForm = async ({ formId }) => {
+    const formToDuplicate = await getForm({ formId });
+    return await create({
+        ...formToDuplicate,
+        title: `Copie de ${formToDuplicate.title}`,
+        createdAt: dateTimeToString(),
+        sentAt: null
+    })
+}
+
 export const deleteForm = async ({ formId }) => {
-    setDbData({ location: `/forms/${formId}`, toStore: null })
+    await setDbData({ location: `/forms/${formId}`, toStore: null })
 }
 
-export const updateFormField = ({ formId, field: { name, val } }) => {
-    setDbData({ location: `/forms/${formId}/${name}`, toStore: val });
+export const updateFormField = async ({ formId, field: { name, val } }) => {
+    await setDbData({ location: `/forms/${formId}/${name}`, toStore: val });
 }
 
-export const getFormQuestions = async ({ formId }) => {
-    return getDbData({ location: `/forms/${formId}/questions` });
+export const setFormDateList = async ({ formId, dateList }) => {
+    await updateFormField({ formId, field: { name: "dateList", val: dateList } });
+};
+
+export const getFormDateList = async ({ formId }) => {
+    return await getDbData({ location: `/forms/${formId}/dateList` });
 }
 
-export const getQuestion = ({ questions, questionId }) => {
-    return questions.find(({ id, date }) => id === questionId);
+export const getDateFromList = ({ dateList, dateItemId }) => {
+    return dateList.find(({ id, date }) => id === dateItemId);
 }
 
 export const getRecipientAnswers = async ({ formId, recipientId }) => {
-    const questions = await getFormQuestions({ formId });
+    const dateList = await getFormDateList({ formId });
     let answers = await getDbData({ location: `/forms/${formId}/answers/${recipientId}` });
     if (!answers) { //handling the case where recipients has not replied yet
-        answers = { questions: questions.map(({ id }) => ({ [id]: false })) };
+        answers = { dateList: dateList.map(({ id }) => ({ [id]: false })) };
     }
 
-    return answers.questions.map((item, i) => {
-        const [questionId] = Object.keys(item);
-        const { date } = getQuestion({ questions, questionId })
-        return { id: questionId, date, answer: item[questionId] };
+    return answers.dateList.map((item, i) => {
+        const [dateItemId] = Object.keys(item);
+        const { date } = getDateFromList({ dateList, dateItemId })
+        return { id: dateItemId, date, answer: item[dateItemId] };
     });
 }
 
@@ -63,6 +80,7 @@ export const setRecipientAnswers = async ({
     formId,
     recipientId,
     recipientAnswers }) => {
+
     await setDbData({
         location: `/forms/${formId}/answers/${recipientId}/`,
         toStore: {

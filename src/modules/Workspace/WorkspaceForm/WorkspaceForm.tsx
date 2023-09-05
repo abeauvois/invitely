@@ -11,7 +11,7 @@ import { Button } from "@/shadcn-components/ui/button";
 import { preventSubmit } from "@/utils";
 
 import { getForm, updateFormField } from "../forms";
-import { Questions } from "./Questions";
+import { DateList } from "./DateList";
 import { RichTextInput } from "./RichTextInput";
 
 const Header = ({ toUrl }) => {
@@ -40,17 +40,17 @@ const TitleSection = ({ control }) => (
     />
 )
 
-const QuestionsSection = ({ formId, questions }) => (
+const DateListSection = ({ formId, dateList }) => (
     <FormItem className="text-center">
         <FormLabel>Dates de disponibilités</FormLabel>
         <FormControl>
-            <Questions formId={formId} questions={questions} />
+            <DateList formId={formId} dateList={dateList} />
         </FormControl>
     </FormItem>
 )
 
 export const loader = (async ({ params }) => {
-    const { formId, recipientId } = params;
+    const { formId } = params;
     const formDataDefault = await getForm({ formId });
     return { formId, formDataDefault };
 }) satisfies LoaderFunction
@@ -59,6 +59,7 @@ export const WorkspaceForm = () => {
 
     const { formId, formDataDefault } = useLoaderData<typeof loader>();
     const [formData] = useState(formDataDefault);
+    const dateList = formData.dateList;
 
     const form = useForm({
         defaultValues: {
@@ -84,7 +85,7 @@ export const WorkspaceForm = () => {
                     onSubmit={form.handleSubmit(preventSubmit)}>
                     <TitleSection control={form.control} />
                     <RichTextInput fieldName="description" control={form.control} />
-                    <QuestionsSection formId={formId} questions={formData.questions} />
+                    <DateListSection formId={formId} dateList={dateList} />
                 </form>
             </Form >
         </div >

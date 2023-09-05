@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
-import { dateToString, updateFormField } from "../forms";
+import uuid from "react-uuid";
+
+import { dateToString, setFormDateList } from "../forms";
 
 import { AddButton } from "./AddButton";
 import { DeleteButton } from "@/shared/components/Buttons/DeleteButton";
@@ -26,34 +28,35 @@ const SwapButton = ({ displayCondition, up = false, down = false, onSwap }) => {
     )
 }
 
-export const Questions = ({ formId, questions }) => {
+export const DateList = ({ formId, dateList }) => {
 
     const fieldArrayName = "dates";
     const { control, register } = useForm({
         defaultValues: {
-            [fieldArrayName]: questions
+            [fieldArrayName]: dateList
         }
     });
     const { fields, prepend, append, update, remove, swap } = useFieldArray({
+        keyName: "rowId",
         name: fieldArrayName,
         control,
     });
 
+    const createDateRowObject = () => ({ id: uuid(), date: dateToString() })
+
     const onPrependDate = () => {
-        prepend({ date: dateToString() })
+        prepend(createDateRowObject())
     }
 
     const onAppendDate = () => {
-        append({ date: dateToString() })
+        append(createDateRowObject())
     }
 
     const onDateUpdate = (index, date) => {
-        update(index, { date })
+        update(index, { id: fields[index]["id"], date })
     };
 
-    useEffect(() => {
-        updateFormField({ formId, field: { name: "questions", val: fields } });
-    }, [fields]);
+    useEffect(() => { setFormDateList({ formId, dateList: fields }) }, [fields]);
 
     return (
         <section className="mx-auto max-w-lg flex flex-col">
@@ -63,7 +66,7 @@ export const Questions = ({ formId, questions }) => {
                     .map((field, index) => {
                         const { onBlur, ...registerProps } = register(`${fieldArrayName}.${index}.date`);
                         return (
-                            <li key={field.id} className="p-2 flex items-center">
+                            <li key={field["id"]} className="p-2 flex items-center">
                                 <span className="flex w-32">
                                     {/* MOVE UP */}
                                     <SwapButton
