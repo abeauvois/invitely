@@ -5,7 +5,7 @@ export const getRecipient = async ({ recipientId }) => await getDbData({ locatio
 
 export const create = async ({ emailAddress }) => {
 
-    const recipientId = emailAddress.replace(".", "---dot---"); // `.` the dot char is not valid by firebase rules
+    const recipientId = emailAddress.replaceAll(".", "---dot---"); // `.` the dot char is not valid by firebase rules
     await setDbData({
         location: `/recipients/${recipientId}/emailAddress`,
         toStore: emailAddress
