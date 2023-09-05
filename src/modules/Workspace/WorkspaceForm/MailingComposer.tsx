@@ -14,7 +14,7 @@ import { TextInput } from '../../../shared/components/Form/TextInput';
 import { SelectInput, SelectOption } from '../../../shared/components/Form/SelectInput';
 import { RichTextInput } from '@/modules/Workspace/WorkspaceForm/RichTextInput';
 import { PageActions } from '../../../shared/components/PageActions';
-import { getForm } from '../forms';
+import { setMailingList, getForm } from '../forms';
 import { create } from '../recipients';
 
 
@@ -76,22 +76,22 @@ function MailingComposer() {
       const hostname = window.location.hostname;
       let baseUrl = `${window.location.protocol}//${hostname}`;
       if (process.env.NODE_ENV === "development") {
-        // if (import.meta.env.DEV) {
         baseUrl += `:${window.location.port}`
       }
 
+      // @TODO
+      // At this point, an email must be sent to each recipient
+      // A link must be included in the mail so they can 
+      // click on it to then actually fill out the workspace form
+      // with their answers
       console.log(` \tto:${value} 
                  \n \tsubject:${subject}
                  \n \tmessage (as HTML): \n ${message} 
                  <a href="${baseUrl}/workspace/form/${formId}/${recipientId}" rel="noopener noreferrer" target="_blank">Répondre au questionnaire</a></p> 
                 `)
-
     });
-    // @TODO
-    // At this point, an email must be sent to each recipient
-    // A link must be included in the mail so they can 
-    // click on it to then actually fill out the workspace form
-    // with their answers:
+
+    await setMailingList({ formId, mailingList: recipients });
 
   };
 

@@ -20,8 +20,8 @@ export async function create(toStore = {
         { id: uuid(), date: dateToString() },
         { id: uuid(), date: dateToString() },
     ],
-    recipientList: [],
-    answers: []
+    mailingList: null,
+    submissionList: null
 }) {
     const formId = uuid();
     await setDbData({
@@ -92,3 +92,13 @@ export const setRecipientDateList = async ({
         }
     })
 }
+
+export const getMailingListByFormId = async ({ formId }) => await getDbData({ location: `/forms/${formId}/mailingList` })
+
+export const setMailingList = async ({ formId, mailingList }) => {
+    await setDbData({
+        location: `/forms/${formId}/mailingList`, toStore: mailingList
+    })
+}
+
+export const lockFormEdition = async ({ formId }) => await setDbData({ location: `/forms/${formId}/sentAt`, toStore: dateTimeToString() })
