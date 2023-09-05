@@ -7,9 +7,10 @@ interface RichTextProps {
     control: UseFormReturn<any>['control'];
     fieldLabel?: string;
     fieldName: string;
+    disabled: boolean;
 }
 
-const RichTextInput = ({ fieldLabel, fieldName, control }: RichTextProps) => (
+const RichTextInput = ({ fieldLabel, fieldName, control, disabled }: RichTextProps) => (
     <FormField
         control={control}
         name={fieldName}
@@ -19,7 +20,7 @@ const RichTextInput = ({ fieldLabel, fieldName, control }: RichTextProps) => (
                     <IconTooltip icon="info" label={fieldLabel || fieldName} title="Bon à savoir!" message="Ce texte sera inclus dans le courriel envoyé aux destinataires de ce formulaire." />
                 </FormLabel>
                 <FormControl>
-                    <ReactQuill {...field}></ReactQuill>
+                    <ReactQuill readOnly={disabled} {...field}></ReactQuill>
                 </FormControl>
             </FormItem>
         )} />

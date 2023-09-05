@@ -9,13 +9,14 @@ import { DeleteButton } from "@/shared/components/Buttons/DeleteButton";
 import { Button } from "@/shadcn-components/ui/button";
 import { BarsArrowDownIcon, BarsArrowUpIcon } from "@heroicons/react/24/outline";
 
-const SwapButton = ({ displayCondition, up = false, down = false, onSwap }) => {
+const SwapButton = ({ displayCondition, up = false, down = false, onSwap, disabled }) => {
     const props = { className: "w-5 h-5" };
     return (
         <>
             {displayCondition ? (
                 <Button
                     type="button"
+                    disabled={disabled}
                     onClick={onSwap}>
                     {up
                         ? <BarsArrowUpIcon {...props} />
@@ -28,7 +29,7 @@ const SwapButton = ({ displayCondition, up = false, down = false, onSwap }) => {
     )
 }
 
-export const DateList = ({ formId, dateList }) => {
+export const DateList = ({ formId, dateList, disabled }) => {
 
     const fieldArrayName = "dates";
     const { control, register } = useForm({
@@ -60,7 +61,7 @@ export const DateList = ({ formId, dateList }) => {
 
     return (
         <section className="mx-auto max-w-lg flex flex-col">
-            <AddButton onClick={onPrependDate} />
+            <AddButton disabled={disabled} onClick={onPrependDate} />
             <ul className="max-w-md mx-auto">
                 {fields
                     .map((field, index) => {
@@ -72,16 +73,21 @@ export const DateList = ({ formId, dateList }) => {
                                     <SwapButton
                                         up
                                         displayCondition={index > 0 && index <= fields.length - 1}
-                                        onSwap={() => swap(index, index - 1)} />
+                                        disabled={disabled}
+                                        onSwap={() => swap(index, index - 1)}
+                                    />
 
                                     {/* MOVE DOWN */}
                                     <SwapButton
                                         down
                                         displayCondition={index >= 0 && index < fields.length - 1}
-                                        onSwap={() => swap(index, index + 1)} />
+                                        disabled={disabled}
+                                        onSwap={() => swap(index, index + 1)}
+                                    />
                                 </span>
                                 <input
                                     type="date"
+                                    disabled={disabled}
                                     className="w-32"
                                     placeholder="saisir une date"
                                     onBlur={(e) => {
@@ -94,13 +100,13 @@ export const DateList = ({ formId, dateList }) => {
 
                                 <span>
                                     {/* REMOVE */}
-                                    <DeleteButton onDelete={() => remove(index)} />
+                                    <DeleteButton disabled={disabled} onDelete={() => remove(index)} />
                                 </span>
                             </li>
                         )
                     })}
             </ul>
-            <AddButton onClick={onAppendDate} />
+            <AddButton disabled={disabled} onClick={onAppendDate} />
         </section>
     )
 }

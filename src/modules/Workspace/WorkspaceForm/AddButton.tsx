@@ -1,10 +1,11 @@
 import { Button } from "@/shadcn-components/ui/button";
 
-export const AddButton = ({ onClick }) => {
+export const AddButton = ({ onClick, disabled }) => {
     return (
         <Button
             type="button"
             className="flex justify-center gap-5"
+            disabled={disabled}
             onClick={onClick}
         >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

@@ -14,7 +14,7 @@ import { TextInput } from '../../../shared/components/Form/TextInput';
 import { SelectInput, SelectOption } from '../../../shared/components/Form/SelectInput';
 import { RichTextInput } from '@/modules/Workspace/WorkspaceForm/RichTextInput';
 import { PageActions } from '../../../shared/components/PageActions';
-import { setMailingList, getForm } from '../forms';
+import { setMailingList, getForm, lockFormEdition } from '../forms';
 import { create } from '../recipients';
 
 
@@ -92,6 +92,10 @@ function MailingComposer() {
     });
 
     await setMailingList({ formId, mailingList: recipients });
+    await lockFormEdition({ formId });
+
+    // @TODO:
+    // Redirect user to form page and display confirmation message that form was sent to mailing list
 
   };
 
