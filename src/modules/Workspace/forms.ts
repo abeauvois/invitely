@@ -62,31 +62,32 @@ export const getDateFromList = ({ dateList, dateItemId }) => {
     return dateList.find(({ id, date }) => id === dateItemId);
 }
 
-export const getRecipientAnswers = async ({ formId, recipientId }) => {
+export const getRecipientDateList = async ({ formId, recipientId }) => {
     const dateList = await getFormDateList({ formId });
-    let answers = await getDbData({ location: `/forms/${formId}/answers/${recipientId}` });
-    if (!answers) { //handling the case where recipients has not replied yet
-        answers = { dateList: dateList.map(({ id }) => ({ [id]: false })) };
+    let recipientSubmission = await getDbData({ location: `/forms/${formId}/submissionList/${recipientId}` });
+    if (!recipientSubmission) { //handling the case where recipients has not replied yet
+        recipientSubmission = { dateList: dateList.map(({ id }) => ({ [id]: false })) };
+
     }
 
-    return answers.dateList.map((item, i) => {
+    return recipientSubmission.dateList.map((item, i) => {
         const [dateItemId] = Object.keys(item);
         const { date } = getDateFromList({ dateList, dateItemId })
-        return { id: dateItemId, date, answer: item[dateItemId] };
+        return { id: dateItemId, date, isPresent: item[dateItemId] };
     });
 }
 
-export const setRecipientAnswers = async ({
+export const setRecipientDateList = async ({
     formId,
     recipientId,
-    recipientAnswers }) => {
+    recipientDateList }) => {
 
     await setDbData({
-        location: `/forms/${formId}/answers/${recipientId}/`,
+        location: `/forms/${formId}/submissionList/${recipientId}/`,
         toStore: {
-            answerDate: dateToString(),
-            questions: recipientAnswers.map(({ id, answer }) => {
-                return ({ [id]: answer })
+            submittedAt: dateTimeToString(),
+            dateList: recipientDateList.map(({ id, isPresent }) => {
+                return ({ [id]: isPresent })
             })
         }
     })

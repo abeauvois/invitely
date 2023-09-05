@@ -1,10 +1,10 @@
 import { LoaderFunction, useLoaderData } from "react-router-typesafe";
-import { useFieldArray, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import { PageActions } from "@/shared/components/PageActions";
 import { Button } from "@/shadcn-components/ui/button";
 import { Switch } from "@/shadcn-components/ui/switch";
-import { getForm, getRecipientAnswers, setRecipientAnswers } from "../forms";
+import { getForm, getRecipientDateList, setRecipientDateList } from "../forms";
 import { getRecipient, setRecipient } from "../recipients";
 import { useState } from "react";
 
@@ -61,17 +61,17 @@ const DescriptionSection = ({ content }) => (
     <Section dangerouslySetInnerHTML={{ __html: content }} />
 )
 
-const AnswersSection = ({ questions, onChange }) => {
+const DateListSection = ({ dateList, onChange }) => {
     return (
         <Section>
             {
-                questions.map((question, index) => (
+                dateList.map((dateItem, index) => (
                     <div
-                        key={question.id}
+                        key={dateItem.id}
                         className="m-auto flex max-w-sm justify-around items-center"
-                    ><span><input type="date" value={question.date} disabled /></span>
+                    ><span><input type="date" value={dateItem.date} disabled /></span>
                         <Switch
-                            checked={question.answer}
+                            checked={dateItem.isPresent}
                             onCheckedChange={(val) => onChange({ index, val })}
                         />
                     </div>
@@ -85,8 +85,8 @@ export const loader = (async ({ params }) => {
     const { formId, recipientId } = params;
     const workspaceFormData = await getForm({ formId });
     const recipientData = await getRecipient({ recipientId });
-    const recipientAnswers = await getRecipientAnswers({ formId, recipientId });
-    return { formId, recipientId, workspaceFormData, recipientData, recipientAnswers };
+    const recipientDateList = await getRecipientDateList({ formId, recipientId });
+    return { formId, recipientId, workspaceFormData, recipientData, recipientDateList };
 }) satisfies LoaderFunction
 
 export const WorkspaceFormReply = () => {
@@ -96,7 +96,7 @@ export const WorkspaceFormReply = () => {
         recipientId,
         workspaceFormData,
         recipientData,
-        recipientAnswers
+        recipientDateList
     } = useLoaderData<typeof loader>();
 
     const { register, getValues } = useForm({
@@ -107,24 +107,26 @@ export const WorkspaceFormReply = () => {
         }
     });
 
-    const [answers, setAnswers] = useState(recipientAnswers);
+    const [dateList, setDateList] = useState(recipientDateList);
 
     const handleSwitchChange = ({ index, val }) => {
-        setAnswers(oldArr => {
+        setDateList(oldArr => {
             const newArr = [...oldArr];
-            newArr[index].answer = val;
+            newArr[index].isPresent = val;
             return newArr;
         });
     }
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await setRecipientAnswers({
+
+        await setRecipientDateList({
             formId,
             recipientId,
-            recipientAnswers: answers
+            recipientDateList: dateList
         })
         await setRecipient({ recipientId, toStore: getValues() });
+
         // @TODO
         //  An email must now be sent to the user:
         // 1) to confirm they've succesfully submitted the form
@@ -148,7 +150,7 @@ export const WorkspaceFormReply = () => {
                     lastNameProps={register("lastName")}
                     firstNameProps={register("firstName")}
                 />
-                <AnswersSection questions={answers} onChange={handleSwitchChange} />
+                <DateListSection dateList={dateList} onChange={handleSwitchChange} />
             </form>
         </ div>
     )
