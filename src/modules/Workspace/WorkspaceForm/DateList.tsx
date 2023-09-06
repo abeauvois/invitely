@@ -68,7 +68,7 @@ export const DateList = ({ formId, dateList, disabled }) => {
                         const { onBlur, ...registerProps } = register(`${fieldArrayName}.${index}.date`);
                         return (
                             <li key={field["id"]} className="p-2 flex items-center">
-                                <span className="flex w-32">
+                                <span className="flex w-28">
                                     {/* MOVE UP */}
                                     <SwapButton
                                         up
@@ -88,7 +88,7 @@ export const DateList = ({ formId, dateList, disabled }) => {
                                 <input
                                     type="date"
                                     disabled={disabled}
-                                    className="w-32"
+                                    className="w-36"
                                     placeholder="saisir une date"
                                     onBlur={(e) => {
                                         onBlur(e);
