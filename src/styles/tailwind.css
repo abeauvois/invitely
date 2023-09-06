@@ -66,10 +66,11 @@
      @apply rounded bg-gray-200 border-transparent focus:border-transparent focus:bg-invitely text-invitely focus:ring-1 focus:ring-offset-1 focus:ring-invitely;
    }
  
+   .quill .ql-disabled .ql-editor *,
    input[disabled],
-   select[disabled] {
-     @apply bg-white opacity-100;
- 
+   select[disabled],
+   button[disabled] {
+     @apply opacity-70 cursor-not-allowed;
      background-image: none;
    }
  
