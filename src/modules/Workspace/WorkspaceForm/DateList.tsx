@@ -57,7 +57,7 @@ export const DateList = ({ formId, dateList, disabled }) => {
         update(index, { id: fields[index]["id"], date })
     };
 
-    useEffect(() => { setFormDateList({ formId, dateList: fields }) }, [fields]);
+    useEffect(() => { setFormDateList({ formId, dateList: fields.map((field) => ({ id: field["id"], date: field["date"] })) }) }, [fields]);
 
     return (
         <section className="mx-auto max-w-lg flex flex-col">
@@ -67,7 +67,7 @@ export const DateList = ({ formId, dateList, disabled }) => {
                     .map((field, index) => {
                         const { onBlur, ...registerProps } = register(`${fieldArrayName}.${index}.date`);
                         return (
-                            <li key={field["id"]} className="p-2 flex items-center">
+                            <li key={field["rowid"]} className="p-2 flex items-center">
                                 <span className="flex w-28">
                                     {/* MOVE UP */}
                                     <SwapButton
