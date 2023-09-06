@@ -28,9 +28,9 @@ interface SelectInputProps {
   defaultOptions?: SelectOption[];
 }
 
-const createOption = (label: string) => ({
-  label,
-  value: label.toLowerCase().replace(/\W/g, ''),
+const createOption = (value: string) => ({
+  label: value.toLowerCase(),
+  value: value.toLowerCase(),
 });
 
 export function SelectInput({ control, fieldLabel, fieldName, description, defaultValue, defaultOptions }: SelectInputProps) {
@@ -61,7 +61,6 @@ export function SelectInput({ control, fieldLabel, fieldName, description, defau
               defaultValue={defaultValue}
               isMulti
               isClearable
-              name="recipients"
               options={options}
               className="basic-multi-select"
               classNamePrefix="select"
