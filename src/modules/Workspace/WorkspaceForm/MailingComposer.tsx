@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { LoaderFunction, useLoaderData } from "react-router-typesafe";
 import { useForm } from 'react-hook-form';
+
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
+import { setMailingList, getForm, lockFormEdition } from '../forms';
+import { create } from '../recipients';
+
 import { Button } from "@/shadcn-components/ui/button"
-import {
-  Form,
-} from "@/shadcn-components/ui/form"
+import { Form } from "@/shadcn-components/ui/form"
+import Modal from '@/shared/components/Modal';
 
 import { TextInput } from '../../../shared/components/Form/TextInput';
 import { SelectInput, SelectOption } from '../../../shared/components/Form/SelectInput';
 import { RichTextInput } from '@/modules/Workspace/WorkspaceForm/RichTextInput';
 import { PageActions } from '../../../shared/components/PageActions';
-import { setMailingList, getForm, lockFormEdition } from '../forms';
-import { create } from '../recipients';
-
 
 const defaultRecipients: SelectOption[] = [
   { value: 'abeauvois@gmail.com', label: 'alex: abeauvois@gmail.com' },
@@ -59,7 +60,9 @@ export const loader = (async ({ params }) => {
 
 function MailingComposer() {
   const { formId, formDataDefault } = useLoaderData<typeof loader>();
+  const navigate = useNavigate();
   const [recipientsOptions, setRecipientsOptions] = React.useState<SelectOption[]>(defaultRecipients);
+  const [showModal, setShowModal] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(emailingSchema),
@@ -93,9 +96,7 @@ function MailingComposer() {
 
     await setMailingList({ formId, mailingList: recipients });
     await lockFormEdition({ formId });
-
-    // @TODO:
-    // Redirect user to form page and display confirmation message that form was sent to mailing list
+    setShowModal(true);
 
   };
 
@@ -105,10 +106,31 @@ function MailingComposer() {
       <div className="mx-auto max-w-7xl px-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <SelectInput fieldLabel='Destinataires' fieldName='recipients' control={form.control} defaultOptions={recipientsOptions} />
-            <TextInput fieldLabel='Sujet' fieldName='subject' control={form.control} />
-            <RichTextInput fieldLabel='Corps du mail' fieldName='message' control={form.control} />
-            <Button type="submit" variant='primary'>Envoyer</Button>
+            <SelectInput
+              fieldLabel='Destinataires'
+              fieldName='recipients'
+              control={form.control}
+              defaultOptions={recipientsOptions} />
+            <TextInput
+              fieldLabel='Sujet'
+              fieldName='subject'
+              control={form.control} />
+            <RichTextInput
+              fieldLabel='Corps du mail'
+              fieldName='message'
+              control={form.control} />
+            <Button
+              type="submit"
+              variant='primary'>Envoyer</Button>
+            <Modal
+              alertMode
+              isOpen={showModal}
+              title="Confirmation d'envoie"
+              description="Le formulaire vient d'être envoyé aux destinataires indiqués."
+              confirmationText="Ok"
+              onConfirm={() => navigate("/workspace")}
+              closeModal={() => { }}
+            />
           </form>
         </Form>
       </div>
