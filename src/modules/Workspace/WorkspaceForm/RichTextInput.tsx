@@ -1,5 +1,5 @@
 import ReactQuill from 'react-quill';
-import { FormControl, FormField, FormItem, FormLabel } from "@/shadcn-components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/shadcn-components/ui/form";
 import { IconTooltip } from "@/shared/components/IconTooltip";
 import { UseFormReturn } from 'react-hook-form';
 
@@ -22,6 +22,7 @@ const RichTextInput = ({ fieldLabel, fieldName, control, disabled = false }: Ric
                 <FormControl>
                     <ReactQuill {...field} readOnly={disabled} ></ReactQuill>
                 </FormControl>
+                <FormMessage />
             </FormItem>
         )} />
 );
