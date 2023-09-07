@@ -91,9 +91,7 @@ function MailingComposer() {
 
       // @TODO
       // At this point, an email must be sent to each recipient
-      // A link must be included in the mail so they can 
-      // click on it to then actually fill out the workspace form
-      // with their answers
+      // Each must click on the custom link to then actually fill out the workspace form
       const devLogString = ` \tto:${value} 
                  \n \tsubject:${subject}
                  \n \tmessage (as HTML): \n ${message} 
