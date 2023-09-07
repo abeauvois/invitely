@@ -17,9 +17,10 @@ interface TextInputProps {
   fieldName: string;
   fieldValue?: string;
   description?: string;
+  disabled?: boolean;
 }
 
-export function TextInput({ control, fieldLabel, fieldName, description }: TextInputProps) {
+export function TextInput({ control, fieldLabel, fieldName, description, disabled }: TextInputProps) {
 
   return (
     <FormField
@@ -29,7 +30,7 @@ export function TextInput({ control, fieldLabel, fieldName, description }: TextI
         <FormItem>
           <FormLabel>{fieldLabel || fieldName}</FormLabel>
           <FormControl>
-            <Input {...field} type='text' />
+            <Input {...field} disabled={disabled} type='text' />
           </FormControl>
           <FormDescription>{description}</FormDescription>
           <FormMessage />
