@@ -1,16 +1,7 @@
-/**
- * @TODO:
- * - if this form is locked:
- * -- the `Send` button must be changed to a `Duplicate` button
- * -- an info icon explains that since the form has been sent, it is locked, but that they can duplicate the form
- *    and send that new one
- */
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { LoaderFunction, useLoaderData } from "react-router-typesafe";
 import { useForm } from "react-hook-form";
-import 'react-quill/dist/quill.snow.css';
 
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/shadcn-components/ui/form";
 import { Input } from "@/shadcn-components/ui/input";
@@ -20,8 +11,24 @@ import { preventSubmit } from "@/utils";
 
 import { getForm, updateFormField } from "../forms";
 import { DateList } from "./DateList";
-import { RichTextInput } from "./RichTextInput";
+import { TextInput } from "@/shared/components/Form/TextInput";
+import { RichTextInput, notEqualToPBrP } from "./RichTextInput";
 import { IconTooltip } from "@/shared/components/IconTooltip";
+import { z } from "zod";
+
+const formSchema = z.object({
+    title: z.string().nonempty(),
+    description: z.string().refine(notEqualToPBrP, {
+        message: "Le corps du mail est obligatoire",
+    }),
+    dateList: z.array(
+        z.object({
+            date: z.coerce.date()
+        })
+    ).min(1, {
+        message: "Veuillez ajouter au moins 1 date"
+    })
+})
 
 const Header = ({ toUrl, isFormLocked }) => {
     const navigate = useNavigate();
@@ -72,7 +79,6 @@ export const WorkspaceForm = () => {
 
     const { formId, formDataDefault, isFormLocked } = useLoaderData<typeof loader>();
     const [formData] = useState(formDataDefault);
-    const dateList = formData.dateList;
 
     const form = useForm({
         defaultValues: {
@@ -96,9 +102,9 @@ export const WorkspaceForm = () => {
                 <form
                     className="flex flex-col gap-5"
                     onSubmit={form.handleSubmit(preventSubmit)}>
-                    <TitleSection control={form.control} disabled={isFormLocked} />
+                    <TextInput control={form.control} fieldName="title" fieldLabel="Nom du Formulaire" disabled={isFormLocked} />
                     <RichTextInput fieldName="description" control={form.control} disabled={isFormLocked} />
-                    <DateListSection formId={formId} dateList={dateList} disabled={isFormLocked} />
+                    <DateListSection formId={formId} dateList={formData.dateList} disabled={isFormLocked} />
                 </form>
             </Form >
         </div >

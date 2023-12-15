@@ -14,8 +14,8 @@ import { Button } from "@/shadcn-components/ui/button"
 import Modal from '@/shared/components/Modal';
 
 import { TextInput } from '@/shared/components/Form/TextInput';
-import { SelectInput, SelectOption } from '@/shared/components/Form/SelectInput';
-import { RichTextInput } from '@/modules/Workspace/WorkspaceForm/RichTextInput';
+import { SelectInput } from '@/shared/components/Form/SelectInput';
+import { RichTextInput, notEqualToPBrP } from '@/modules/Workspace/WorkspaceForm/RichTextInput';
 import { PageActions } from '@/shared/components/PageActions';
 
 // @TODO: must fix this: putting a non valid email address in the SelectInput field
@@ -30,26 +30,13 @@ const recipientsSchema = z.array(recipientSchema).min(1, {
   message: "Veuillez saisir au moins 1 destinataire",
 })
 
-// 
-/**
- * Currently, react-quill is included in the RichTextInput component.
- * The `message` form value gets its value from react-quill.
- * While the react-quill text box appears empty from a UI/User perspective, 
- * it actually is equal to "<p><br></p>"
- * So, this is a custom validator function to check if it is `empty` 
- * that way.
- */
-function notEqualToPBrP(value) {
-  return value !== "<p><br></p>";
-}
-
 const emailingSchema = z.object({
   recipients: recipientsSchema,
-  subject: z.string().min(2, {
-    message: "Le sujet doit comporter au moins 2 caractères",
+  subject: z.string().nonempty({
+    message: "Le sujet est obligatoire",
   }),
   message: z.string().refine(notEqualToPBrP, {
-    message: "Le coprs du mail ne doit pas être vide",
+    message: "Le corps du mail est obligatoire",
   })
 });
 
